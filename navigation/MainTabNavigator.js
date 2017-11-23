@@ -5,21 +5,25 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import CalendarScreen from '../screens/CalendarScreen';
+import MapsScreen from '../screens/MapsScreen';
+import NotificationsScreen from '../screens/NotificationsScreen';
+import AddScreen from '../screens/AddScreen';
 
 export default TabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
+    Calendar: {
+      screen: CalendarScreen,
     },
-    Links: {
-      screen: LinksScreen,
+    MyMap: {
+      screen: MapsScreen,
     },
-    Settings: {
-      screen: SettingsScreen,
+    Notifications: {
+      screen: NotificationsScreen,
     },
+    Add: {
+      screen: AddScreen
+   },
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -27,18 +31,21 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Home':
+          case 'Calendar':
             iconName =
               Platform.OS === 'ios'
-                ? `ios-information-circle${focused ? '' : '-outline'}`
-                : 'md-information-circle';
+                ? `ios-calendar${focused ? '' : '-outline'}`
+                : 'md-calendar';
             break;
-          case 'Links':
-            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
+          case 'MyMap':
+            iconName = Platform.OS === 'ios' ? `ios-map${focused ? '' : '-outline'}` : 'md-map';
             break;
-          case 'Settings':
+          case 'Notifications':
             iconName =
-              Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
+              Platform.OS === 'ios' ? `ios-notifications${focused ? '' : '-outline'}` : 'md-notifications';
+             break;
+          case 'Add':
+            iconName = Platform.OS === 'ios' ? `ios-add${focused ? '' : '-outline'}` : 'md-add';
         }
         return (
           <Ionicons
