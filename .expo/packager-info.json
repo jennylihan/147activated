@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19002,
+  "expoServerPort": 19001,
   "expoServerNgrokUrl": "https://n5-k2y.ccnguyenn.147activated.exp.direct",
   "packagerNgrokUrl": "https://packager.n5-k2y.ccnguyenn.147activated.exp.direct",
-  "ngrokPid": 93597,
-  "packagerPort": 19003,
-  "packagerPid": 93585
+  "ngrokPid": 738,
+  "packagerPort": 19002,
+  "packagerPid": 716
 }
