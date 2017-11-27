@@ -12,6 +12,7 @@ import {
    AsyncStorage,
    Picker,
 } from 'react-native';
+import DatePicker from 'react-native-datepicker'
 
 import PropTypes from 'prop-types';
 
