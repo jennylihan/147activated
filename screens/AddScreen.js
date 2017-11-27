@@ -1,14 +1,15 @@
 import React from 'react';
 import {
+   AppRegistry,
    Image,
    Platform,
-   ScrollView,
    StyleSheet,
    Text,
    TouchableOpacity,
    View,
    TextInput,
    KeyboardAvoidingView,
+   ScrollView,
    AsyncStorage,
    Picker,
 } from 'react-native';
@@ -27,9 +28,15 @@ export default class AddScreen extends React.Component {
 
    constructor(props) {
       super(props);
+
+      var today = new Date();
+      date = today.getFullYear() + "-" + parseInt(today.getMonth()+1) + "-" + today.getDate();
       this.state = {
          text:'',
-         category: 'SAT'
+         category: 'SAT',
+         startdatetime: date,
+         enddatetime: date,
+
       };
    }
 
@@ -39,7 +46,8 @@ export default class AddScreen extends React.Component {
    }
    render() {
       return (
-         <KeyboardAvoidingView behavior="padding" style={styles.container}>
+
+         <ScrollView behavior="padding" style={styles.container}>
             <View style={styles.titleContainer}>
                <Text style={styles.formTitle}>Make a task</Text>
             </View>
@@ -54,6 +62,7 @@ export default class AddScreen extends React.Component {
                <item label="ACT" value="act" />
                <item label="Financial Aid" value="financial aid" />
             </Picker>
+
 
             <TextInput
             style={styles.inputField}
@@ -73,6 +82,38 @@ export default class AddScreen extends React.Component {
             editable={true}
             returnKeyType="next"
             />
+
+            <Text style={styles.instructions}>Date and Time</Text>
+
+            <View style={{flexDirection: 'row', flex: 1, padding: 8}}>
+             <View style={styles.startPicker}>
+               <Text style={styles.dateInstructions}>Start</Text>
+                <DatePicker
+                style={{width: 170}}
+                date={this.state.datetime}
+                mode="datetime"
+                format="YYYY-MM-DD HH:mm"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                showIcon={false}
+                onDateChange={(datetime) => {this.setState({startdatetime: datetime});}}
+                />
+             </View>
+             <View style={styles.endPicker}>
+               <Text style={styles.dateInstructions}>End</Text>
+                <DatePicker
+                 style={{width: 170}}
+                 date={this.state.datetime}
+                 mode="datetime"
+                 format="YYYY-MM-DD HH:mm"
+                 confirmBtnText="Confirm"
+                 cancelBtnText="Cancel"
+                 showIcon={false}
+                 onDateChange={(datetime) => {this.setState({enddatetime: datetime});}}
+                />
+             </View>
+            </View>
+
 
             <TextInput
             style={styles.inputField}
@@ -97,7 +138,7 @@ export default class AddScreen extends React.Component {
                <Text style={styles.buttonText}> SAVE </Text>
             </TouchableOpacity>
             </View>
-         </KeyboardAvoidingView>
+         </ScrollView>
       );
    }
 
@@ -107,6 +148,16 @@ const styles = StyleSheet.create({
    container: {
       flex: 1,
       backgroundColor: '#f1c40f',
+   },
+   dateInstructions: {
+      fontSize: 18,
+      textAlign: 'center',
+   },
+   instructions: {
+      color: '#FFF',
+      fontSize: 25,
+      textAlign: 'left',
+      opacity: 0.9,
    },
    titleContainer: {
       padding: 10,
@@ -145,3 +196,6 @@ const styles = StyleSheet.create({
    },
 
 });
+
+
+AppRegistry.registerComponent('datepicker', () => datepicker);
