@@ -1,6 +1,3 @@
-
-
-
 import React, { Component } from 'react';
 import {
    Image,
@@ -18,9 +15,12 @@ import {
    PanResponder,
    Animated,
    Button,
-   Alert, AppRegistry, 
+   Alert, AppRegistry,
    TouchableHighlight,
 } from 'react-native';
+
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import PropTypes from 'prop-types';
 
@@ -30,19 +30,27 @@ import { MonoText } from '../components/StyledText';
 
 
 
+export default class MapsScreen extends React.Component {
+   static navigationOptions = {
+      title: 'My Map',
+   };
+   constructor() {
+      super();
 
-   export default class MapsScreen extends React.Component {
-  static navigationOptions = {
-    title: 'My Map',
-  };
- constructor() {
-    super();
 
-  }
+   }
 
-    onclick = () => {
-    console.log('On click works')
-};
+   async componentWillMount() {
+     await Expo.Font.loadAsync({
+       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
+     });
+   }
+
+
+
+   onclick = () => {
+      console.log('On click works')
+   };
 
 
 
@@ -52,63 +60,78 @@ import { MonoText } from '../components/StyledText';
    }
    render() {
 
-    
+
       return (
-          
-          <ImageBackground
-          style={styles.backgroundImage}
-          source={require('../assets/images/roadmap.png')}>
 
-          
-
-          <View style={{position:"relative",flex:1,left:75,top:20,right:20,bottom:20}}>
-          <TouchableOpacity onPress={this.onclick}>
-
-            <Image source={require('../assets/images/icons8-graduation-cap-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
-            </Image>
-            </TouchableOpacity>
-          </View>
-           
-
-          
-                  <View style={{position:"relative",flex:1,left:125,top:20,right:20,bottom:20}}>
-        <TouchableOpacity onPress={this.onclick}>
-            <Image source={require('../assets/images/icons8-dossier-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
-            </Image>
-            </TouchableOpacity>
-          </View>
-                    <View style={{position:"relative",flex:1,left:240,top:20,right:20,bottom:20}}>
-<TouchableOpacity onPress={this.onclick}>
-            <Image source={require('../assets/images/icons8-exam-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
-            </Image>
-            </TouchableOpacity>
-          </View>
-
-
-                    <View style={{position:"relative",flex:1,left:220,top:20,right:20,bottom:20}}>
-
-<TouchableOpacity onPress={this.onclick}>
-
-            <Image source={require('../assets/images/icons8-crowdfunding-40.png')} style={{resizeMode:'cover',width:50,height:50}}>
-            </Image>
-            </TouchableOpacity>
-          </View>
+         <ImageBackground
+         style={styles.backgroundImage}
+         source={require('../assets/images/roadmap.png')}>
 
 
 
-                   <View style={{position:"relative",flex:1,left:115,top:20,right:20,bottom:20}}>
-<TouchableOpacity onPress={this.onclick}>
-            <Image source={require('../assets/images/icons8-study-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
-            </Image>
-            </TouchableOpacity>
-          </View>
-           
+         <View style={{position:"relative",flex:1,left:75,top:20,right:20,bottom:20}}>
+         <TouchableOpacity onPress={this.onclick}>
+
+         <Image source={require('../assets/images/icons8-graduation-cap-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
+         </Image>
+         </TouchableOpacity>
+         </View>
 
 
 
-          </ImageBackground>
+         <View style={{position:"relative",flex:1,left:125,top:20,right:20,bottom:20}}>
+         <TouchableOpacity onPress={this.onclick}>
+         <Image source={require('../assets/images/icons8-dossier-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
+         </Image>
+         </TouchableOpacity>
+         </View>
+         <View style={{position:"relative",flex:1,left:240,top:20,right:20,bottom:20}}>
+         <TouchableOpacity onPress={this.onclick}>
+         <Image source={require('../assets/images/icons8-exam-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
+         </Image>
+         </TouchableOpacity>
+         </View>
 
-          
+
+         <View style={{position:"relative",flex:1,left:220,top:20,right:20,bottom:20}}>
+
+         <TouchableOpacity onPress={this.onclick}>
+
+         <Image source={require('../assets/images/icons8-crowdfunding-40.png')} style={{resizeMode:'cover',width:50,height:50}}>
+         </Image>
+         </TouchableOpacity>
+         </View>
+
+
+
+         <View style={{position:"relative",flex:1,left:115,top:20,right:20,bottom:20}}>
+         <TouchableOpacity onPress={this.onclick}>
+         <Image source={require('../assets/images/icons8-study-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
+         </Image>
+         </TouchableOpacity>
+         </View>
+
+
+         <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
+         {/* Rest of the app comes ABOVE the action button component !*/}
+         <ActionButton buttonColor="rgba(231,76,60,1)">
+         <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("notes tapped!")}>
+         <Icon name="ios-create" style={styles.actionButtonIcon} />
+         </ActionButton.Item>
+         <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {}}>
+         <Icon name="ios-notifications-off" style={styles.actionButtonIcon} />
+         </ActionButton.Item>
+         <ActionButton.Item buttonColor='#1abc9c' title="All Tasks" onPress={() => {}}>
+         <Icon name="ios-done-all" style={styles.actionButtonIcon} />
+         </ActionButton.Item>
+         </ActionButton>
+         </View>
+
+
+
+         </ImageBackground>
+
+
       );
    }
 
@@ -122,7 +145,11 @@ const styles = StyleSheet.create({
       backgroundColor: '#f1c40f',
    },
 
-
+   actionButtonIcon: {
+      fontSize: 20,
+      height: 22,
+      color: 'white',
+   },
 
 
 
@@ -132,11 +159,11 @@ const styles = StyleSheet.create({
       //flexGrow: 1,
    },
 
-     backgroundImage: {
-    flex: 1,
-    width: null, height: null,
-    //resizeMode: 'stretch', // or 'stretch'
-  },
+   backgroundImage: {
+      flex: 1,
+      width: null, height: null,
+      //resizeMode: 'stretch', // or 'stretch'
+   },
 
    formTitle: {
       color: '#FFF',
