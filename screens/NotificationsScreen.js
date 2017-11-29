@@ -1,142 +1,137 @@
-import DialogManager, { ScaleAnimation, DialogContent } from 'react-native-dialog-component';
-import { DialogComponent, DialogTitle } from 'react-native-dialog-component';
-import React from 'react';
+import React, { Component } from 'react';
+
 import {
-   Alert, 
-   AppRegistry,
-   Image,
-   Platform,
-   StyleSheet,
-   Text,
-   TouchableOpacity,
-   View,
-   TextInput,
-   KeyboardAvoidingView,
-   ScrollView,
-   AsyncStorage,
-   Picker,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Image
 } from 'react-native';
+
 import Button from '../components/Button';
+import NewsItem from '../components/NewsItem';
 
 
 export default class NotificationsScreen extends React.Component {
   static navigationOptions = {
     title: 'Notifications',
   };
-    constructor() {
-      super();
 
-   }
+    constructor(props) {
+        super(props);
+        this.state = {
+            news_items: [
+                {
+                    pretext: 'Gray Matter',
+                    title: 'Art Makes You Smart',
+                    summary: 'Museum visits increase test scores, generate social responsibility and increase appreciation of the arts by students.',
+                    //image: require('../images/pink.jpg'),
+                },
+                {
+                    pretext: '',
+                    title: 'Tension and Flaws Before Health Website Crash',
+                    summary: 'Interviews and documents offer new details into how the rollout of President Obama\'s signature program turned into a major humiliation.',
+                  //  image: require('../images/beach.jpg')
+                },
+                {
+                    pretext: '',
+                    title: '36 Hours in Charleston, S.C.',
+                    summary: 'Crowds are thinner and temperatures are mild during winter in this..',
+                 //   image: require('../images/rails.jpg')
+                },
 
-  //  dialogAnimationPickerChange(value) {
-  //   let dialogAnimation;
+            ]
+        };
+    }
 
-  //   switch (value) {
-  //     case 'default':
-  //       dialogAnimation = new FadeAnimation({ animationDuration: 150 });
-  //       break;
-  //     case 'scale':
-  //       dialogAnimation = new ScaleAnimation();
-  //       break;
-  //     case 'slide':
-  //       dialogAnimation = new SlideAnimation({ slideFrom: 'top' });
-  //       break;
-  //     default:
-  //       dialogAnimation = new FadeAnimation({ animationDuration: 150 });
-  //       break;
-  //   }
-
-  //   this.setState({
-  //     dialogAnimation,
-  //     selectedDialogAnimation: value,
-  //   });
-  // }
-
-  render() {
+    render() {
     return (
-      <View style={styles.container}>
-      <Button 
-          label="Share"
-          styles={{button: styles.alignRight, label: styles.label}}
-          onPress={() => {this.dialogComponent.show();}} />
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <Button
+                    noDefaultStyles={true}
+                    styles={{button: styles.header_button}}
+                    onPress={this.press.bind(this)}
+                >
+                    <View style={styles.back_button}>
+                        <Text style={[styles.back_button_label]}> Sections</Text>
+                    </View>
+                </Button>
 
-      <DialogComponent
-        dialogTitle={<DialogTitle title="Dialog Title" />}
-        ref={(dialogComponent) => { this.dialogComponent = dialogComponent; }}
-      >
-        <DialogContent>
-          <View>
-            <Text>Hello</Text>
-          </View>  
-         </DialogContent>
-      </DialogComponent>
-    </View>
+                <View style={styles.header_text}>
+                    <Text style={styles.header_text_label}>Most E-Mailed</Text>
+                </View>
+                <View style={styles.whitespace}></View>
+            </View>
+
+            <View style={styles.instruction}>
+                <Text style={styles.instruction_text}>SWIPE ACROSS SECTIONS</Text>
+            </View>
+
+            <ScrollView style={styles.news_container}>
+            { this.renderNews() }
+            </ScrollView>
+
+        </View>
     );
-  }
+    }
+
+    renderNews() {
+        return this.state.news_items.map((news, index) => {
+            return <NewsItem key={index} index={index} news={news} />
+        });
+    }
+
+    press () {
+
+    }
 }
 
 
 
-
 const styles = StyleSheet.create({
-  picker: {
-
-  },
-   container: {
-      flex: 1,
-      backgroundColor: '#E1D7D8',
-   },
-
-   actionButtonIcon: {
-      fontSize: 20,
-      height: 22,
-      color: 'white',
-   },
-
-
-
-
-   titleContainer: {
-      padding: 10,
-      //flexGrow: 1,
-   },
-
-   backgroundImage: {
-      flex: 1,
-      width: null, height: null,
-      //resizeMode: 'stretch', // or 'stretch'
-   },
-
-   formTitle: {
-      color: '#FFF',
-      marginTop: 25,
-      fontSize: 40,
-      textAlign: 'left',
-      opacity: 0.9,
-   },
-   inputField: {
-      padding: 7,
-      fontSize: 25,
-      marginBottom: 2,
-      backgroundColor: 'rgba(255,255,255,0.7)',
-   },
-
-   formContainer: {
-      marginTop: 10,
-      marginBottom: 20,
-      marginLeft: 10,
-      marginRight: 10,
-   },
-
-   buttonContainer: {
-      backgroundColor: '#34495e',
-      paddingVertical: 15,
-      marginTop: 15,
-   },
-   buttonText: {
-      textAlign: 'center',
-      color: '#FFF',
-      fontWeight: '700',
-   },
-
+  container: {
+        flex: 1
+    },
+    header: {
+        flexDirection: 'row',
+        backgroundColor: '#FFF',
+        padding: 20,
+        justifyContent: 'space-between',
+        borderBottomColor: '#E1E1E1',
+        borderBottomWidth: 1
+    },
+    header_button: {
+        flex: 1,
+    },
+    whitespace: {
+        flex: 1
+    },
+    back_button: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    back_button_label: {
+        color: '#397CA9',
+        fontSize: 20,
+    },
+    instruction: {
+        alignSelf: 'center',
+        marginTop: 5
+    },
+    instruction_text: {
+        color: '#A3A3A3'
+    },
+    header_text: {
+        flex: 1,
+        alignSelf: 'center'
+    },
+    header_text_label: {
+        fontSize: 20,
+        textAlign: 'center'
+    },
+    news_container: {
+        flex: 1,
+        flexDirection: 'column'
+    },
 });
