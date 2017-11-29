@@ -54,14 +54,22 @@ export default class MapsScreen extends React.Component {
 
 
 
-   onValueChange(key, value) {
-      console.log(key+':'+value)
-      this.setState({category: value});
-   }
    render() {
+      const { params } = this.props.navigation.state;
 
+      if (this.props.navigation.state.params !== undefined){
+
+      if ('category' in this.props.navigation.state.params){
+
+             alert(this.props.navigation.state.params.category);
+
+        }
+
+      }
 
       return (
+
+
 
          <ImageBackground
          style={styles.backgroundImage}
