@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19001,
-  "expoServerNgrokUrl": "https://n5-k2y.angiew.147activated.exp.direct",
-  "packagerNgrokUrl": "https://packager.n5-k2y.angiew.147activated.exp.direct",
-  "ngrokPid": 16974,
-  "packagerPort": 19004,
-  "packagerPid": 17169
+  "expoServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "packagerPort": null,
+  "packagerPid": null
 }
