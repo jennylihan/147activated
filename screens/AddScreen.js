@@ -20,6 +20,8 @@ import PropTypes from 'prop-types';
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+import MainTabNavigator from '../navigation/MainTabNavigator';
+
 
 export default class AddScreen extends React.Component {
    static navigationOptions = {

@@ -27,12 +27,13 @@ import PropTypes from 'prop-types';
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-
+import MainTabNavigator from '../navigation/MainTabNavigator';
 
 
 export default class MapsScreen extends React.Component {
    static navigationOptions = {
       title: 'My Map',
+      header: null,
    };
    constructor() {
       super();
@@ -123,7 +124,7 @@ export default class MapsScreen extends React.Component {
          <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
          {/* Rest of the app comes ABOVE the action button component !*/}
          <ActionButton buttonColor="rgba(231,76,60,1)">
-         <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("task tapped!")}>
+         <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={this.pressAddTask.bind(this)}>
          <Icon name="ios-create" style={styles.actionButtonIcon} />
          </ActionButton.Item>
          <ActionButton.Item buttonColor='#3498db' title="New Goal" onPress={() => {}}>
@@ -138,6 +139,11 @@ export default class MapsScreen extends React.Component {
 
 
       );
+   }
+
+   pressAddTask () {
+      const { navigate } = this.props.navigation;
+      navigate('Add');
    }
 
 }
