@@ -1,8 +1,8 @@
 {
+  "expoServerNgrokUrl": "https://bx-9u5.jennylihan.cs147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.bx-9u5.jennylihan.cs147activated.exp.direct",
+  "ngrokPid": 26981,
   "expoServerPort": 19006,
-  "expoServerNgrokUrl": "https://ri-vcp.floranwang.147activated.exp.direct",
-  "packagerNgrokUrl": "https://packager.ri-vcp.floranwang.147activated.exp.direct",
-  "ngrokPid": 11063,
   "packagerPort": 19007,
-  "packagerPid": 11051
+  "packagerPid": 26943
 }
