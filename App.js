@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Platform, StatusBar, StyleSheet, View, KeyboardAvoidingView } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, KeyboardAvoidingView, AppRegistry } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import RootNavigation from './navigation/RootNavigation';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
+import Login from './screens/Login';
 
 export default class App extends React.Component {
    state = {
@@ -15,11 +16,7 @@ export default class App extends React.Component {
    render() {
       if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
          return (
-            <AppLoading
-            startAsync={this._loadResourcesAsync}
-            onError={this._handleLoadingError}
-            onFinish={this._handleFinishLoading}
-            />
+            <Login />
          );
       } else {
          return (

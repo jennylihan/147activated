@@ -12,11 +12,11 @@ import AddScreen from '../screens/AddScreen';
 
 export default TabNavigator(
   {
-    Calendar: {
-      screen: CalendarScreen,
-    },
     MyMap: {
       screen: MapsScreen,
+    },
+    Calendar: {
+      screen: CalendarScreen,
     },
     Notifications: {
       screen: NotificationsScreen,
@@ -31,14 +31,14 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
+          case 'MyMap':
+            iconName = Platform.OS === 'ios' ? `ios-map${focused ? '' : '-outline'}` : 'md-map';
+            break;
           case 'Calendar':
             iconName =
               Platform.OS === 'ios'
                 ? `ios-calendar${focused ? '' : '-outline'}`
                 : 'md-calendar';
-            break;
-          case 'MyMap':
-            iconName = Platform.OS === 'ios' ? `ios-map${focused ? '' : '-outline'}` : 'md-map';
             break;
           case 'Notifications':
             iconName =
