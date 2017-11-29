@@ -16,7 +16,11 @@ export default class App extends React.Component {
    render() {
       if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
          return (
-            <Login />
+            <AppLoading
+            startAsync={this._loadResourcesAsync}
+            onError={this._handleLoadingError}
+            onFinish={this._handleFinishLoading}
+            />
          );
       } else {
          return (

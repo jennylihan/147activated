@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Container from '../components/Container';
 import Button from '../components/Button';
 import Label from '../components/Label';
+import RootNavigation from '../navigation/RootNavigation';
 
 export default class Login extends Component {
   render() {
@@ -56,7 +57,8 @@ export default class Login extends Component {
   }
 
   pressLogin () {
-
+    const { navigate } = this.props.navigation;
+    navigate('Main');
   }
 }
 
