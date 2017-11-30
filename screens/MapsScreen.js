@@ -32,7 +32,7 @@ import { MonoText } from '../components/StyledText';
 
 export default class MapsScreen extends React.Component {
    static navigationOptions = {
-      title: 'My Map',
+      header: null,
    };
    constructor() {
       super();
@@ -45,7 +45,6 @@ export default class MapsScreen extends React.Component {
        Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
      });
    }
-
 
 
    onclick = () => {

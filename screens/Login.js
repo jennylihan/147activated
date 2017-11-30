@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
- 
+
 import {
   StyleSheet,
   Text,
   View,
   TextInput,
-  ScrollView
+  ScrollView,
 } from 'react-native';
- 
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Container from '../components/Container';
@@ -20,7 +20,7 @@ export default class Login extends Component {
     return (
         <ScrollView style={styles.scroll}>
         	<Container>
-    		<Button 
+    		<Button
         		label="Register"
         		styles={{button: styles.alignRight, label: styles.label}}
             onPress={this.pressRegister.bind(this)} />
@@ -42,9 +42,9 @@ export default class Login extends Component {
 
       <View style={styles.footer}>
       <Container>
-        <Button 
+        <Button
             label="Sign In"
-            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}} 
+            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
             onPress={this.pressLogin.bind(this)} />
       </Container>
       </View>
