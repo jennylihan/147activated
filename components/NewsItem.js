@@ -47,7 +47,10 @@ function getPretext(news) {
 }
 
 function onPress(news) {
-    alert(news.title);
+    alert(news.summary, 
+    [{text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+    {text: 'OK', onPress: () => console.log('OK Pressed')}]);
 }
 
 const styles = StyleSheet.create({

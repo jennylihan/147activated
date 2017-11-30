@@ -24,19 +24,19 @@ export default class NotificationsScreen extends React.Component {
                 {
                     pretext: 'Shared by Kira Pan.',
                     title: 'Free Practice SAT Session',
-                    summary: 'Goal: SAT',
+                    summary: 'Goal: SAT\nDate: 10/3/17',
                     image: require('../assets/images/icons8-exam-50.png')
                 },
                 {
                     pretext: 'Shared by Mr. Doan.',
                     title: 'Internship Workshop',
-                    summary: 'Goal: Professional Work',
+                    summary: 'Goal: Professional Work\nDate: 10/26/17',
                     image: require('../assets/images/icons8-briefcase-48.png')
                 },
                 {
                     pretext: 'Shared by Silvia Villagomez.',
                     title: 'College Fair',
-                    summary: 'Goal: Research',
+                    summary: 'Goal: Research\nDate: 10/16/17',
                     image: require('../assets/images/icons8-study-50.png')
                 },
 
@@ -66,7 +66,7 @@ export default class NotificationsScreen extends React.Component {
     }
 
     press () {
-
+      //on press, lead to the task itself
     }
 }
 
