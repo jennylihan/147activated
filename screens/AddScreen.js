@@ -136,7 +136,7 @@ export default class AddScreen extends React.Component {
             />
 
 
-            <TouchableOpacity onPress={() => this.props.navigation.navigate("MyMap", { category: 
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("MyMap", { category:
 this.state.category})} style={styles.buttonContainer}>
                <Text style={styles.buttonText}> SAVE </Text>
             </TouchableOpacity>

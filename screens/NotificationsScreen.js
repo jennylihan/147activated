@@ -12,7 +12,7 @@ import Button from '../components/Button';
 import NewsItem from '../components/NewsItem';
 
 
-export default class NotificationsScreen egxtends React.Component {
+export default class NotificationsScreen extends React.Component {
   static navigationOptions = {
     title: 'Notifications',
   };
@@ -22,8 +22,8 @@ export default class NotificationsScreen egxtends React.Component {
         this.state = {
             news_items: [
                 {
-                    pretext: 'Gray Matter',
-                    title: 'Art Makes You Smart',
+                    pretext: 'SAT',
+                    title: 'SAT ',
                     summary: 'Museum visits increase test scores, generate social responsibility and increase appreciation of the arts by students.',
                     //image: require('../images/pink.jpg'),
                 },

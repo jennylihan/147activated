@@ -21,9 +21,7 @@ import {
 
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import PropTypes from 'prop-types';
-
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
@@ -120,9 +118,8 @@ export default class MapsScreen extends React.Component {
          </TouchableOpacity>
          </View>
 
-
-         <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
-         {/* Rest of the app comes ABOVE the action button component !*/}
+        <View style={{flex:1, backgroundColor: 'transparent'}}>
+        {/* Rest of the app comes ABOVE the action button component !*/}
          <ActionButton buttonColor="rgba(231,76,60,1)">
          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={this.pressAddTask.bind(this)}>
          <Icon name="ios-create" style={styles.actionButtonIcon} />
@@ -131,10 +128,7 @@ export default class MapsScreen extends React.Component {
          <Icon name="ios-navigate" style={styles.actionButtonIcon} />
          </ActionButton.Item>
          </ActionButton>
-         </View>
-
-
-
+        </View>
          </ImageBackground>
 
 
