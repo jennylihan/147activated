@@ -62,6 +62,7 @@ export default class Login extends Component {
   }
 }
 
+
 const styles = StyleSheet.create({
     scroll: {
         backgroundColor: '#E1D7D8',
@@ -96,6 +97,7 @@ const styles = StyleSheet.create({
 
     primaryButton: {
       backgroundColor: '#34A853'
+      
     },
 
     footer: {
