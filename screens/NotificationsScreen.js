@@ -12,7 +12,7 @@ import Button from '../components/Button';
 import NewsItem from '../components/NewsItem';
 
 
-export default class NotificationsScreen extends React.Component {
+export default class NotificationsScreen egxtends React.Component {
   static navigationOptions = {
     title: 'Notifications',
   };
