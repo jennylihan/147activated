@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
- 
+
 import {
   StyleSheet,
   Text,
@@ -7,7 +7,7 @@ import {
   TextInput,
   ScrollView
 } from 'react-native';
- 
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Container from '../components/Container';
@@ -20,7 +20,7 @@ export default class Login extends Component {
     return (
         <ScrollView style={styles.scroll}>
         	<Container>
-    		<Button 
+    		<Button
         		label="Register"
         		styles={{button: styles.alignRight, label: styles.label}}
             onPress={this.pressRegister.bind(this)} />
@@ -42,9 +42,9 @@ export default class Login extends Component {
 
       <View style={styles.footer}>
       <Container>
-        <Button 
-            label="Sign In"
-            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}} 
+        <Button
+            label="Get Activated"
+            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
             onPress={this.pressLogin.bind(this)} />
       </Container>
       </View>
@@ -96,8 +96,8 @@ const styles = StyleSheet.create({
     },
 
     primaryButton: {
-      backgroundColor: '#34A853'
-      
+      backgroundColor: '#f1c40f'
+
     },
 
     footer: {

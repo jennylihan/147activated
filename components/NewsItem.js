@@ -59,12 +59,31 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         paddingBottom: 30,
         borderBottomWidth: 1,
-        borderBottomColor: '#E4E4E4'
+        borderBottomColor: '#fff'
     },
     news_text: {
         flex: 2,
         flexDirection: 'row',
-        padding: 10
+        padding: 10,
     },
+    pretext: {
+    color: '#3F3F3F',
+    fontSize: 20
+    },
+    title: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: '#000',
+//        fontFamily: 'SpaceMono-Regular'
+    },
+    news_photo: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    photo: {
+        width: 80,
+        height: 80
+    }
 });
 export default NewsItem;
