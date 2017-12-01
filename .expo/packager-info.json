@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19002,
-  "packagerPort": 19003,
-  "packagerPid": 2118,
-  "expoServerNgrokUrl": "https://jd-wmd.ccnguyenn.147activated.exp.direct",
-  "packagerNgrokUrl": "https://packager.jd-wmd.ccnguyenn.147activated.exp.direct",
-  "ngrokPid": 2130
+  "expoServerPort": 19000,
+  "packagerPort": 19002,
+  "packagerPid": 7914,
+  "expoServerNgrokUrl": "https://vu-c2m.ccnguyenn.147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.vu-c2m.ccnguyenn.147activated.exp.direct",
+  "ngrokPid": 7925
 }
