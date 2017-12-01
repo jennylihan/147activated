@@ -97,27 +97,16 @@ export default class MapsScreen extends React.Component {
 }
 }
    componentWillReceiveProps(){
-    if(this.state.start){
     this.renderButtons()
-  } 
-  else{
-    this.renderButtons2()
-  }
 
-     this.state.start =false
 
 
    }
-   
+
 
    async componentWillMount() {
-        if(this.state.start){
     this.renderButtons()
-  } 
-  else{
-    this.renderButtons2()
-  }
-   this.state.start =false
+  
 
        await Expo.Font.loadAsync({
        Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
@@ -130,7 +119,7 @@ export default class MapsScreen extends React.Component {
       console.log('On click works')
       console.log(a)
 
-       display = "Start Date: "+a.startdatetime+" | End Date: "+a.startdatetime
+       display = "Start Date: "+a.startdatetime+" \n End Date: "+a.startdatetime
 
       this.state.popupText = display
 
@@ -192,55 +181,6 @@ try {
 
 }
 
-
-async renderButtons2(){
-
-  console.log("RENDERBUTTONS!!!")
-try {
-  const value =  await AsyncStorage.getItem('@activated:tasks2').then(function(t) {
-        return  JSON.parse(t);
-
-
-         try {
-    AsyncStorage.setItem('@activated:tasks', JSON.stringify(value));
-} catch (error) {
-  // Error saving data
-    console.log("Failed to set data from storage")
-
-}
-    });
-  if (value !== null){
-    // We have data!!
-    console.log(String(value));
-    console.log(String(value.length))
-
-  for( let i = this.state.rows.length; i < value.length; i++) {
-     this.state.rows.push(value[i])
-  }
-
-
-  this.setState({ rows: this.state.rows })
-
-  console.log(this.state.rows)
-
-
-
-
-  }
-
-  else{ console.log(value);}
-
-} catch (e) {
-  // Error retrieving data
-  console.log("Failed to get data from storage")
-
-      console.log("Error", e.stack);
-    console.log("Error", e.name);
-    console.log("Error", e.message);
-}
-
-
-}
 
 
 

@@ -39,6 +39,7 @@ export default class AddScreen extends React.Component {
          startdatetime: date,
          enddatetime: date,
          icon: 'study-icon',
+         location: '',
          notes: ''
 
       };
@@ -82,7 +83,7 @@ export default class AddScreen extends React.Component {
             style={styles.inputField}
             placeholder="Location"
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={(location) => this.setState({location})}
             editable={true}
             returnKeyType="next"
             />
@@ -145,7 +146,7 @@ export default class AddScreen extends React.Component {
                   value.push(this.state)
                   console.log(JSON.stringify(this.state))
 
-                  await AsyncStorage.setItem('@activated:tasks2', JSON.stringify(value));
+                  await AsyncStorage.setItem('@activated:tasks', JSON.stringify(value));
                   console.log(JSON.stringify(value));
                   console.log("Here")
                }
