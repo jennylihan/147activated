@@ -261,7 +261,7 @@ let Arr = this.state.rows.map((a, i) => {
 
         <ImageBackground
          style={styles.backgroundImage}
-         source={require('../assets/images/alt_background.jpg')}>
+         source={require('../assets/images/alt_background.png')}>
 
 
             <View style={styles.header}>
