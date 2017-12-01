@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PopupDialog from 'react-native-popup-dialog';
 import {
    Image,
    Platform,
@@ -28,99 +29,284 @@ import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 
 
+   let index = 0 
+
 export default class MapsScreen extends React.Component {
    static navigationOptions = {
       title: 'My Map',
-      header: null,
+       header: null
+
+  
+
    };
+
+
    constructor() {
       super();
 
+      this.state = { rows: [] };
+
+      this.state.popupText = "hi"
+      this.state.popupTitle = "hi"
+      this.state.popupCategory= "category"
+
+
+       tasks = [{text:'Register for SAT',
+         category: 'SAT',
+         startdatetime: '2017-10-5',
+         enddatetime: '2017-10-5',
+         icon: 'pen-icon',
+         notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+       },
+
+       {text:'Take SAT',
+         category: 'SAT',
+         startdatetime: '2017-10-5',
+         enddatetime: '2017-10-5',
+         icon: 'test-icon',
+         notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
+       },
+
+       {text:'Sign Up for basketball tryouts',
+         category: 'SAT',
+         startdatetime: '2017-10-5',
+         enddatetime: '2017-10-5',
+          icon: 'pen-icon',
+          notes: ' Notes: \n - Meet with coach \n  - make sure schedule aligns with classes'
+
+       },
+
+       {text:'Fill Out FAFSA',
+         category: 'Finacial Aid',
+         startdatetime: '2017-10-5',
+         enddatetime: '2017-10-5',
+         icon: 'pen-icon',
+         notes: ' Notes: \n - Get parents income information \n  - get college id codes'
+       },
+
+
+
+
+       ];
+
+
+
+
+
+
+
+         try {
+    AsyncStorage.setItem('@activated:tasks', JSON.stringify(tasks));
+} catch (error) {
+  // Error saving data
+    console.log("Failed to set data from storage")
+
+}
 
    }
+
+   componentWillReceiveProps(){
+
+    this.renderButtons()
+   }
+
 
    async componentWillMount() {
-     await Expo.Font.loadAsync({
+
+    this.renderButtons()
+
+       await Expo.Font.loadAsync({
        Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
      });
+
+   }  
+
+
+
+   getIcon(name){
+
+
+
    }
 
 
 
-   onclick = () => {
+   showTask = (a) => {
       console.log('On click works')
+      console.log(a)
+
+       display = "Start Date: "+a.startdatetime+" | End Date: "+a.startdatetime
+
+      this.state.popupText = display
+
+        this.setState({ popupText: this.state.popupText })
+
+        this.state.popupTitle = a.text
+
+        this.setState({ popupTitle : this.state.popupTitle  })
+
+        this.state.popupCategory= a.category
+
+        this.setState({ popupCategory : this.state.popupCategory  })
+
+        this.state.popupNotes= a.notes
+
+        this.setState({ popupNotes : this.state.popupNotes  })
+
+
+      this.popupDialog.show()
+
    };
+
+
+  async _addRow(){
+    this.state.rows.push(index++)
+    this.setState({ rows: this.state.rows })
+
+
+
+try {
+  const value =  await AsyncStorage.getItem('@activated:tasks').then(function(users) {
+        return  JSON.stringify(JSON.parse(users));
+    });
+  if (value !== null){
+    // We have data!!
+    console.log(String(value));
+  }
+} catch (e) {
+  // Error retrieving data
+  console.log("Failed to get data from storage")
+
+      console.log("Error", e.stack);
+    console.log("Error", e.name);
+    console.log("Error", e.message);
+}
+  };
+
+
+async renderButtons(){
+try {
+  const value =  await AsyncStorage.getItem('@activated:tasks').then(function(tasks) {
+        return  JSON.parse(tasks);
+    });
+  if (value !== null){
+    // We have data!!
+    console.log(String(value));
+    console.log(String(value.length))
+
+  for( let i = this.state.rows.length; i < value.length; i++) {
+     this.state.rows.push(value[i])
+  }
+
+
+  this.setState({ rows: this.state.rows })
+
+  console.log(this.state.rows)
+
+
+
+
+  }
+} catch (e) {
+  // Error retrieving data
+  console.log("Failed to get data from storage")
+
+      console.log("Error", e.stack);
+    console.log("Error", e.name);
+    console.log("Error", e.message);
+}
+
+
+}
 
 
 
    render() {
-      const { params } = this.props.navigation.state;
 
-      if (this.props.navigation.state.params !== undefined){
+let Arr = this.state.rows.map((a, i) => {
 
-      if ('category' in this.props.navigation.state.params){
+      switch (a.icon) {
+    case 'pen-icon': return(
 
-             alert(this.props.navigation.state.params.category);
+          <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
+         <TouchableOpacity onPress={() => this.showTask(a)}>
+         <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         </Image>
+         </TouchableOpacity>
+         </View> 
 
-        }
 
-      }
+      ) 
+    case 'study-icon': return(
+
+        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
+         <TouchableOpacity onPress={() => this.showTask(a)}>
+         <Image source={require('../assets/images/study-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         </Image>
+         </TouchableOpacity>
+         </View> 
+
+
+
+      ) 
+    case 'test-icon': return (
+
+
+       <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
+         <TouchableOpacity onPress={() => this.showTask(a)}>
+         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         </Image>
+         </TouchableOpacity>
+         </View> 
+
+
+
+      ) 
+    }
+
+       <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
+         <TouchableOpacity onPress={() => this.showTask(a)}>
+         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         </Image>
+         </TouchableOpacity>
+         </View>                            
+    })
+
 
       return (
 
 
+        <ImageBackground         style={styles.backgroundImage}
+         source={require('../assets/images/alt_background.jpg')}>
 
-         <ImageBackground
-         style={styles.backgroundImage}
-         source={require('../assets/images/roadmap.png')}>
+            <View style={styles.header}>
+            <Text style={styles.instruction_text}>My College Roadmap </Text>
+            </View>
 
-
-
-         <View style={{position:"relative",flex:1,left:75,top:20,right:20,bottom:20}}>
-         <TouchableOpacity onPress={this.onclick}>
-
-         <Image source={require('../assets/images/icons8-graduation-cap-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
-         </Image>
-         </TouchableOpacity>
-         </View>
+         {Arr}
 
 
-
-         <View style={{position:"relative",flex:1,left:125,top:20,right:20,bottom:20}}>
-         <TouchableOpacity onPress={this.onclick}>
-         <Image source={require('../assets/images/icons8-dossier-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
-         </Image>
-         </TouchableOpacity>
-         </View>
-         <View style={{position:"relative",flex:1,left:240,top:20,right:20,bottom:20}}>
-         <TouchableOpacity onPress={this.onclick}>
-         <Image source={require('../assets/images/icons8-exam-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
-         </Image>
-         </TouchableOpacity>
-         </View>
-
-
-         <View style={{position:"relative",flex:1,left:220,top:20,right:20,bottom:20}}>
-
-         <TouchableOpacity onPress={this.onclick}>
-
-         <Image source={require('../assets/images/icons8-crowdfunding-40.png')} style={{resizeMode:'cover',width:50,height:50}}>
-         </Image>
-         </TouchableOpacity>
-         </View>
+  <PopupDialog dialogStyle={{backgroundColor: 'rgba(255,255,255,0.85)'}}
+        ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+        width={250}
+        height={350}
 
 
 
-         <View style={{position:"relative",flex:1,left:115,top:20,right:20,bottom:20}}>
-         <TouchableOpacity onPress={this.onclick}>
-         <Image source={require('../assets/images/icons8-study-50.png')} style={{resizeMode:'cover',width:50,height:50}}>
-         </Image>
-         </TouchableOpacity>
-         </View>
+
+  >
+    <View style= {{backgroundColor: 'transparent', padding: 25}}>
+      <Text style={styles.taskTitle}> {this.state.popupTitle}</Text>
+      <Text style={styles.taskText}> {this.state.popupCategory}</Text>
+      <Text style={styles.taskCategory}> {this.state.popupText}</Text>
+      <Text style={styles.taskNotes}> {this.state.popupNotes}</Text>
+    </View>
+
+  </PopupDialog>
 
         <View style={{flex:1, backgroundColor: 'transparent'}}>
         {/* Rest of the app comes ABOVE the action button component !*/}
-         <ActionButton buttonColor="rgba(231,76,60,1)">
+         <ActionButton buttonColor="#f1c40f">
          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={this.pressAddTask.bind(this)}>
          <Icon name="ios-create" style={styles.actionButtonIcon} />
          </ActionButton.Item>
@@ -141,6 +327,7 @@ export default class MapsScreen extends React.Component {
    }
 
 }
+
 
 
 
@@ -201,5 +388,54 @@ const styles = StyleSheet.create({
       color: '#FFF',
       fontWeight: '700',
    },
+
+   taskText: {
+      textAlign: 'center',
+      color: '#34495e',
+      fontWeight: '700',
+      marginTop: 30,
+   },
+
+      taskTitle: {
+      textAlign: 'center',
+      color: '#f1c40f',
+      fontSize: 22,
+      fontFamily: 'Avenir',
+   },
+
+   taskCategory: {
+      textAlign: 'center',
+      color: '#34495e',
+      fontSize: 15,
+      marginTop: 15,
+      fontFamily: 'Avenir',
+   },
+
+      taskNotes: {
+      color: '#34495e',
+      fontSize: 15,
+      marginTop: 15,
+      fontFamily: 'Avenir',
+
+   },
+
+       instruction_text: {
+        color: '#fff',
+        fontSize: 20,
+        fontFamily: 'Avenir',
+    },
+
+        header: {
+        opacity: 0.8,
+        flexDirection: 'row',
+        backgroundColor: '#f1c40f',
+        padding: 25,
+        justifyContent: 'center',
+        height: 80, 
+
+
+    },
+
+
 
 });
