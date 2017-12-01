@@ -13,7 +13,7 @@ import {
    AsyncStorage,
    Picker,
 } from 'react-native';
-import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-datepicker';
 
 import PropTypes from 'prop-types';
 
@@ -32,7 +32,7 @@ export default class AddScreen extends React.Component {
       super(props);
 
       var today = new Date();
-      date = today.getFullYear() + "-" + parseInt(today.getMonth()+1) + "-" + today.getDate();
+      date =  parseInt(today.getMonth()+1) + "-" + today.getDate() + "-" +today.getFullYear();
       this.state = {
          text:'',
          category: 'SAT',
@@ -96,7 +96,8 @@ export default class AddScreen extends React.Component {
                 style={{width: 170}}
                 date={this.state.datetime}
                 mode="datetime"
-                format="YYYY-MM-DD HH:mm"
+                is24Hour={false}
+                format="MM-DD-YYYY HH:mm"
                 confirmBtnText="Confirm"
                 cancelBtnText="Cancel"
                 showIcon={false}
@@ -109,7 +110,8 @@ export default class AddScreen extends React.Component {
                  style={{width: 170}}
                  date={this.state.datetime}
                  mode="datetime"
-                 format="YYYY-MM-DD HH:mm"
+                is24Hour={false}
+                 format="MM-DD-YYYY HH:mm"
                  confirmBtnText="Confirm"
                  cancelBtnText="Cancel"
                  showIcon={false}
@@ -128,17 +130,8 @@ export default class AddScreen extends React.Component {
             returnKeyType="next"
             />
 
-            <TextInput
-            style={styles.inputField}
-            placeholder="Notes"
-            autoCapitalize="none"
-            onChangeText={(text) => this.setState({notes2})}
-            editable={true}
-            returnKeyType="next"
-            />
 
-
-            <TouchableOpacity onPress={async () => 
+            <TouchableOpacity onPress={async () =>
                {
 
 
@@ -168,7 +161,7 @@ export default class AddScreen extends React.Component {
 
 
 
-                  this.props.navigation.navigate("MyMap", { taskInfo: 
+                  this.props.navigation.navigate("MyMap", { taskInfo:
                this.state})}
             } style={styles.buttonContainer}>
                <Text style={styles.buttonText}> SAVE </Text>
