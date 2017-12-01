@@ -55,7 +55,7 @@ export default class MapsScreen extends React.Component {
          category: 'SAT',
          startdatetime: '2017-10-5',
          enddatetime: '2017-10-5',
-         icon: 'pen-icon',
+         icon: 'study-icon',
          notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
        },
 
@@ -80,7 +80,7 @@ export default class MapsScreen extends React.Component {
          category: 'Finacial Aid',
          startdatetime: '2017-10-5',
          enddatetime: '2017-10-5',
-         icon: 'pen-icon',
+         icon: 'study-icon',
          notes: ' Notes: \n - Get parents income information \n  - get college id codes'
        },
 
