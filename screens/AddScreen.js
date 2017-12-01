@@ -130,25 +130,7 @@ export default class AddScreen extends React.Component {
             returnKeyType="next"
             />
 
-<<<<<<< HEAD
 
-            <TouchableOpacity onPress={async () =>
-               {
-
-
-
-=======
-            <TextInput
-            style={styles.inputField}
-            placeholder="Notes"
-            autoCapitalize="none"
-            onChangeText={(notes2) => this.setState({notes2})}
-            editable={true}
-            returnKeyType="next"
-            />
-
-
->>>>>>> 7f96a15d81515aa0579d0a3fe2a2a8c87b01756d
 
             <TouchableOpacity onPress={async () =>
                {
