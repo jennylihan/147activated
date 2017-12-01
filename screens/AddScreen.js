@@ -38,6 +38,8 @@ export default class AddScreen extends React.Component {
          category: 'SAT',
          startdatetime: date,
          enddatetime: date,
+         icon: 'study-icon',
+         notes: ''
 
       };
    }
@@ -121,7 +123,7 @@ export default class AddScreen extends React.Component {
             style={styles.inputField}
             placeholder="Notes"
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={(text) => this.setState({notes})}
             editable={true}
             returnKeyType="next"
             />
@@ -130,14 +132,45 @@ export default class AddScreen extends React.Component {
             style={styles.inputField}
             placeholder="Notes"
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={(text) => this.setState({notes2})}
             editable={true}
             returnKeyType="next"
             />
 
 
-            <TouchableOpacity onPress={() => this.props.navigation.navigate("MyMap", { category:
-this.state.category})} style={styles.buttonContainer}>
+            <TouchableOpacity onPress={async () =>
+               {
+
+
+
+
+
+            try {
+               const value =  await AsyncStorage.getItem('@activated:tasks').then(function(tasks) {
+               return  JSON.parse(tasks);
+               });
+
+               if (value !== null){
+
+                  value.push(this.state)
+
+                  await AsyncStorage.setItem('@activated:tasks', JSON.stringify(value));
+                  console.log(JSON.stringify(value));
+               }
+            } catch (e) {
+               // Error retrieving data
+               console.log("Failed to get data from storage")
+
+               console.log("Error", e.stack);
+               console.log("Error", e.name);
+               console.log("Error", e.message);
+            }
+
+
+
+                  this.props.navigation.navigate("MyMap", { taskInfo:
+               this.state})}
+            } style={styles.buttonContainer}>
                <Text style={styles.buttonText}> SAVE </Text>
             </TouchableOpacity>
             </View>
