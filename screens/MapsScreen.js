@@ -24,6 +24,7 @@ import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 import { WebBrowser } from 'expo';
+import { slide as Menu } from 'react-burger-menu'
 
 import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
@@ -39,6 +40,10 @@ export default class MapsScreen extends React.Component {
 
 
    };
+
+   showSettings (event) {
+      event.preventDefault();
+   }
 
 
    constructor() {
@@ -102,17 +107,11 @@ export default class MapsScreen extends React.Component {
     console.log("Failed to set data from storage")
 
 }
-
    }
-
    componentWillReceiveProps(){
-
     this.renderButtons()
    }
-
-
    async componentWillMount() {
-
     this.renderButtons()
 
        await Expo.Font.loadAsync({
@@ -121,14 +120,9 @@ export default class MapsScreen extends React.Component {
 
    }
 
-
-
    getIcon(name){
 
-
-
    }
-
 
 
    showTask = (a) => {
@@ -157,8 +151,6 @@ export default class MapsScreen extends React.Component {
       this.popupDialog.show()
 
    };
-
-
   async _addRow(){
     this.state.rows.push(index++)
     this.setState({ rows: this.state.rows })
@@ -222,6 +214,13 @@ try {
 
 
    render() {
+
+      <Menu>
+      <a id="home" className="menu-item" href="/">Home</a>
+      <a id="about" className="menu-item" href="/about">About</a>
+      <a id="contact" className="menu-item" href="/contact">Contact</a>
+      <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+     </Menu>
 
 let Arr = this.state.rows.map((a, i) => {
 
