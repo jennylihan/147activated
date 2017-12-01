@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19003,
-  "packagerPort": 19002,
-  "packagerPid": 7200,
-  "expoServerNgrokUrl": "https://dn-qnb.floranwang.147activated.exp.direct",
-  "packagerNgrokUrl": "https://packager.dn-qnb.floranwang.147activated.exp.direct",
-  "ngrokPid": 7211
+  "expoServerPort": 19002,
+  "packagerPort": 19003,
+  "packagerPid": 8074,
+  "expoServerNgrokUrl": "https://xe-6g6.floranwang.147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.xe-6g6.floranwang.147activated.exp.direct",
+  "ngrokPid": 8089
 }

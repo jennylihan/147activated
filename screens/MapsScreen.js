@@ -28,7 +28,7 @@ import { slide as Menu } from 'react-burger-menu'
 
 import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
-
+import RootNavigation from '../navigation/RootNavigation';
 
    let index = 0
 
@@ -36,9 +36,6 @@ export default class MapsScreen extends React.Component {
    static navigationOptions = {
       title: 'My Map',
        header: null
-
-
-
    };
 
    showSettings (event) {
@@ -94,12 +91,6 @@ export default class MapsScreen extends React.Component {
 
        ];
 
-
-
-
-
-
-
          try {
     AsyncStorage.setItem('@activated:tasks', JSON.stringify(tasks));
 } catch (error) {
@@ -107,7 +98,7 @@ export default class MapsScreen extends React.Component {
     console.log("Failed to set data from storage")
 
 }
-   }
+}
    componentWillReceiveProps(){
     this.renderButtons()
    }
@@ -249,7 +240,6 @@ let Arr = this.state.rows.map((a, i) => {
 
       )
     case 'test-icon': return (
-
 
        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
          <TouchableOpacity onPress={() => this.showTask(a)}>

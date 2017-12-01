@@ -25,7 +25,7 @@ import MainTabNavigator from '../navigation/MainTabNavigator';
 
 export default class AddScreen extends React.Component {
    static navigationOptions = {
-      header: null,
+      // header: null,
    };
 
    constructor(props) {
