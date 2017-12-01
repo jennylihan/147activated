@@ -43,7 +43,7 @@ export default class Login extends Component {
       <View style={styles.footer}>
       <Container>
         <Button
-            label="Sign In"
+            label="Get Activated"
             styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
             onPress={this.pressLogin.bind(this)} />
       </Container>
@@ -96,8 +96,8 @@ const styles = StyleSheet.create({
     },
 
     primaryButton: {
-      backgroundColor: '#34A853'
-      
+      backgroundColor: '#f1c40f'
+
     },
 
     footer: {

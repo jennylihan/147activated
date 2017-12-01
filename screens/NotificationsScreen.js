@@ -22,22 +22,22 @@ export default class NotificationsScreen extends React.Component {
         this.state = {
             news_items: [
                 {
-                    pretext: 'Gray Matter',
-                    title: 'Art Makes You Smart',
-                    summary: 'Museum visits increase test scores, generate social responsibility and increase appreciation of the arts by students.',
-                    //image: require('../images/pink.jpg'),
+                    pretext: 'Shared by Kira Pan.',
+                    title: 'Free Practice SAT Session',
+                    summary: 'Goal: SAT\nDate: 10/3/17',
+                    image: require('../assets/images/icons8-exam-50.png')
                 },
                 {
-                    pretext: '',
-                    title: 'Tension and Flaws Before Health Website Crash',
-                    summary: 'Interviews and documents offer new details into how the rollout of President Obama\'s signature program turned into a major humiliation.',
-                  //  image: require('../images/beach.jpg')
+                    pretext: 'Shared by Mr. Doan.',
+                    title: 'Internship Workshop',
+                    summary: 'Goal: Professional Work\nDate: 10/26/17',
+                    image: require('../assets/images/icons8-briefcase-48.png')
                 },
                 {
-                    pretext: '',
-                    title: '36 Hours in Charleston, S.C.',
-                    summary: 'Crowds are thinner and temperatures are mild during winter in this..',
-                 //   image: require('../images/rails.jpg')
+                    pretext: 'Shared by Silvia Villagomez.',
+                    title: 'College Fair',
+                    summary: 'Goal: Research\nDate: 10/16/17',
+                    image: require('../assets/images/icons8-study-50.png')
                 },
 
             ]
@@ -48,24 +48,7 @@ export default class NotificationsScreen extends React.Component {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Button
-                    noDefaultStyles={true}
-                    styles={{button: styles.header_button}}
-                    onPress={this.press.bind(this)}
-                >
-                    <View style={styles.back_button}>
-                        <Text style={[styles.back_button_label]}> Sections</Text>
-                    </View>
-                </Button>
-
-                <View style={styles.header_text}>
-                    <Text style={styles.header_text_label}>Most E-Mailed</Text>
-                </View>
-                <View style={styles.whitespace}></View>
-            </View>
-
-            <View style={styles.instruction}>
-                <Text style={styles.instruction_text}>SWIPE ACROSS SECTIONS</Text>
+            <Text style={styles.instruction_text}>SHARED TASKS FROM OTHERS: </Text>
             </View>
 
             <ScrollView style={styles.news_container}>
@@ -83,7 +66,7 @@ export default class NotificationsScreen extends React.Component {
     }
 
     press () {
-
+      //on press, lead to the task itself
     }
 }
 
@@ -95,10 +78,10 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        backgroundColor: '#FFF',
+        backgroundColor: '#f1c40f',
         padding: 20,
-        justifyContent: 'space-between',
-        borderBottomColor: '#E1E1E1',
+        justifyContent: 'center',
+        borderBottomColor: '#f1c40f',
         borderBottomWidth: 1
     },
     header_button: {
@@ -120,7 +103,7 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     instruction_text: {
-        color: '#A3A3A3'
+        color: '#fff'
     },
     header_text: {
         flex: 1,
