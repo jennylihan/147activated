@@ -5,7 +5,8 @@ import {
   Text,
   View,
   ScrollView,
-  Image
+  Image,
+  RefreshControl,
 } from 'react-native';
 
 import Button from '../components/Button';
@@ -20,6 +21,7 @@ export default class NotificationsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+           refreshing: false,
             news_items: [
                 {
                     pretext: 'Shared by Kira Pan',
@@ -43,13 +45,31 @@ export default class NotificationsScreen extends React.Component {
             ]
         };
     }
+   //
+   //  let fetchData() {
+   //    setTimeout(180);
+   //
+   // }
+    _onRefresh() {
+        this.setState({refreshing: true});
+        this.setState({refreshing: false});
+        // fetchData().then(() => {
+        //    this.setState({refreshing: false});
+        // });
+     }
 
     render() {
     return (
         <View style={styles.container}>
 
 
-            <ScrollView style={styles.news_container}>
+            <ScrollView style={styles.news_container}
+            refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+        }>
             { this.renderNews() }
             </ScrollView>
 
