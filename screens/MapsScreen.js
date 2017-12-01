@@ -280,7 +280,7 @@ let Arr = this.state.rows.map((a, i) => {
          source={require('../assets/images/alt_background.jpg')}>
 
             <View style={styles.header}>
-            <Text style={styles.instruction_text}>My College Roadmap </Text>
+            <Text style={styles.instruction_text}>My College Roadmap: Junior Year </Text>
             </View>
 
          {Arr}
@@ -423,6 +423,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
         fontFamily: 'Avenir',
+        fontWeight: '700',
     },
 
         header: {
@@ -432,6 +433,7 @@ const styles = StyleSheet.create({
         padding: 25,
         justifyContent: 'center',
         height: 80, 
+
 
 
     },
