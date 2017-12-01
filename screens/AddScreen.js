@@ -138,7 +138,7 @@ export default class AddScreen extends React.Component {
             />
 
 
-            <TouchableOpacity onPress={async () => 
+            <TouchableOpacity onPress={async () =>
                {
 
 
@@ -168,7 +168,7 @@ export default class AddScreen extends React.Component {
 
 
 
-                  this.props.navigation.navigate("MyMap", { taskInfo: 
+                  this.props.navigation.navigate("MyMap", { taskInfo:
                this.state})}
             } style={styles.buttonContainer}>
                <Text style={styles.buttonText}> SAVE </Text>
