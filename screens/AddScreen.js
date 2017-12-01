@@ -143,9 +143,11 @@ export default class AddScreen extends React.Component {
                if (value !== null){
 
                   value.push(this.state)
+                  console.log(JSON.stringify(this.state))
 
-                  await AsyncStorage.setItem('@activated:tasks', JSON.stringify(value));
+                  await AsyncStorage.setItem('@activated:tasks2', JSON.stringify(value));
                   console.log(JSON.stringify(value));
+                  console.log("Here")
                }
             } catch (e) {
                // Error retrieving data
