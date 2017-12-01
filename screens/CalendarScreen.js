@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+   AppRegistry,
    Image,
    Platform,
    ScrollView,
@@ -13,6 +14,9 @@ import { WebBrowser } from 'expo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { range } from 'lodash';
 import Button from '../components/Button';
+import CalendarStrip from 'react-native-calendar-strip';
+import moment from 'moment';
+
 
 import { MonoText } from '../components/StyledText';
 
@@ -21,8 +25,6 @@ export default class CalendarScreen extends React.Component {
       header: null,
    };
 
-
-   state = {fontLoaded:false,};
 
    async componentWillMount() {
       await Expo.Font.loadAsync({
@@ -37,111 +39,85 @@ export default class CalendarScreen extends React.Component {
       {
          return (
             <ScrollView style={styles.container}>
-            <View style={styles.header}>
+            <View>
+                      <CalendarStrip
+                          calendarAnimation={{type: 'sequence', duration: 30}}
+                          daySelectionAnimation={{type: 'border', duration: 200, borderWidth: 1, borderHighlightColor: 'white'}}
+                          style={{height: 100, paddingTop: 20, paddingBottom: 10}}
+                          calendarHeaderStyle={{color: 'white'}}
+                          calendarColor={'#f1c40f'}
+                          dateNumberStyle={{color: 'white'}}
+                          dateNameStyle={{color: 'white'}}
+                          disabledDateNameStyle={{color: 'grey'}}
+                          disabledDateNumberStyle={{color: 'grey'}}``12
+                          iconContainer={{flex: 0.1}}
+                      />
+                  </View>
 
-            <View style={styles.header_item}>
-            <Text style={[styles.header_text, styles.text_center, styles.bold_text]}>Calendar</Text>
-            </View>
+                  <Button
+                  noDefaultStyles={true}
+                  onPress={this.onPress.bind(this)}
+                 >
+                  <View style={styles.notes}>
+                     <View style={styles.notes_notes}>
+                          <Text style={styles.notes_text_done}>Turn in UC applications!!!</Text>
+                          <Text style={styles.smaller_text}>College Applications</Text>
+                     </View>
+                     <View style={styles.notes_selected_date}>
+                      <Text style={styles.small_text_done}>4:00 PM</Text>
+                      <Text style={styles.big_text_done}>29</Text>
+                         <View style={styles.inline}>
+                             <Text style={styles.small_text_done}>WED</Text>
+                         </View>
+                     </View>
+                  </View>
+                  	</Button>
 
-            <View style={styles.header_item}>
-            <Text style={[styles.header_text, styles.text_right]}>Today</Text>
-            </View>
 
-            </View>
+                     <Button
+                     noDefaultStyles={true}
+                     onPress={this.onPress.bind(this)}
+                    >
+                  <View style={styles.notes}>
+                     <View style={styles.notes_notes}>
+                          <Text style={styles.notes_text_done}>Work on FAFSA</Text>
+                          <Text style={styles.smaller_text}>Financial Aid</Text>
+                     </View>
+                     <View style={styles.notes_selected_date}>
+                      <Text style={styles.small_text_done}>7:00 PM</Text>
+                      <Text style={styles.big_text_done}>30</Text>
+                         <View style={styles.inline}>
+                             <Text style={styles.small_text_done}>THUR</Text>
+                         </View>
+                     </View>
+                  </View>
+                     </Button>
 
-            <View style={styles.calendar_header}>
-            <View style={styles.calendar_header_item}>
-            <Text style={styles.calendar_header_text}>2013</Text>
-            </View>
-
-            <View style={styles.calendar_header_item}>
-            <Text style={styles.calendar_header_text}>November</Text>
-            </View>
-            </View>
-
-            <View style={styles.calendar_weekdays}>
-            { this.renderWeekDays() }
-            </View>
-
-            <View style={styles.calendar_days}>
-                { this.renderWeeks() }
-            </View>
-
+            <Button
+               noDefaultStyles={true}
+               onPress={this.onPress.bind(this)}
+            >
             <View style={styles.notes}>
-            <View style={styles.notes_notes}>
-                 <Text style={styles.notes_text}>Riding my bike around the neighborhood.</Text>
+               <View style={styles.notes_notes}>
+                    <Text style={styles.notes_text}>Ace my presentation in CS class.</Text>
+                    <Text style={styles.smaller_text}>AP CS</Text>
+               </View>
+               <View style={styles.notes_selected_date}>
+                <Text style={styles.small_text}>2:00 PM</Text>
+                <Text style={styles.big_text}>1</Text>
+                   <View style={styles.inline}>
+                       <Text style={styles.small_text}>FRI</Text>
+                   </View>
+               </View>
             </View>
-            <View style={styles.notes_selected_date}>
-             <Text style={styles.small_text}>8:23 PM</Text>
-             <Text style={styles.big_text}>14</Text>
-             <View style={styles.inline}>
-            
-                 <Text style={styles.small_text}> THURSDAY</Text>
-             </View>
-         </View>
-            </View>
+            </Button>
 
             </ScrollView>
          );
       }
    }
-   renderWeekDays() {
-      let weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-      return weekdays.map((day) => {
-          return (
-              <Text key={day} style={styles.calendar_weekdays_text}>{day.toUpperCase()}</Text>
-          );
-      });
-   }
-
-   getWeeksArray(days) {
-    var weeks_r = [];
-    var seven_days = [];
-    var count = 0;
-    days.forEach((day) => {
-      count += 1;
-      seven_days.push(day);
-      if(count == 7){
-        weeks_r.push(seven_days)
-        count = 0;
-        seven_days = [];
-      }
-    });
-    return weeks_r;
-   }
-
-   renderDays(week_days) {
-    return week_days.map((day, index) => {
-        return (
-            <Button
-                label={day}
-                key={index}
-                onPress={this.press.bind(this)}
-                styles={{button: styles.day, label: styles.day_text}}
-                noDefaultStyles={true}
-            />
-        );
-    });
-   }
-
-
-   press() {
-      console.log('hotdog');
-   }
-   renderWeeks() {
-    let past_month_days = range(27, 31);
-    let this_month_days = range(1, 30);
-
-    let days = past_month_days.concat(past_month_days, this_month_days);
-    let grouped_days = this.getWeeksArray(days);
-
-    return grouped_days.map((week_days, index) => {
-        return (
-            <View key={index} style={styles.week_days}>
-                { this.renderDays(week_days) }
-            </View>
-        );
-    });
+   onPress() {
+      console.log('wassup');
    }
 
 }
@@ -175,43 +151,6 @@ const styles = StyleSheet.create({
       fontWeight: 'bold'
    },
 
-   calendar_header: {
-      flexDirection: 'row'
-   },
-   calendar_header_item: {
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      paddingTop: 20,
-      paddingRight: 40,
-      paddingLeft: 40
-   },
-   calendar_header_text: {
-      fontWeight: 'bold',
-      fontSize: 20
-   },
-   calendar_weekdays_text: {
-    flex: 1,
-    color: '#C0C0C0',
-    textAlign: 'center'
-   },
-
-   week_days: {
-    flexDirection: 'row'
-   },
-   day: {
-       flex: 1,
-       backgroundColor: '#F5F5F5',
-       padding: 6,
-       margin: 2
-   },
-   day_text: {
-       textAlign: 'center',
-       color: '#A9A9A9',
-       fontSize: 25
-   },
-
    notes: {
     marginTop: 10,
     padding: 20,
@@ -233,15 +172,40 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-end',
     flexDirection: 'column'
-},
-small_text: {
-    fontSize: 15
-},
-big_text: {
-    fontSize: 50,
-    fontWeight: 'bold'
-},
-inline: {
-    flexDirection: 'row'
-},
+   },
+   small_text: {
+       fontSize: 15,
+   },
+   big_text: {
+       fontSize: 50,
+       fontWeight: 'bold'
+   },
+   inline: {
+       flexDirection: 'row'
+   },
+   smaller_text: {
+
+      fontSize: 15,
+      color: '#c5c5c5',
+      position: 'absolute',
+      bottom: 0,
+      fontWeight: 'bold',
+   },
+   notes_text_done: {
+      fontSize: 18,
+      color: '#c5c5c5',
+   },
+   big_text_done: {
+      fontSize: 50,
+      fontWeight: 'bold',
+      color: '#c5c5c5',
+   },
+   small_text_done: {
+      fontSize: 15,
+      color: '#c5c5c5',
+   },
+
+
 });
+
+AppRegistry.registerComponent('Example', () => Example);

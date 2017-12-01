@@ -22,21 +22,21 @@ export default class NotificationsScreen extends React.Component {
         this.state = {
             news_items: [
                 {
-                    pretext: 'Shared by Kira Pan.',
+                    pretext: 'Shared by Kira Pan',
                     title: 'Free Practice SAT Session',
-                    summary: 'Goal: SAT\nDate: 10/3/17',
+                    summary: 'Goal: SAT\nEvent Date: 12/3/17',
                     image: require('../assets/images/icons8-exam-50.png')
                 },
                 {
-                    pretext: 'Shared by Mr. Doan.',
+                    pretext: 'Shared by Mr. Doan',
                     title: 'Internship Workshop',
-                    summary: 'Goal: Professional Work\nDate: 10/26/17',
+                    summary: 'Goal: Professional Work\nEvent Date: 11/26/17',
                     image: require('../assets/images/icons8-briefcase-48.png')
                 },
                 {
-                    pretext: 'Shared by Silvia Villagomez.',
+                    pretext: 'Shared by Silvia Villagomez',
                     title: 'College Fair',
-                    summary: 'Goal: Research\nDate: 10/16/17',
+                    summary: 'Goal: Research\nEvent Date: 10/16/17',
                     image: require('../assets/images/icons8-study-50.png')
                 },
 
@@ -47,9 +47,9 @@ export default class NotificationsScreen extends React.Component {
     render() {
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-            <Text style={styles.instruction_text}>SHARED TASKS FROM OTHERS: </Text>
-            </View>
+            // <View style={styles.header}>
+            // <Text style={styles.instruction_text}>SHARED TASKS FROM OTHERS </Text>
+            // </View>
 
             <ScrollView style={styles.news_container}>
             { this.renderNews() }
