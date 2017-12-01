@@ -24,22 +24,6 @@ export default class App extends React.Component {
             />
          );
       } else {
-        // var drawerContent = (<View style={styles.drawerContent}>
-        //   <View style={styles.leftTop}/>
-        //   <View style={styles.leftBottom}>
-        //     <View><Text>Drawer Content</Text></View>
-        //   </View>
-        // </View>);
-        // // customize drawer's style (Optional)
-        // var customStyles = {
-        //   drawer: {
-        //     shadowColor: '#000',
-        //     shadowOpacity: 0.4,
-        //     shadowRadius: 10
-        //   },
-        //   mask: {}, // style of mask if it is enabled
-        //   main: {} // style of main board
-        // };
          return (
             <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
