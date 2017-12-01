@@ -33,7 +33,7 @@ export default class Login extends Component {
                     <View style={styles.titleContainer}>
                <Text style={styles.formTitle}>Welcome to Activated</Text>
             </View>
-        	
+
               <View      style={{justifyContent: 'center',
     alignItems: 'center'}}>
               <Image style={{width: 200, height: 200, marginBottom: 50}}
@@ -52,6 +52,7 @@ export default class Login extends Component {
 
             <TextInput
             style={styles.inputField}
+            secureTextEntry={true}
             placeholder="Password"
             autoCapitalize="none"
 
@@ -70,7 +71,7 @@ export default class Login extends Component {
             label="Register"
             styles={{button: styles.alignRight, label: styles.label}}
             onPress={this.pressRegister.bind(this)} />
-      </View> 
+      </View>
 
 
 
