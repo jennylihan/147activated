@@ -5,7 +5,7 @@ import {
   Text,
   View,
   TextInput,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';

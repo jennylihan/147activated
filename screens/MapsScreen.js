@@ -29,14 +29,14 @@ import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 
 
-   let index = 0 
+   let index = 0
 
 export default class MapsScreen extends React.Component {
    static navigationOptions = {
       title: 'My Map',
        header: null
 
-  
+
 
    };
 
@@ -119,7 +119,7 @@ export default class MapsScreen extends React.Component {
        Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
      });
 
-   }  
+   }
 
 
 
@@ -233,10 +233,10 @@ let Arr = this.state.rows.map((a, i) => {
          <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
-         </View> 
+         </View>
 
 
-      ) 
+      )
     case 'study-icon': return(
 
         <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
@@ -244,11 +244,11 @@ let Arr = this.state.rows.map((a, i) => {
          <Image source={require('../assets/images/study-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
-         </View> 
+         </View>
 
 
 
-      ) 
+      )
     case 'test-icon': return (
 
 
@@ -257,11 +257,11 @@ let Arr = this.state.rows.map((a, i) => {
          <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
-         </View> 
+         </View>
 
 
 
-      ) 
+      )
     }
 
        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
@@ -269,7 +269,7 @@ let Arr = this.state.rows.map((a, i) => {
          <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
-         </View>                            
+         </View>
     })
 
 
@@ -432,7 +432,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f1c40f',
         padding: 25,
         justifyContent: 'center',
-        height: 80, 
+        height: 80,
 
 
 
