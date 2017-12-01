@@ -6,6 +6,8 @@ import RootNavigation from './navigation/RootNavigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 import Login from './screens/Login';
+// import Drawer from 'react-native-drawer-menu';
+
 
 export default class App extends React.Component {
    state = {
@@ -29,6 +31,23 @@ export default class App extends React.Component {
 
             <RootNavigation />
             </View>
+
+            // <Drawer
+            //   style={styles.container}
+            //   drawerWidth={300}
+            //   drawerContent={drawerContent}
+            //   type={Drawer.types.Overlay}
+            //   customStyles={{drawer: styles.drawer}}
+            //   drawerPosition={Drawer.positions.Right}
+            //   onDrawerOpen={() => {console.log('Drawer is opened');}}
+            //   onDrawerClose={() => {console.log('Drawer is closed')}}
+            //   easingFunc={Easing.ease}
+            // >
+            //   <View style={styles.content}>
+            //     <Text>{Object.values(Drawer.positions).join(' ')}</Text>
+            //     <Text>{Object.values(Drawer.types).join(' ')}</Text>
+            //   </View>
+            // </Drawer>
          );
       }
    }

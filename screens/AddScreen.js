@@ -25,7 +25,7 @@ import MainTabNavigator from '../navigation/MainTabNavigator';
 
 export default class AddScreen extends React.Component {
    static navigationOptions = {
-      header: null,
+      // header: null,
    };
 
    constructor(props) {
@@ -93,7 +93,7 @@ export default class AddScreen extends React.Component {
              <View style={styles.startPicker}>
                <Text style={styles.dateInstructions}>Start</Text>
                 <DatePicker
-                style={{width: 170}}
+                style={{width: 170, backgroundColor: 'rgba(255,255,255,0.7)', borderColor: '#f1c40f'}}
                 date={this.state.datetime}
                 mode="datetime"
                 is24Hour={false}
@@ -107,7 +107,7 @@ export default class AddScreen extends React.Component {
              <View style={styles.endPicker}>
                <Text style={styles.dateInstructions}>End</Text>
                 <DatePicker
-                 style={{width: 170}}
+                 style={{width: 170, backgroundColor: 'rgba(255,255,255,0.7)', borderColor: '#f1c40f'}}
                  date={this.state.datetime}
                  mode="datetime"
                 is24Hour={false}
@@ -125,18 +125,33 @@ export default class AddScreen extends React.Component {
             style={styles.inputField}
             placeholder="Notes"
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({notes})}
+            onChangeText={(notes) => this.setState({notes})}
             editable={true}
             returnKeyType="next"
             />
 
+<<<<<<< HEAD
 
             <TouchableOpacity onPress={async () =>
                {
 
 
 
+=======
+            <TextInput
+            style={styles.inputField}
+            placeholder="Notes"
+            autoCapitalize="none"
+            onChangeText={(notes2) => this.setState({notes2})}
+            editable={true}
+            returnKeyType="next"
+            />
 
+
+>>>>>>> 7f96a15d81515aa0579d0a3fe2a2a8c87b01756d
+
+            <TouchableOpacity onPress={async () =>
+               {
 
             try {
                const value =  await AsyncStorage.getItem('@activated:tasks').then(function(tasks) {
