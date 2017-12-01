@@ -49,7 +49,7 @@ export default class CalendarScreen extends React.Component {
                           dateNumberStyle={{color: 'white'}}
                           dateNameStyle={{color: 'white'}}
                           disabledDateNameStyle={{color: 'grey'}}
-                          disabledDateNumberStyle={{color: 'grey'}}``12
+                          disabledDateNumberStyle={{color: 'grey'}}
                           iconContainer={{flex: 0.1}}
                       />
                   </View>

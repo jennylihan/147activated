@@ -47,9 +47,7 @@ export default class NotificationsScreen extends React.Component {
     render() {
     return (
         <View style={styles.container}>
-            // <View style={styles.header}>
-            // <Text style={styles.instruction_text}>SHARED TASKS FROM OTHERS </Text>
-            // </View>
+
 
             <ScrollView style={styles.news_container}>
             { this.renderNews() }
