@@ -93,7 +93,7 @@ export default class AddScreen extends React.Component {
              <View style={styles.startPicker}>
                <Text style={styles.dateInstructions}>Start</Text>
                 <DatePicker
-                style={{width: 170}}
+                style={{width: 170, backgroundColor: 'rgba(255,255,255,0.7)', borderColor: '#f1c40f'}}
                 date={this.state.datetime}
                 mode="datetime"
                 format="YYYY-MM-DD HH:mm"
@@ -106,7 +106,7 @@ export default class AddScreen extends React.Component {
              <View style={styles.endPicker}>
                <Text style={styles.dateInstructions}>End</Text>
                 <DatePicker
-                 style={{width: 170}}
+                 style={{width: 170, backgroundColor: 'rgba(255,255,255,0.7)', borderColor: '#f1c40f'}}
                  date={this.state.datetime}
                  mode="datetime"
                  format="YYYY-MM-DD HH:mm"
@@ -123,7 +123,7 @@ export default class AddScreen extends React.Component {
             style={styles.inputField}
             placeholder="Notes"
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({notes})}
+            onChangeText={(notes) => this.setState({notes})}
             editable={true}
             returnKeyType="next"
             />
@@ -132,7 +132,7 @@ export default class AddScreen extends React.Component {
             style={styles.inputField}
             placeholder="Notes"
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({notes2})}
+            onChangeText={(notes2) => this.setState({notes2})}
             editable={true}
             returnKeyType="next"
             />
