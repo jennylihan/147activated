@@ -24,21 +24,23 @@ import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 import { WebBrowser } from 'expo';
+import { slide as Menu } from 'react-burger-menu'
 
 import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
+import RootNavigation from '../navigation/RootNavigation';
 
-
-   let index = 0 
+   let index = 0
 
 export default class MapsScreen extends React.Component {
    static navigationOptions = {
       title: 'My Map',
        header: null
-
-  
-
    };
+
+   showSettings (event) {
+      event.preventDefault();
+   }
 
 
    constructor() {
@@ -89,12 +91,6 @@ export default class MapsScreen extends React.Component {
 
        ];
 
-
-
-
-
-
-
          try {
     AsyncStorage.setItem('@activated:tasks', JSON.stringify(tasks));
 } catch (error) {
@@ -102,33 +98,22 @@ export default class MapsScreen extends React.Component {
     console.log("Failed to set data from storage")
 
 }
-
-   }
-
+}
    componentWillReceiveProps(){
-
     this.renderButtons()
    }
-
-
    async componentWillMount() {
-
     this.renderButtons()
 
        await Expo.Font.loadAsync({
        Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
      });
 
-   }  
-
-
+   }
 
    getIcon(name){
 
-
-
    }
-
 
 
    showTask = (a) => {
@@ -157,8 +142,6 @@ export default class MapsScreen extends React.Component {
       this.popupDialog.show()
 
    };
-
-
   async _addRow(){
     this.state.rows.push(index++)
     this.setState({ rows: this.state.rows })
@@ -233,10 +216,10 @@ let Arr = this.state.rows.map((a, i) => {
          <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
-         </View> 
+         </View>
 
 
-      ) 
+      )
     case 'study-icon': return(
 
         <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
@@ -244,24 +227,23 @@ let Arr = this.state.rows.map((a, i) => {
          <Image source={require('../assets/images/study-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
-         </View> 
+         </View>
 
 
 
-      ) 
+      )
     case 'test-icon': return (
-
 
        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
          <TouchableOpacity onPress={() => this.showTask(a)}>
          <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
-         </View> 
+         </View>
 
 
 
-      ) 
+      )
     }
 
        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
@@ -269,15 +251,18 @@ let Arr = this.state.rows.map((a, i) => {
          <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
-         </View>                            
+         </View>
     })
 
 
       return (
 
 
-        <ImageBackground         style={styles.backgroundImage}
+
+        <ImageBackground
+         style={styles.backgroundImage}
          source={require('../assets/images/alt_background.jpg')}>
+
 
             <View style={styles.header}>
             <Text style={styles.instruction_text}>My College Roadmap: Junior Year </Text>
@@ -432,7 +417,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f1c40f',
         padding: 25,
         justifyContent: 'center',
-        height: 80, 
+        height: 80,
 
 
 

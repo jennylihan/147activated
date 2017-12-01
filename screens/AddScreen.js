@@ -13,7 +13,7 @@ import {
    AsyncStorage,
    Picker,
 } from 'react-native';
-import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-datepicker';
 
 import PropTypes from 'prop-types';
 
@@ -25,14 +25,14 @@ import MainTabNavigator from '../navigation/MainTabNavigator';
 
 export default class AddScreen extends React.Component {
    static navigationOptions = {
-      header: null,
+      // header: null,
    };
 
    constructor(props) {
       super(props);
 
       var today = new Date();
-      date = today.getFullYear() + "-" + parseInt(today.getMonth()+1) + "-" + today.getDate();
+      date =  parseInt(today.getMonth()+1) + "-" + today.getDate() + "-" +today.getFullYear();
       this.state = {
          text:'',
          category: 'SAT',
@@ -93,10 +93,11 @@ export default class AddScreen extends React.Component {
              <View style={styles.startPicker}>
                <Text style={styles.dateInstructions}>Start</Text>
                 <DatePicker
-                style={{width: 170}}
+                style={{width: 170, backgroundColor: 'rgba(255,255,255,0.7)', borderColor: '#f1c40f'}}
                 date={this.state.datetime}
                 mode="datetime"
-                format="YYYY-MM-DD HH:mm"
+                is24Hour={false}
+                format="MM-DD-YYYY HH:mm"
                 confirmBtnText="Confirm"
                 cancelBtnText="Cancel"
                 showIcon={false}
@@ -106,10 +107,11 @@ export default class AddScreen extends React.Component {
              <View style={styles.endPicker}>
                <Text style={styles.dateInstructions}>End</Text>
                 <DatePicker
-                 style={{width: 170}}
+                 style={{width: 170, backgroundColor: 'rgba(255,255,255,0.7)', borderColor: '#f1c40f'}}
                  date={this.state.datetime}
                  mode="datetime"
-                 format="YYYY-MM-DD HH:mm"
+                is24Hour={false}
+                 format="MM-DD-YYYY HH:mm"
                  confirmBtnText="Confirm"
                  cancelBtnText="Cancel"
                  showIcon={false}
@@ -123,27 +125,15 @@ export default class AddScreen extends React.Component {
             style={styles.inputField}
             placeholder="Notes"
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({notes})}
+            onChangeText={(notes) => this.setState({notes})}
             editable={true}
             returnKeyType="next"
             />
 
-            <TextInput
-            style={styles.inputField}
-            placeholder="Notes"
-            autoCapitalize="none"
-            onChangeText={(text) => this.setState({notes2})}
-            editable={true}
-            returnKeyType="next"
-            />
 
 
             <TouchableOpacity onPress={async () =>
                {
-
-
-
-
 
             try {
                const value =  await AsyncStorage.getItem('@activated:tasks').then(function(tasks) {

@@ -3,10 +3,11 @@ import { Platform, StatusBar, StyleSheet, View, KeyboardAvoidingView, AppRegistr
 import { AppLoading, Asset, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import RootNavigation from './navigation/RootNavigation';
-import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 import Login from './screens/Login';
+// import Drawer from 'react-native-drawer-menu';
+
 
 export default class App extends React.Component {
    state = {
@@ -28,20 +29,25 @@ export default class App extends React.Component {
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
 
-            <ActionButton buttonColor="rgba(231,76,60,1)">
-               <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("notes tapped!")}>
-               <Icon name="md-create" style={styles.actionButtonIcon} />
-               </ActionButton.Item>
-               <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {}}>
-               <Icon name="md-notifications-off" style={styles.actionButtonIcon} />
-               </ActionButton.Item>
-               <ActionButton.Item buttonColor='#1abc9c' title="All Tasks" onPress={() => {}}>
-               <Icon name="md-done-all" style={styles.actionButtonIcon} />
-               </ActionButton.Item>
-            </ActionButton>
-
             <RootNavigation />
             </View>
+
+            // <Drawer
+            //   style={styles.container}
+            //   drawerWidth={300}
+            //   drawerContent={drawerContent}
+            //   type={Drawer.types.Overlay}
+            //   customStyles={{drawer: styles.drawer}}
+            //   drawerPosition={Drawer.positions.Right}
+            //   onDrawerOpen={() => {console.log('Drawer is opened');}}
+            //   onDrawerClose={() => {console.log('Drawer is closed')}}
+            //   easingFunc={Easing.ease}
+            // >
+            //   <View style={styles.content}>
+            //     <Text>{Object.values(Drawer.positions).join(' ')}</Text>
+            //     <Text>{Object.values(Drawer.types).join(' ')}</Text>
+            //   </View>
+            // </Drawer>
          );
       }
    }
