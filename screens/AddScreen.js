@@ -138,7 +138,11 @@ export default class AddScreen extends React.Component {
             />
 
 
+<<<<<<< HEAD
             <TouchableOpacity onPress={async () =>
+=======
+            <TouchableOpacity onPress={async () =>
+>>>>>>> 1bfebf954824af451dc7c33487ab937120817d7c
                {
 
 

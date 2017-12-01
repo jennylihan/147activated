@@ -1,8 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19002,
+  "packagerPid": 52115,
+  "expoServerNgrokUrl": "https://ce-yhf.angiew.147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.ce-yhf.angiew.147activated.exp.direct",
+  "ngrokPid": 52128
 }
