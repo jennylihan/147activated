@@ -19,7 +19,7 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
-import { Container, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem} from 'native-base';
+import { Container, Left, Right, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem} from 'native-base';
 import CalendarPicker from 'react-native-calendar-picker';
 import PopupDialog from 'react-native-popup-dialog';
 
@@ -59,6 +59,10 @@ export default class AddScreen extends React.Component {
         });
      }
 
+     onNewGoal() {
+        console.log('WANTS TO MAKE A NEW EVENT.');
+     }
+
    render() {
       const { selectedStartDate } = this.state;
       const startDate = selectedStartDate ? parseInt(selectedStartDate.getMonth()+1) + "/" + selectedStartDate.getDate() + "/" +selectedStartDate.getFullYear() : 'Select Start Date';
@@ -77,13 +81,30 @@ export default class AddScreen extends React.Component {
               <Content>
                 <Form>
                 <Item fixedLabel>
-                 <Label>Goal for Task</Label>
+                 <Label>Goal Category</Label>
 
                  <Picker
                    mode="dropdown"
                    placeholder="Select One"
                    selectedValue={this.state.selectedGoal}
                   onValueChange={this.onGoalChange.bind(this)}
+
+                  renderHeader={backAction =>
+                     <Header style={{ backgroundColor: "#f1c40f" }}>
+                       <Left>
+                         <Button transparent onPress={backAction}>
+                           <Icon name="arrow-back" style={{ color: "#fff" }} />
+                         </Button>
+                       </Left>
+                       <Body style={{ flex: 3 }}>
+                         <Title style={{ color: "#fff" }}>Goal Category</Title>
+                       </Body>
+                       <Right>
+                        <Button transparent onPress={() => {this.onNewGoal()}}>
+                           <Text>New</Text>
+                       </Button>
+                       </Right>
+                     </Header>}
                 >
                    <Item label="SAT" value="key0" />
                    <Item label="ACT" value="key1" />
