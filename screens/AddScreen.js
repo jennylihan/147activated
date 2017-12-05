@@ -11,9 +11,7 @@ import {
    KeyboardAvoidingView,
    ScrollView,
    AsyncStorage,
-   Picker,
 } from 'react-native';
-import DatePicker from 'react-native-datepicker'
 
 import PropTypes from 'prop-types';
 
@@ -21,217 +19,184 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
-
+import { Container, Left, Right, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem} from 'native-base';
+import CalendarPicker from 'react-native-calendar-picker';
+import PopupDialog from 'react-native-popup-dialog';
 
 export default class AddScreen extends React.Component {
    static navigationOptions = {
-      header: null,
+      // header: null,
    };
+
 
    constructor(props) {
       super(props);
-
-      var today = new Date();
-      date = today.getFullYear() + "-" + parseInt(today.getMonth()+1) + "-" + today.getDate();
       this.state = {
-         text:'',
-         category: 'SAT',
-         startdatetime: date,
-         enddatetime: date,
-         icon: 'study-icon',
-         notes: ''
-
+         selectedStartDate: null,
+         selectedEndDate: null,
+         selectedGoal: '',
       };
+      this.onDateChangeStart = this.onDateChangeStart.bind(this);
+      this.onDateChangeEnd = this.onDateChangeEnd.bind(this);
    }
 
-   onValueChange(key, value) {
-      console.log(key+':'+value)
-      this.setState({category: value});
-   }
+
+     onDateChangeStart(date) {
+       this.setState({
+         selectedStartDate: date,
+       });
+     }
+
+     onDateChangeEnd(date) {
+      this.setState({
+         selectedEndDate: date,
+      });
+     }
+
+     onGoalChange(value: string) {
+        this.setState({
+          selectedGoal: value
+        });
+     }
+
+     onNewGoal() {
+        console.log('WANTS TO MAKE A NEW EVENT.');
+     }
+
    render() {
+      const { selectedStartDate } = this.state;
+      const startDate = selectedStartDate ? parseInt(selectedStartDate.getMonth()+1) + "/" + selectedStartDate.getDate() + "/" +selectedStartDate.getFullYear() : 'Select Start Date';
+
+      const { selectedEndDate } = this.state;
+      const endDate = selectedEndDate ? parseInt(selectedEndDate.getMonth()+1) + "/" + selectedEndDate.getDate() + "/" +selectedEndDate.getFullYear() : 'Select End Date';
+
       return (
-
          <ScrollView behavior="padding" style={styles.container}>
-            <View style={styles.titleContainer}>
-               <Text style={styles.formTitle}>Make a task</Text>
-            </View>
-            <View style={styles.formContainer}>
+            <Container>
+           <Header>
+              <Body>
+             <Title>Add a Task</Title>
+           </Body>
+           </Header>
+              <Content>
+                <Form>
+                <Item fixedLabel>
+                 <Label>Goal Category</Label>
 
-            <Picker
-               selectedValue={this.state.category}
-               onValueChange={this.onValueChange.bind(this, 'category')}
+                 <Picker
+                   mode="dropdown"
+                   placeholder="Select One"
+                   selectedValue={this.state.selectedGoal}
+                  onValueChange={this.onGoalChange.bind(this)}
 
-            >
-               <item label="SAT" value="sat" />
-               <item label="ACT" value="act" />
-               <item label="Financial Aid" value="financial aid" />
-            </Picker>
-
-
-            <TextInput
-            style={styles.inputField}
-            placeholder="Task name"
-            autoCapitalize="none"
-            onChangeText={(text) => this.setState({text})}
-            editable={true}
-            returnKeyType="next"
-            />
-
-
-            <TextInput
-            style={styles.inputField}
-            placeholder="Location"
-            autoCapitalize="none"
-            onChangeText={(text) => this.setState({text})}
-            editable={true}
-            returnKeyType="next"
-            />
-
-            <Text style={styles.instructions}>Date and Time</Text>
-
-            <View style={{flexDirection: 'row', flex: 1, padding: 8}}>
-             <View style={styles.startPicker}>
-               <Text style={styles.dateInstructions}>Start</Text>
-                <DatePicker
-                style={{width: 170, backgroundColor: 'rgba(255,255,255,0.7)', borderColor: '#f1c40f'}}
-                date={this.state.datetime}
-                mode="datetime"
-                format="YYYY-MM-DD HH:mm"
-                confirmBtnText="Confirm"
-                cancelBtnText="Cancel"
-                showIcon={false}
-                onDateChange={(datetime) => {this.setState({startdatetime: datetime});}}
-                />
-             </View>
-             <View style={styles.endPicker}>
-               <Text style={styles.dateInstructions}>End</Text>
-                <DatePicker
-                 style={{width: 170, backgroundColor: 'rgba(255,255,255,0.7)', borderColor: '#f1c40f'}}
-                 date={this.state.datetime}
-                 mode="datetime"
-                 format="YYYY-MM-DD HH:mm"
-                 confirmBtnText="Confirm"
-                 cancelBtnText="Cancel"
-                 showIcon={false}
-                 onDateChange={(datetime) => {this.setState({enddatetime: datetime});}}
-                />
-             </View>
-            </View>
-
-
-            <TextInput
-            style={styles.inputField}
-            placeholder="Notes"
-            autoCapitalize="none"
-            onChangeText={(notes) => this.setState({notes})}
-            editable={true}
-            returnKeyType="next"
-            />
-
-            <TextInput
-            style={styles.inputField}
-            placeholder="Notes"
-            autoCapitalize="none"
-            onChangeText={(notes2) => this.setState({notes2})}
-            editable={true}
-            returnKeyType="next"
-            />
-
-
-            <TouchableOpacity onPress={async () => 
-               {
+                  renderHeader={backAction =>
+                     <Header style={{ backgroundColor: "#f1c40f" }}>
+                       <Left>
+                         <Button transparent onPress={backAction}>
+                           <Icon name="arrow-back" style={{ color: "#fff" }} />
+                         </Button>
+                       </Left>
+                       <Body style={{ flex: 3 }}>
+                         <Title style={{ color: "#fff" }}>Goal Category</Title>
+                       </Body>
+                       <Right>
+                        <Button transparent onPress={() => {this.onNewGoal()}}>
+                           <Text>New</Text>
+                       </Button>
+                       </Right>
+                     </Header>}
+                >
+                   <Item label="SAT" value="key0" />
+                   <Item label="ACT" value="key1" />
+                   <Item label="College Application" value="key2" />
+                   <Item label="Financial Aid" value="key3" />
+                   <Item label="Personal Health" value="key4" />
+                </Picker>
+               </Item>
 
 
 
+                  <Item floatingLabel>
+                     <Label>Task Name</Label>
+                    <Input />
+                  </Item>
 
+                  <Item floatingLabel>
+                      <Icon active name='pin' />
+                     <Label>Location</Label>
+                    <Input />
+                  </Item>
 
-            try {
-               const value =  await AsyncStorage.getItem('@activated:tasks').then(function(tasks) {
-               return  JSON.parse(tasks);
-               });
+                  <Button full light onPress={() => {
+                     this.popupDialogStart.show();
+                  }}>
+                     <Icon active name='calendar' />
+                    <Text>{startDate}</Text>
+                  </Button>
 
-               if (value !== null){
+                  <PopupDialog
+                     ref={(popupDialogStart) => { this.popupDialogStart = popupDialogStart; }}
+                     height={500}
+                   >
+                     <View>
+                        <CalendarPicker
+                           onDateChange={this.onDateChangeStart}
+                        />
+                        <Button full warning
+                        onPress={() => {this.popupDialogStart.dismiss();}} >
+                         <Text>Save</Text>
+                        </Button>
 
-                  value.push(this.state)
+                     </View>
+                   </PopupDialog>
 
-                  await AsyncStorage.setItem('@activated:tasks', JSON.stringify(value));
-                  console.log(JSON.stringify(value));
-               }
-            } catch (e) {
-               // Error retrieving data
-               console.log("Failed to get data from storage")
+                  <Button full light
+                     onPress={() => {
+                     this.popupDialogEnd.show();
+                  }}
+                     >
+                     <Icon active name='calendar' />
+                    <Text>{ endDate }</Text>
+                  </Button>
 
-               console.log("Error", e.stack);
-               console.log("Error", e.name);
-               console.log("Error", e.message);
-            }
+                  <PopupDialog
+                     ref={(popupDialogEnd) => { this.popupDialogEnd = popupDialogEnd; }}
+                     height={500}
+                   >
+                     <View>
+                        <CalendarPicker
+                           onDateChange={this.onDateChangeEnd}
+                        />
 
+                        <Button full warning
+                        onPress={() => {this.popupDialogEnd.dismiss();}} >
+                         <Text>Save</Text>
+                        </Button>
 
+                     </View>
+                   </PopupDialog>
 
-                  this.props.navigation.navigate("MyMap", { taskInfo: 
-               this.state})}
-            } style={styles.buttonContainer}>
-               <Text style={styles.buttonText}> SAVE </Text>
-            </TouchableOpacity>
-            </View>
+                  <Item floatingLabel>
+                     <Label>Notes</Label>
+                    <Input />
+                  </Item>
+
+                  <Button full warning>
+                   <Text>Save</Text>
+                  </Button>
+
+                </Form>
+              </Content>
+            </Container>
+
          </ScrollView>
       );
    }
-
 }
 
 const styles = StyleSheet.create({
    container: {
       flex: 1,
-      backgroundColor: '#f1c40f',
+      //backgroundColor: '#f1c40f',
    },
-   dateInstructions: {
-      fontSize: 18,
-      textAlign: 'center',
-   },
-   instructions: {
-      color: '#FFF',
-      fontSize: 25,
-      textAlign: 'left',
-      opacity: 0.9,
-   },
-   titleContainer: {
-      padding: 10,
-      //flexGrow: 1,
-   },
-   formTitle: {
-      color: '#FFF',
-      marginTop: 25,
-      fontSize: 40,
-      textAlign: 'left',
-      opacity: 0.9,
-   },
-   inputField: {
-      padding: 7,
-      fontSize: 25,
-      marginBottom: 2,
-      backgroundColor: 'rgba(255,255,255,0.7)',
-   },
-
-   formContainer: {
-      marginTop: 10,
-      marginBottom: 20,
-      marginLeft: 10,
-      marginRight: 10,
-   },
-
-   buttonContainer: {
-      backgroundColor: '#34495e',
-      paddingVertical: 15,
-      marginTop: 15,
-   },
-   buttonText: {
-      textAlign: 'center',
-      color: '#FFF',
-      fontWeight: '700',
-   },
-
 });
-
-
-AppRegistry.registerComponent('datepicker', () => datepicker);

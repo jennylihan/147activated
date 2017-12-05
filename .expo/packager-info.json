@@ -1,8 +1,15 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< HEAD
   "packagerPid": 2930,
   "expoServerNgrokUrl": "https://vu-c2m.jennylihan.cs147activated.exp.direct",
   "packagerNgrokUrl": "https://packager.vu-c2m.jennylihan.cs147activated.exp.direct",
   "ngrokPid": 2945
+=======
+  "packagerPid": 17646,
+  "expoServerNgrokUrl": "https://6e-snn.ccnguyenn.147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.6e-snn.ccnguyenn.147activated.exp.direct",
+  "ngrokPid": 17657
+>>>>>>> 15588050d8d24cba3af2a7308af3b67bbaacd212
 }

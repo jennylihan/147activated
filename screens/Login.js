@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Font } from 'expo';
 
 import {
   StyleSheet,
@@ -8,74 +9,66 @@ import {
   ScrollView,
   TouchableOpacity,
   Image
-
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+//import Icon from 'react-native-vector-icons/FontAwesome';
+import { Container, Left, Right, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem, H1} from 'native-base';
 
-import Container from '../components/Container';
-import Button from '../components/Button';
-import Label from '../components/Label';
+
+//import Container from '../components/Container';
+//import Button from '../components/Button';
+//import Label from '../components/Label';
 import RootNavigation from '../navigation/RootNavigation';
 
 export default class Login extends Component {
+
+     state = {
+       fontLoaded: false,
+     };
+
      static navigationOptions = {
       title: 'My Map',
        header: null
 
    };
+
   render() {
     return (
-        <ScrollView style={styles.scroll}>
+        <Container>
 
-
-
-                    <View style={styles.titleContainer}>
+             <Content>
+               <View style={styles.titleContainer}>
                <Text style={styles.formTitle}>Welcome to Activated</Text>
-            </View>
-        	
-              <View      style={{justifyContent: 'center',
-    alignItems: 'center'}}>
-              <Image style={{width: 200, height: 200, marginBottom: 50}}
-          source={require('../assets/images/icon.png')}
-        />
-        </View>
+                 </View>
 
-            <TextInput
-            style={styles.inputField}
-            placeholder="Username or Email"
-            autoCapitalize="none"
-
-            editable={true}
-            returnKeyType="next"
-            />
-
-            <TextInput
-            style={styles.inputField}
-            placeholder="Password"
-            autoCapitalize="none"
-
-            editable={true}
-            returnKeyType="next"
-            />
+                 <View
+                         style={{justifyContent: 'center',
+                         alignItems: 'center'}}>
+                        <Image style={{width: 200, height: 200, marginBottom: 50}}
+                        source={require('../assets/images/icon.png')}
+                        />
+                  </View>
+               <Form>
+                 <Item>
+                   <Input placeholder="Username" />
+                 </Item>
+                 <Item last>
+                   <Input
+                   secureTextEntry={true}
+                   placeholder="Password" />
+                 </Item>
+               </Form>
 
 
+              <TouchableOpacity onPress={this.pressLogin.bind(this)} style={styles.buttonContainer}>
+                        <Text style={styles.buttonText}> Login </Text>
+               </TouchableOpacity>
 
-          <TouchableOpacity onPress={this.pressLogin.bind(this)} style={styles.buttonContainer}>
-               <Text style={styles.buttonText}> Login </Text>
-            </TouchableOpacity>
-       <View      style={{justifyContent: 'center',
-    alignItems: 'center'}}>
-        <Button
-            label="Register"
-            styles={{button: styles.alignRight, label: styles.label}}
-            onPress={this.pressRegister.bind(this)} />
-      </View> 
-
-
-
-
-        </ScrollView>
+               <TouchableOpacity onPress={()=>{console.log('register clicked')}} style={styles.buttonContainer}>
+                         <Text style={styles.buttonText}> Register </Text>
+                </TouchableOpacity>
+             </Content>
+           </Container>
     );
   }
 
@@ -160,7 +153,8 @@ const styles = StyleSheet.create({
       color: '#FDBF2D',
       marginTop: 25,
       fontSize: 40,
-      textAlign: 'left',
+      textAlign: 'center',
+      //fontFamily: 'coyote',
       opacity: 0.9,
    },
 

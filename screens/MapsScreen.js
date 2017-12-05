@@ -28,7 +28,7 @@ import { slide as Menu } from 'react-burger-menu'
 
 import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
-
+import RootNavigation from '../navigation/RootNavigation';
 
    let index = 0
 
@@ -36,14 +36,7 @@ export default class MapsScreen extends React.Component {
    static navigationOptions = {
       title: 'My Map',
        header: null
-
-
-
    };
-
-   showSettings (event) {
-      event.preventDefault();
-   }
 
 
    constructor() {
@@ -54,6 +47,7 @@ export default class MapsScreen extends React.Component {
       this.state.popupText = "hi"
       this.state.popupTitle = "hi"
       this.state.popupCategory= "category"
+      this.state.start = true
 
 
        tasks = [{text:'Register for SAT',
@@ -94,12 +88,6 @@ export default class MapsScreen extends React.Component {
 
        ];
 
-
-
-
-
-
-
          try {
     AsyncStorage.setItem('@activated:tasks', JSON.stringify(tasks));
 } catch (error) {
@@ -107,20 +95,22 @@ export default class MapsScreen extends React.Component {
     console.log("Failed to set data from storage")
 
 }
-   }
+}
    componentWillReceiveProps(){
     this.renderButtons()
+
+
+
    }
+
+
    async componentWillMount() {
     this.renderButtons()
+  
 
        await Expo.Font.loadAsync({
        Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
      });
-
-   }
-
-   getIcon(name){
 
    }
 
@@ -129,7 +119,7 @@ export default class MapsScreen extends React.Component {
       console.log('On click works')
       console.log(a)
 
-       display = "Start Date: "+a.startdatetime+" | End Date: "+a.startdatetime
+       display = "Start Date: "+a.startdatetime+" \n End Date: "+a.startdatetime
 
       this.state.popupText = display
 
@@ -151,35 +141,12 @@ export default class MapsScreen extends React.Component {
       this.popupDialog.show()
 
    };
-  async _addRow(){
-    this.state.rows.push(index++)
-    this.setState({ rows: this.state.rows })
-
-
-
-try {
-  const value =  await AsyncStorage.getItem('@activated:tasks').then(function(users) {
-        return  JSON.stringify(JSON.parse(users));
-    });
-  if (value !== null){
-    // We have data!!
-    console.log(String(value));
-  }
-} catch (e) {
-  // Error retrieving data
-  console.log("Failed to get data from storage")
-
-      console.log("Error", e.stack);
-    console.log("Error", e.name);
-    console.log("Error", e.message);
-}
-  };
 
 
 async renderButtons(){
 try {
-  const value =  await AsyncStorage.getItem('@activated:tasks').then(function(tasks) {
-        return  JSON.parse(tasks);
+  const value =  await AsyncStorage.getItem('@activated:tasks').then(function(t) {
+        return  JSON.parse(t);
     });
   if (value !== null){
     // We have data!!
@@ -199,6 +166,9 @@ try {
 
 
   }
+
+  else{ console.log(value);}
+
 } catch (e) {
   // Error retrieving data
   console.log("Failed to get data from storage")
@@ -213,22 +183,17 @@ try {
 
 
 
-   render() {
 
-      <Menu>
-      <a id="home" className="menu-item" href="/">Home</a>
-      <a id="about" className="menu-item" href="/about">About</a>
-      <a id="contact" className="menu-item" href="/contact">Contact</a>
-      <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
-     </Menu>
+
+
+   render() {
 
 let Arr = this.state.rows.map((a, i) => {
 
       switch (a.icon) {
     case 'pen-icon': return(
-
-          <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
-         <TouchableOpacity onPress={() => this.showTask(a)}>
+          <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
+         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
          <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
@@ -237,9 +202,8 @@ let Arr = this.state.rows.map((a, i) => {
 
       )
     case 'study-icon': return(
-
-        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
-         <TouchableOpacity onPress={() => this.showTask(a)}>
+        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
+         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
          <Image source={require('../assets/images/study-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
@@ -249,10 +213,8 @@ let Arr = this.state.rows.map((a, i) => {
 
       )
     case 'test-icon': return (
-
-
-       <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
-         <TouchableOpacity onPress={() => this.showTask(a)}>
+       <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
+         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
          <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
@@ -263,8 +225,8 @@ let Arr = this.state.rows.map((a, i) => {
       )
     }
 
-       <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -70,top:40,right:20,bottom:20}}>
-         <TouchableOpacity onPress={() => this.showTask(a)}>
+       <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
+         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
          <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
          </Image>
          </TouchableOpacity>
@@ -275,8 +237,11 @@ let Arr = this.state.rows.map((a, i) => {
       return (
 
 
-        <ImageBackground         style={styles.backgroundImage}
-         source={require('../assets/images/alt_background.jpg')}>
+
+        <ImageBackground
+         style={styles.backgroundImage}
+         source={require('../assets/images/alt_background.png')}>
+
 
             <View style={styles.header}>
             <Text style={styles.instruction_text}>My College Roadmap: Junior Year </Text>
@@ -436,6 +401,20 @@ const styles = StyleSheet.create({
 
 
     },
+
+  CircleShapeView: {
+    width: 50,
+    height: 50,
+    borderRadius: 50/2,
+    backgroundColor: '#00BCD4',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#efefed',
+    shadowOpacity: 0.3,
+        shadowRadius: 3,
+        shadowColor: 'black',
+        shadowOffset: { height: 0, width: 0 },
+},
 
 
 

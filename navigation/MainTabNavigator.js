@@ -21,9 +21,9 @@ export default TabNavigator(
     Notifications: {
       screen: NotificationsScreen,
     },
-    Add: {
-      screen: AddScreen
-   },
+     Add: {
+       screen: AddScreen
+    },
   },
   {
     navigationOptions: ({ navigation }) => ({
