@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "expoServerPort": 19005,
   "packagerPort": 19006,
   "packagerPid": 4634,
@@ -6,3 +7,13 @@
   "packagerNgrokUrl": "https://packager.c6-jaz.angiew.147activated.exp.direct",
   "ngrokPid": 4646
 }
+=======
+  "expoServerPort": 19000,
+  "packagerPort": 19002,
+  "packagerPid": 24843,
+  "expoServerNgrokUrl": "https://4d-vha.floranwang.147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.4d-vha.floranwang.147activated.exp.direct",
+  "ngrokPid": 24871
+
+}
+>>>>>>> 1a6dc0e26e0fec3cc0a0ab85b7f774dec1621cbf

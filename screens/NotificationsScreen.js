@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import {
   StyleSheet,
-  Text,
   View,
   ScrollView,
   Image,
@@ -11,6 +10,7 @@ import {
 
 import Button from '../components/Button';
 import NewsItem from '../components/NewsItem';
+import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
 
 
 export default class NotificationsScreen extends React.Component {
@@ -45,52 +45,82 @@ export default class NotificationsScreen extends React.Component {
             ]
         };
     }
-   //
-   //  let fetchData() {
-   //    setTimeout(180);
-   //
-   // }
+
     _onRefresh() {
         this.setState({refreshing: true});
         this.setState({refreshing: false});
-        // fetchData().then(() => {
-        //    this.setState({refreshing: false});
-        // });
+
      }
 
     render() {
     return (
-        <View style={styles.container}>
+      <Container>
+      <Content>
+        <List>
+          <ListItem avatar>
+            <Left>
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/icons8-exam-50.png')} />
+            </Left>
+            <Body>
+              <Text>Free Practice SAT Session</Text>
+              <Text note>Goal: SAT </Text>
+              <Text note>Event Date: 12/3/17</Text>
+              <Text note>Shared by: Kira Pan</Text>
+            </Body>
+            <Right>
+              <Text style={styles.view}>View</Text>
+            </Right>
+          </ListItem>
 
+          <ListItem avatar>
+            <Left>
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/icons8-briefcase-48.png')} />
+            </Left>
+            <Body>
+              <Text>Internship Workshop</Text>
+              <Text note>Goal: Professional Work </Text>
+              <Text note>Event Date: 11/26/17</Text>
+              <Text note>Shared by: Mr. Doan</Text>
+            </Body>
+            <Right>
+              <Text style={styles.view}>View</Text>
+            </Right>
+          </ListItem>
 
-            <ScrollView style={styles.news_container}
-            refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-          />
-        }>
-            { this.renderNews() }
-            </ScrollView>
-
-        </View>
+          <ListItem avatar>
+            <Left>
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/icons8-study-50.png')} />
+            </Left>
+            <Body>
+              <Text>College Fair</Text>
+              <Text note>Goal: Research </Text>
+              <Text note>Event Date: 10/16/17</Text>
+              <Text note>Shared by: Silvia Villagomez</Text>
+            </Body>
+            <Right>
+              <Text style={styles.view}>View</Text>
+            </Right>
+          </ListItem>
+        </List>
+      </Content>
+      </Container>
     );
     }
 
-    renderNews() {
-        return this.state.news_items.map((news, index) => {
-            return <NewsItem key={index} index={index} news={news} />
-        });
-    }
-
     press () {
-      //on press, lead to the task itself
     }
 }
 
 
 
 const styles = StyleSheet.create({
+  view: {
+      color: 'steelblue',
+  },
+  // thumbnail: {
+  //   width:10,
+  //   height:10
+  // },
   container: {
         flex: 1
     },
