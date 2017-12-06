@@ -21,6 +21,8 @@ import moment from 'moment';
 
 import { MonoText } from '../components/StyledText';
 
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 export default class CalendarScreen extends React.Component {
    static navigationOptions = {
       header: null,
@@ -36,6 +38,7 @@ export default class CalendarScreen extends React.Component {
    }
 
    render() {
+<<<<<<< HEAD
       {
         var items =
                 [{text:'Register for SAT',
@@ -69,7 +72,24 @@ export default class CalendarScreen extends React.Component {
                  notes: ' Notes: \n - Get parents income information \n  - get college id codes'
                }
                ];
+=======
+
+>>>>>>> ab2f81e67f0dfe5ad4c28e0308ad041c40051a66
          return (
+           // <View style= {
+           //   {
+           //     flex:1,
+           //     justifyContent: 'center',
+           //     alignItems: 'center'
+           //   }
+           // }>
+           //  <Text style={{fontSize: 30, color: 'green'}}>Screen 1</Text>
+           //  <Button
+           //    onPress={() => this.props.navigation.navigate('DrawerOpen')}
+           //    title="Open DrawNavigator"
+           //  />
+           //  </View>
+
             <ScrollView style={styles.container}>
             <View>
                       <CalendarStrip
@@ -116,7 +136,7 @@ export default class CalendarScreen extends React.Component {
 
             </ScrollView>
          );
-      }
+
    }
    onPress(item) {
       console.log('wassup');
