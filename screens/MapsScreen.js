@@ -21,25 +21,40 @@ import {
 } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
-import Icon from 'react-native-vector-icons/Ionicons';
+// import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
-import { WebBrowser } from 'expo';
+import WebBrowser from 'expo';
 import { slide as Menu } from 'react-burger-menu'
 
-import { MonoText } from '../components/StyledText';
+import MonoText from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 import RootNavigation from '../navigation/RootNavigation';
+
+import { Container, Header, Left, Right, Icon, Drawer } from 'native-base';
+import SideBar from '../SideBar'
+
+const SideMenu = require('react-native-side-menu');
 
    let index = 0
 
 export default class MapsScreen extends React.Component {
+
+  closeDrawer = () => {
+    this.drawer._root.close()
+  };
+  openDrawer = () => {
+    this.drawer._root.open()
+  };
+
+
    static navigationOptions = {
       title: 'My Map',
-       header: null
+       header: null,
    };
 
 
    constructor() {
+
       super();
 
       this.state = { rows: [] };
@@ -82,9 +97,6 @@ export default class MapsScreen extends React.Component {
          icon: 'study-icon',
          notes: ' Notes: \n - Get parents income information \n  - get college id codes'
        },
-
-
-
 
        ];
 
@@ -237,7 +249,6 @@ let Arr = this.state.rows.map((a, i) => {
       return (
 
 
-
         <ImageBackground
          style={styles.backgroundImage}
          source={require('../assets/images/alt_background.png')}>
@@ -254,10 +265,6 @@ let Arr = this.state.rows.map((a, i) => {
         ref={(popupDialog) => { this.popupDialog = popupDialog; }}
         width={250}
         height={350}
-
-
-
-
   >
     <View style= {{backgroundColor: 'transparent', padding: 25}}>
       <Text style={styles.taskTitle}> {this.state.popupTitle}</Text>
@@ -415,7 +422,6 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: { height: 0, width: 0 },
 },
-
 
 
 });

@@ -21,7 +21,7 @@ import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text} from 'native-base';
 
-import CheckBox from 'react-native-checkbox-heaven';
+//import CheckBox from 'react-native-checkbox-heaven';
 
 export default class GoalScreen extends React.Component {
    static navigationOptions = {

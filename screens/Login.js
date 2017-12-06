@@ -12,12 +12,21 @@ import {
 } from 'react-native';
 
 //import Icon from 'react-native-vector-icons/FontAwesome';
-import { Container, Left, Right, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem, H1} from 'native-base';
-
+import { Drawer, Container, Left, Right, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem, H1} from 'native-base';
+import SideBar from '../SideBar';
 
 import RootNavigation from '../navigation/RootNavigation';
 
 export default class Login extends Component {
+
+  // **ADDED THIS FOR DRAWER**
+  closeDrawer = () => {
+    this.drawer._root.close()
+  };
+  openDrawer = () => {
+    this.drawer._root.open()
+  };
+  //**
 
      state = {
        fontLoaded: false,
@@ -32,7 +41,19 @@ export default class Login extends Component {
 
   render() {
     return (
+      //ADDED THIS FOR DRAWER
+         <Drawer
+           ref={(ref) => { this.drawer = ref; }}
+           content={<SideBar navigator={this.navigator} />}
+           onClose={() => this.closeDrawer()} >
+
         <Container>
+
+        <Header>
+          <Button onPress={()=> this.openDrawer()} >
+          <Text>test</Text>
+          </Button>
+        </Header>
 
              <Content>
                <View style={styles.titleContainer}>
@@ -67,6 +88,7 @@ export default class Login extends Component {
                 </TouchableOpacity>
              </Content>
            </Container>
+        </Drawer>
     );
   }
 
