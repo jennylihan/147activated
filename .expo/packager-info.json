@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19002,
-  "packagerPort": 19007,
-  "packagerPid": 11201,
-  "expoServerNgrokUrl": "https://xe-6g6.ccnguyenn.147activated.exp.direct",
-  "packagerNgrokUrl": "https://packager.xe-6g6.ccnguyenn.147activated.exp.direct",
-  "ngrokPid": 9960
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 13597,
+  "expoServerNgrokUrl": "https://x8-b55.floranwang.147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.x8-b55.floranwang.147activated.exp.direct",
+  "ngrokPid": 13627
 }

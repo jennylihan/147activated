@@ -11,14 +11,26 @@ import {
 
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-import Container from '../components/Container';
+ import Icon from 'react-native-vector-icons/FontAwesome';
+// import Container from '../components/Container';
 import Button from '../components/Button';
 import Label from '../components/Label';
 import RootNavigation from '../navigation/RootNavigation';
+import { Container, Header, Left, Right, Drawer } from 'native-base';
+import SideBar from '../SideBar'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export default class Login extends Component {
+
+  // **ADDED THIS FOR DRAWER**
+  closeDrawer = () => {
+    this.drawer._root.close()
+  };
+  openDrawer = () => {
+    this.drawer._root.open()
+  };
+  //**
+
      static navigationOptions = {
       title: 'My Map',
        header: null
@@ -26,8 +38,20 @@ export default class Login extends Component {
    };
   render() {
     return (
+
+      //ADDED THIS FOR DRAWER
+      <Drawer
+        ref={(ref) => { this.drawer = ref; }}
+        content={<SideBar navigator={this.navigator} />}
+        onClose={() => this.closeDrawer()} >
+
         <ScrollView style={styles.scroll}>
 
+        <Header>
+        <Button onPress={()=> this.openDrawer()} >
+          <Text>test</Text>
+        </Button>
+        </Header>
 
 
                     <View style={styles.titleContainer}>
@@ -73,10 +97,10 @@ export default class Login extends Component {
             onPress={this.pressRegister.bind(this)} />
       </View>
 
-
-
-
         </ScrollView>
+
+        </Drawer> // ADDED THIS LINE
+
     );
   }
 

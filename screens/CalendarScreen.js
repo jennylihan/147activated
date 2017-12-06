@@ -17,12 +17,24 @@ import Button from '../components/Button';
 import CalendarStrip from 'react-native-calendar-strip';
 import moment from 'moment';
 
-
 import { MonoText } from '../components/StyledText';
+
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export default class CalendarScreen extends React.Component {
    static navigationOptions = {
       header: null,
+      // tabBarLabel: 'Screen 1',
+      // drawerIcon: ({tintColor}) => {
+      //   return (
+      //     <MaterialIcons
+      //       name="calendar"
+      //       size={24}
+      //       style={{color: tintColor}}
+      //     >
+      //     </MaterialIcons>
+      //   );
+      // }
    };
 
 
@@ -36,8 +48,22 @@ export default class CalendarScreen extends React.Component {
 
 
    render() {
-      {
+
          return (
+           // <View style= {
+           //   {
+           //     flex:1,
+           //     justifyContent: 'center',
+           //     alignItems: 'center'
+           //   }
+           // }>
+           //  <Text style={{fontSize: 30, color: 'green'}}>Screen 1</Text>
+           //  <Button
+           //    onPress={() => this.props.navigation.navigate('DrawerOpen')}
+           //    title="Open DrawNavigator"
+           //  />
+           //  </View>
+
             <ScrollView style={styles.container}>
             <View>
                       <CalendarStrip
@@ -114,7 +140,7 @@ export default class CalendarScreen extends React.Component {
 
             </ScrollView>
          );
-      }
+
    }
    onPress() {
       console.log('wassup');
