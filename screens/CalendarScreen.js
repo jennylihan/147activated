@@ -8,6 +8,7 @@ import {
    StyleSheet,
    Text,
    TouchableOpacity,
+   AsyncStorage,
    View
 } from 'react-native';
 import { WebBrowser } from 'expo';
@@ -17,7 +18,6 @@ import { range } from 'lodash';
 import Button from '../components/Button';
 import CalendarStrip from 'react-native-calendar-strip';
 import moment from 'moment';
-
 
 import { MonoText } from '../components/StyledText';
 
@@ -31,17 +31,44 @@ export default class CalendarScreen extends React.Component {
       await Expo.Font.loadAsync({
          FontAwesome: require("../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf")
       });
-
       this.setState({fontLoaded: true});
-   }
 
+   }
 
    render() {
       {
-        var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];
-        var obj = {avatar: '../assets/images/study-icon.png', text:"SAT"}
+        var items =
+                [{text:'Register for SAT',
+                 category: 'SAT',
+                 startdatetime: '2017-10-5',
+                 enddatetime: '2017-10-5',
+                 icon: 'https://elitepreptokyo.files.wordpress.com/2017/02/sat-icon_974ab022-245c-4a1d-9e40-0b46924ff86c_large.png?w=640',
+                 notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+               },
 
+               {text:'Take PSAT',
+                 category: 'SAT',
+                 startdatetime: '2017-10-5',
+                 enddatetime: '2017-10-5',
+                 icon: 'https://elitepreptokyo.files.wordpress.com/2017/02/sat-icon_974ab022-245c-4a1d-9e40-0b46924ff86c_large.png?w=640',
+                 notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
+               },
 
+               {text:'Research Summer Internships',
+                 category: 'Summer Opportunities',
+                 startdatetime: '2017-10-5',
+                 enddatetime: '2017-12-5',
+                 icon: 'http://icons.iconarchive.com/icons/webalys/kameleon.pics/128/Beach-icon.png',
+                 notes: ' Notes: \n - Get parents income information \n  - get college id codes'
+               },
+               {text:'Visit College Counselor',
+                 category: 'Professional Work',
+                 startdatetime: '2017-10-5',
+                 enddatetime: '2017-12-5',
+                 icon: 'http://icons.iconarchive.com/icons/webalys/kameleon.pics/128/Beach-icon.png',
+                 notes: ' Notes: \n - Get parents income information \n  - get college id codes'
+               }
+               ];
          return (
             <ScrollView style={styles.container}>
             <View>
@@ -58,19 +85,28 @@ export default class CalendarScreen extends React.Component {
                           iconContainer={{flex: 0.1}}
                       />
                   </View>
+
+
+
+
+
                   <Container>
                     <Content>
                       <List dataArray={items}
                         renderRow={(item) =>
                           <ListItem>
-                            <Thumbnail square size={80} source={require('../assets/images/test-icon.png')} />
+                            <Thumbnail square size={80} source={{uri: item.icon}} />
                             <Body>
-                              <Text>{item}</Text>
+                            <Text style={styles.notes_text}>{item.text}</Text>
+                            <Text style={styles.smaller_text}>{item.category}</Text>
+
                             </Body>
                             <Right>
-                              // <Button transparent onPress={() => this.props.navigation.goBack()}>
-                                <Icon name="arrow-back" />
-                              // </Button>
+                            <Button
+                                onPress={this.onPress.bind(this)}
+                            >
+                            <Text style={{color: 'steelblue'}}>{'>'}</Text>
+                            </Button>
                             </Right>
                           </ListItem>
                         }>
@@ -154,6 +190,7 @@ const styles = StyleSheet.create({
       fontSize: 15,
       color: '#c5c5c5',
       position: 'absolute',
+      borderTopWidth: 1,
       bottom: 0,
       fontWeight: 'bold',
    },

@@ -58,7 +58,7 @@ export default class MapsScreen extends React.Component {
          notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
        },
 
-       {text:'Take SAT',
+       {text:'Take PSAT',
          category: 'SAT',
          startdatetime: '2017-10-5',
          enddatetime: '2017-10-5',
@@ -66,19 +66,10 @@ export default class MapsScreen extends React.Component {
          notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
        },
 
-       {text:'Sign Up for basketball tryouts',
-         category: 'SAT',
+       {text:'Research Summer Internships',
+         category: 'Summer Opportunities',
          startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-          icon: 'pen-icon',
-          notes: ' Notes: \n - Meet with coach \n  - make sure schedule aligns with classes'
-
-       },
-
-       {text:'Fill Out FAFSA',
-         category: 'Finacial Aid',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
+         enddatetime: '2017-12-5',
          icon: 'study-icon',
          notes: ' Notes: \n - Get parents income information \n  - get college id codes'
        },
@@ -116,8 +107,8 @@ export default class MapsScreen extends React.Component {
 
 
    showTask = (a) => {
-      console.log('On click works')
-      console.log(a)
+      //console.log('On click works')
+      //console.log(a)
 
        display = "Start Date: "+a.startdatetime+" \n End Date: "+a.startdatetime
 
@@ -150,8 +141,8 @@ try {
     });
   if (value !== null){
     // We have data!!
-    console.log(String(value));
-    console.log(String(value.length))
+  //  console.log(String(value));
+  //  console.log(String(value.length))
 
   for( let i = this.state.rows.length; i < value.length; i++) {
      this.state.rows.push(value[i])
