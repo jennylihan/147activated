@@ -25,7 +25,7 @@ import PopupDialog from 'react-native-popup-dialog';
 
 export default class AddScreen extends React.Component {
    static navigationOptions = {
-      // header: null,
+    header: null,
    };
 
 
@@ -182,7 +182,7 @@ export default class AddScreen extends React.Component {
                     <Input />
                   </Item>
 
-                  <Button full warning>
+                  <Button full style={styles.savebox}>
                    <Text>Save</Text>
                   </Button>
 
@@ -202,12 +202,15 @@ const styles = StyleSheet.create({
    },
    title: {
     color: '#fff',
-     paddingTop: 20,
+     paddingTop: 30,
      paddingBottom: 20,
      fontSize: 40,
      textAlign: 'center',
      backgroundColor: '#f1c40f',
-   }
+  },
+  stylebox: {
+     backgroundColor: '#34495e',
+ }
 
 
 });

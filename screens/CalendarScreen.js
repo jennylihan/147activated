@@ -24,17 +24,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 export default class CalendarScreen extends React.Component {
    static navigationOptions = {
       header: null,
-      // tabBarLabel: 'Screen 1',
-      // drawerIcon: ({tintColor}) => {
-      //   return (
-      //     <MaterialIcons
-      //       name="calendar"
-      //       size={24}
-      //       style={{color: tintColor}}
-      //     >
-      //     </MaterialIcons>
-      //   );
-      // }
    };
 
 
