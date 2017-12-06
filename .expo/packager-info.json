@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 31553,
+  "expoServerPort": 19001,
+  "packagerPort": 19002,
+  "packagerPid": 34444,
   "expoServerNgrokUrl": "https://6e-snn.ccnguyenn.147activated.exp.direct",
   "packagerNgrokUrl": "https://packager.6e-snn.ccnguyenn.147activated.exp.direct",
-  "ngrokPid": 31565
+  "ngrokPid": 34456
 }
