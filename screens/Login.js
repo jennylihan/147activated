@@ -15,15 +15,13 @@ import {
 import { Container, Left, Right, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem, H1} from 'native-base';
 
 
-//import Container from '../components/Container';
-//import Button from '../components/Button';
-//import Label from '../components/Label';
 import RootNavigation from '../navigation/RootNavigation';
 
 export default class Login extends Component {
 
      state = {
        fontLoaded: false,
+       title: "let's get activated",
      };
 
      static navigationOptions = {
@@ -38,7 +36,7 @@ export default class Login extends Component {
 
              <Content>
                <View style={styles.titleContainer}>
-               <Text style={styles.formTitle}>Welcome to Activated</Text>
+               <Text style={styles.formTitle}>{this.state.title}</Text>
                  </View>
 
                  <View
@@ -151,10 +149,11 @@ const styles = StyleSheet.create({
    },
    formTitle: {
       color: '#FDBF2D',
-      marginTop: 25,
+      marginTop: 30,
       fontSize: 40,
       textAlign: 'center',
-      //fontFamily: 'coyote',
+      fontFamily: 'Helvetica',
+      fontWeight: 'bold',
       opacity: 0.9,
    },
 

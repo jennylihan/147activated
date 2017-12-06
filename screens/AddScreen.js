@@ -32,9 +32,13 @@ export default class AddScreen extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         selectedStartDate: null,
-         selectedEndDate: null,
+         startdatetime: null,
+         enddatetime: null,
          selectedGoal: '',
+         text: '',
+         location: '',
+         notes: '',
+
       };
       this.onDateChangeStart = this.onDateChangeStart.bind(this);
       this.onDateChangeEnd = this.onDateChangeEnd.bind(this);
@@ -43,13 +47,13 @@ export default class AddScreen extends React.Component {
 
      onDateChangeStart(date) {
        this.setState({
-         selectedStartDate: date,
+         startdatetime: date,
        });
      }
 
      onDateChangeEnd(date) {
       this.setState({
-         selectedEndDate: date,
+         enddatetime: date,
       });
      }
 
@@ -60,25 +64,22 @@ export default class AddScreen extends React.Component {
      }
 
      onNewGoal() {
-        console.log('WANTS TO MAKE A NEW EVENT.');
+        console.log('WANTS TO MAKE A NEW GOAL.');
      }
 
    render() {
-      const { selectedStartDate } = this.state;
-      const startDate = selectedStartDate ? parseInt(selectedStartDate.getMonth()+1) + "/" + selectedStartDate.getDate() + "/" +selectedStartDate.getFullYear() : 'Select Start Date';
+      const { startdatetime } = this.state;
+      const startDate = startdatetime ? parseInt(startdatetime.getMonth()+1) + "/" + startdatetime.getDate() + "/" +startdatetime.getFullYear() : 'Select Start Date';
 
-      const { selectedEndDate } = this.state;
-      const endDate = selectedEndDate ? parseInt(selectedEndDate.getMonth()+1) + "/" + selectedEndDate.getDate() + "/" +selectedEndDate.getFullYear() : 'Select End Date';
+      const { enddatetime } = this.state;
+      const endDate = enddatetime ? parseInt(enddatetime.getMonth()+1) + "/" + enddatetime.getDate() + "/" +enddatetime.getFullYear() : 'Select End Date';
 
       return (
          <ScrollView behavior="padding" style={styles.container}>
             <Container>
-           <Header>
-              <Body>
-             <Title>Add a Task</Title>
-           </Body>
-           </Header>
+
               <Content>
+              <Text style={styles.title}>Add a Task</Text>
                 <Form>
                 <Item fixedLabel>
                  <Label>Goal Category</Label>
@@ -199,4 +200,14 @@ const styles = StyleSheet.create({
       flex: 1,
       //backgroundColor: '#f1c40f',
    },
+   title: {
+    color: '#fff',
+     paddingTop: 20,
+     paddingBottom: 20,
+     fontSize: 40,
+     textAlign: 'center',
+     backgroundColor: '#f1c40f',
+   }
+
+
 });
