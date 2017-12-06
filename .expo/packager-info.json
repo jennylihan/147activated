@@ -1,5 +1,8 @@
 {
   "expoServerPort": 19002,
   "packagerPort": 19003,
-  "packagerPid": 16037
+  "packagerPid": 2657,
+  "expoServerNgrokUrl": "https://c6-jaz.angiew.147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.c6-jaz.angiew.147activated.exp.direct",
+  "ngrokPid": 2669
 }
