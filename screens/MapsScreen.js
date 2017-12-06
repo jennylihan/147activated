@@ -255,7 +255,7 @@ let Arr = this.state.rows.map((a, i) => {
 
 
             <View style={styles.header}>
-            <Text style={styles.instruction_text}>My College Roadmap: Junior Year </Text>
+            <Text style={styles.instruction_text}>My College Roadmap </Text>
             </View>
 
          
