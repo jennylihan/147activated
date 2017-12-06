@@ -1,5 +1,8 @@
 {
-  "expoServerPort": 19002,
-  "packagerPort": 19003,
-  "packagerPid": 16037
+  "expoServerPort": 19000,
+  "packagerPort": 19002,
+  "packagerPid": 24843,
+  "expoServerNgrokUrl": "https://4d-vha.floranwang.147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.4d-vha.floranwang.147activated.exp.direct",
+  "ngrokPid": 24871
 }
