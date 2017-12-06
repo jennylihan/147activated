@@ -21,40 +21,25 @@ import {
 } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
-import WebBrowser from 'expo';
+import { WebBrowser } from 'expo';
 import { slide as Menu } from 'react-burger-menu'
 
-import MonoText from '../components/StyledText';
+import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 import RootNavigation from '../navigation/RootNavigation';
-
-import { Container, Header, Left, Right, Icon, Drawer } from 'native-base';
-import SideBar from '../SideBar'
-
-const SideMenu = require('react-native-side-menu');
 
    let index = 0
 
 export default class MapsScreen extends React.Component {
-
-  closeDrawer = () => {
-    this.drawer._root.close()
-  };
-  openDrawer = () => {
-    this.drawer._root.open()
-  };
-
-
    static navigationOptions = {
       title: 'My Map',
-       header: null,
+       header: null
    };
 
 
    constructor() {
-
       super();
 
       this.state = { rows: [] };
@@ -66,30 +51,36 @@ export default class MapsScreen extends React.Component {
 
 
        tasks = [{text:'Register for SAT',
-         category: 'SAT',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-         icon: 'study-icon',
-         notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-       },
+            category: 'SAT',
+            startdatetime: '2017-10-5',
+            enddatetime: '2017-10-5',
+            icon: 'https://elitepreptokyo.files.wordpress.com/2017/02/sat-icon_974ab022-245c-4a1d-9e40-0b46924ff86c_large.png?w=640',
+            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+          },
 
-       {text:'Take PSAT',
-         category: 'SAT',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-         icon: 'test-icon',
-         notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
-       },
+          {text:'Take PSAT',
+            category: 'SAT',
+            startdatetime: '2017-10-5',
+            enddatetime: '2017-10-5',
+            icon: 'https://elitepreptokyo.files.wordpress.com/2017/02/sat-icon_974ab022-245c-4a1d-9e40-0b46924ff86c_large.png?w=640',
+            notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
+          },
 
-       {text:'Research Summer Internships',
-         category: 'Summer Opportunities',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-12-5',
-         icon: 'study-icon',
-         notes: ' Notes: \n - Get parents income information \n  - get college id codes'
-       },
-
-       ];
+          {text:'Research Summer Internships',
+            category: 'Summer Opportunities',
+            startdatetime: '2017-10-5',
+            enddatetime: '2017-12-5',
+            icon: 'http://icons.iconarchive.com/icons/webalys/kameleon.pics/128/Beach-icon.png',
+            notes: ' Notes: \n - Get parents income information \n  - get college id codes'
+          },
+          {text:'Visit College Counselor',
+            category: 'Professional Work',
+            startdatetime: '2017-10-5',
+            enddatetime: '2017-12-5',
+            icon: 'http://icons.iconarchive.com/icons/webalys/kameleon.pics/128/Beach-icon.png',
+            notes: ' Notes: \n - Get parents income information \n  - get college id codes'
+          }
+          ];
 
          try {
     AsyncStorage.setItem('@activated:tasks', JSON.stringify(tasks));
@@ -240,6 +231,7 @@ let Arr = this.state.rows.map((a, i) => {
       return (
 
 
+
         <ImageBackground
          style={styles.backgroundImage}
          source={require('../assets/images/alt_background.png')}>
@@ -256,6 +248,10 @@ let Arr = this.state.rows.map((a, i) => {
         ref={(popupDialog) => { this.popupDialog = popupDialog; }}
         width={250}
         height={350}
+
+
+
+
   >
     <View style= {{backgroundColor: 'transparent', padding: 25}}>
       <Text style={styles.taskTitle}> {this.state.popupTitle}</Text>
@@ -413,6 +409,7 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: { height: 0, width: 0 },
 },
+
 
 
 });

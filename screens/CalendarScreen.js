@@ -21,8 +21,6 @@ import moment from 'moment';
 
 import { MonoText } from '../components/StyledText';
 
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
 export default class CalendarScreen extends React.Component {
    static navigationOptions = {
       header: null,
@@ -34,62 +32,43 @@ export default class CalendarScreen extends React.Component {
          FontAwesome: require("../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf")
       });
       this.setState({fontLoaded: true});
-
    }
 
    render() {
-<<<<<<< HEAD
       {
-        var items =
-                [{text:'Register for SAT',
-                 category: 'SAT',
-                 startdatetime: '2017-10-5',
-                 enddatetime: '2017-10-5',
-                 icon: 'https://elitepreptokyo.files.wordpress.com/2017/02/sat-icon_974ab022-245c-4a1d-9e40-0b46924ff86c_large.png?w=640',
-                 notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-               },
+        var items = [{text:'Register for SAT',
+             category: 'SAT',
+             startdatetime: '2017-10-5',
+             enddatetime: '2017-10-5',
+             icon: 'https://elitepreptokyo.files.wordpress.com/2017/02/sat-icon_974ab022-245c-4a1d-9e40-0b46924ff86c_large.png?w=640',
+             notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           },
 
-               {text:'Take PSAT',
-                 category: 'SAT',
-                 startdatetime: '2017-10-5',
-                 enddatetime: '2017-10-5',
-                 icon: 'https://elitepreptokyo.files.wordpress.com/2017/02/sat-icon_974ab022-245c-4a1d-9e40-0b46924ff86c_large.png?w=640',
-                 notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
-               },
+           {text:'Take PSAT',
+             category: 'SAT',
+             startdatetime: '2017-10-5',
+             enddatetime: '2017-10-5',
+             icon: 'https://elitepreptokyo.files.wordpress.com/2017/02/sat-icon_974ab022-245c-4a1d-9e40-0b46924ff86c_large.png?w=640',
+             notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
+           },
 
-               {text:'Research Summer Internships',
-                 category: 'Summer Opportunities',
-                 startdatetime: '2017-10-5',
-                 enddatetime: '2017-12-5',
-                 icon: 'http://icons.iconarchive.com/icons/webalys/kameleon.pics/128/Beach-icon.png',
-                 notes: ' Notes: \n - Get parents income information \n  - get college id codes'
-               },
-               {text:'Visit College Counselor',
-                 category: 'Professional Work',
-                 startdatetime: '2017-10-5',
-                 enddatetime: '2017-12-5',
-                 icon: 'http://icons.iconarchive.com/icons/webalys/kameleon.pics/128/Beach-icon.png',
-                 notes: ' Notes: \n - Get parents income information \n  - get college id codes'
-               }
-               ];
-=======
+           {text:'Research Summer Internships',
+             category: 'Summer Opportunities',
+             startdatetime: '2017-10-5',
+             enddatetime: '2017-12-5',
+             icon: 'http://icons.iconarchive.com/icons/webalys/kameleon.pics/128/Beach-icon.png',
+             notes: ' Notes: \n - Get parents income information \n  - get college id codes'
+           },
+           {text:'Visit College Counselor',
+             category: 'Professional Work',
+             startdatetime: '2017-10-5',
+             enddatetime: '2017-12-5',
+             icon: 'http://icons.iconarchive.com/icons/webalys/kameleon.pics/128/Beach-icon.png',
+             notes: ' Notes: \n - Get parents income information \n  - get college id codes'
+           }
+           ];
 
->>>>>>> ab2f81e67f0dfe5ad4c28e0308ad041c40051a66
          return (
-           // <View style= {
-           //   {
-           //     flex:1,
-           //     justifyContent: 'center',
-           //     alignItems: 'center'
-           //   }
-           // }>
-           //  <Text style={{fontSize: 30, color: 'green'}}>Screen 1</Text>
-           //  <Button
-           //    onPress={() => this.props.navigation.navigate('DrawerOpen')}
-           //    title="Open DrawNavigator"
-           //  />
-           //  </View>
-
             <ScrollView style={styles.container}>
             <View>
                       <CalendarStrip
@@ -136,7 +115,7 @@ export default class CalendarScreen extends React.Component {
 
             </ScrollView>
          );
-
+      }
    }
    onPress(item) {
       console.log('wassup');
