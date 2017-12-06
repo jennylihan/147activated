@@ -234,14 +234,14 @@ let Arr = this.state.rows.map((a, i) => {
 
         <ImageBackground
          style={styles.backgroundImage}
-         source={require('../assets/images/alt_background.png')}>
+         source={require('../assets/images/new_background.png')}>
 
 
             <View style={styles.header}>
             <Text style={styles.instruction_text}>My College Roadmap: Junior Year </Text>
             </View>
 
-         {Arr}
+         
 
 
   <PopupDialog dialogStyle={{backgroundColor: 'rgba(255,255,255,0.85)'}}
