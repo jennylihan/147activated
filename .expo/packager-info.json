@@ -1,30 +1,9 @@
 {
-<<<<<<< HEAD
   "expoServerPort": 19015,
   "packagerPort": 19016,
   "packagerPid": 10416,
   "expoServerNgrokUrl": "https://p7-b5k.jennylihan.cs147activated.exp.direct",
   "packagerNgrokUrl": "https://packager.p7-b5k.jennylihan.cs147activated.exp.direct",
   "ngrokPid": 10459
-=======
-<<<<<<< HEAD
-  "expoServerPort": 19001,
-  "packagerPort": 19002,
-  "packagerPid": 34444,
-  "expoServerNgrokUrl": "https://6e-snn.ccnguyenn.147activated.exp.direct",
-  "packagerNgrokUrl": "https://packager.6e-snn.ccnguyenn.147activated.exp.direct",
-  "ngrokPid": 34456
-=======
-  "expoServerPort": 19002,
-  "packagerPort": 19003,
-<<<<<<< HEAD
-  "packagerPid": 2657,
-  "expoServerNgrokUrl": "https://c6-jaz.angiew.147activated.exp.direct",
-  "packagerNgrokUrl": "https://packager.c6-jaz.angiew.147activated.exp.direct",
-  "ngrokPid": 2669
-=======
   "packagerPid": 16037
->>>>>>> e9efbc86e5c78d9f45ea1456779d3d69c4029ede
->>>>>>> ab2f81e67f0dfe5ad4c28e0308ad041c40051a66
->>>>>>> 90355417b6701adbd95b77c35ae8b1dff0274dd1
 }
