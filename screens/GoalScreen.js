@@ -19,29 +19,18 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
-import { Container, Header, Content, Button, Icon, List, ListItem, Text, CheckBox} from 'native-base';
+import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text} from 'native-base';
 
-
-const datas = [
-  'Simon Mignolet',
-  'Nathaniel Clyne',
-  'Dejan Lovren',
-  'Mama Sakho',
-  'Alberto Moreno',
-  'Emre Can',
-  'Joe Allen',
-  'Phil Coutinho',
-];
+//import CheckBox from 'react-native-checkbox-heaven';
 
 export default class GoalScreen extends React.Component {
    static navigationOptions = {
-      // header: null,
+      header: null,
    };
 
 
    constructor(props) {
       super(props);
-       this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
       this.state = {
          startdatetime: null,
          enddatetime: null,
@@ -49,47 +38,101 @@ export default class GoalScreen extends React.Component {
          text: '',
          location: '',
          notes: '',
-         basic: true,
-         listViewData: datas,
       };
    }
-
-   deleteRow(secId, rowId, rowMap) {
-    rowMap[`${secId}${rowId}`].props.closeRow();
-    const newData = [...this.state.listViewData];
-    newData.splice(rowId, 1);
-    this.setState({ listViewData: newData });
-   }
-
    render() {
-       const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
       return (
          <ScrollView behavior="padding" style={styles.container}>
             <Container>
               <Content>
               <Text style={styles.title}>{this.state.selectedGoal}</Text>
 
-              <List
-                 dataSource={this.ds.cloneWithRows(this.state.listViewData)}
-                 renderRow={data =>
-                   <ListItem style={styles.checkbox}>
-                      <CheckBox checked={false} />
-                      <Text> {data} </Text>
-                   </ListItem>}
-                 renderLeftHiddenRow={data =>
-                   <Button full onPress={() => alert(data)}>
-                     <Icon active name="information-circle" />
-                   </Button>}
-                 renderRightHiddenRow={(data, secId, rowId, rowMap) =>
-                   <Button full danger onPress={_ => this.deleteRow(secId, rowId, rowMap)}>
-                     <Icon active name="trash" />
-                   </Button>}
-                 leftOpenValue={75}
-                 rightOpenValue={-75}
-               />
+              <Card>
+                 <CardItem>
+                   <Body>
+                   <View style={styles.notes}>
+                      <View style={styles.notes_notes}>
+                           <Text style={styles.notes_text}>
+                           Fill out FAFSA
+                           </Text>
+
+                           <Text style={styles.subtext}>
+                              Ask parents for tax forms.
+                           </Text>
+                           <Text style={styles.smaller_text}>Home</Text>
+                      </View>
+                      <View style={styles.notes_selected_date}>
+                         <Text style={styles.small_text}>START</Text>
+                         <Text style={styles.big_text}>FRI, 12/1</Text>
+                         <Text style={styles.small_text}>END</Text>
+                         <Text style={styles.big_text}>MON, 12/4</Text>
+                         </View>
+                   </View>
+
+                   <View style={styles.notes}>
+                      <View style={styles.notes_notes}>
+                           <Text style={styles.notes_text}>
+                           Fill out CSS/Profile
+                           </Text>
+
+                           <Text style={styles.subtext}>
+                              Ask parents for tax forms.
+                           </Text>
+                           <Text style={styles.smaller_text}>Home</Text>
+                      </View>
+                      <View style={styles.notes_selected_date}>
+                        <Text style={styles.small_text}>START</Text>
+                        <Text style={styles.big_text}>SAT, 1/4</Text>
+                        <Text style={styles.small_text}>END</Text>
+                        <Text style={styles.big_text}>TUES, 1/7</Text>
+                        </View>
+                   </View>
+
+                   <View style={styles.notes}>
+                      <View style={styles.notes_notes}>
+                           <Text style={styles.notes_text}>
+                           Request fee waiver for Stanford
+                           </Text>
+
+                           <Text style={styles.subtext}>
+                              Ask parents for tax forms.
+                           </Text>
+                           <Text style={styles.smaller_text}>Office C303</Text>
+                      </View>
+                      <View style={styles.notes_selected_date}>
+                        <Text style={styles.small_text}>START</Text>
+                        <Text style={styles.big_text}>FRI, 12/1</Text>
+                        <Text style={styles.small_text}>END</Text>
+                        <Text style={styles.big_text}>MON, 12/4</Text>
+                        </View>
+                   </View>
+
+                   <View style={styles.notes}>
+                      <View style={styles.notes_notes}>
+                           <Text style={styles.notes_text}>
+                           Fill out FAFSA
+                           </Text>
+
+                           <Text style={styles.subtext}>
+                              Ask parents for tax forms.
+                           </Text>
+                           <Text style={styles.smaller_text}>Home</Text>
+                      </View>
+                      <View style={styles.notes_selected_date}>
+                        <Text style={styles.small_text}>START</Text>
+                        <Text style={styles.big_text}>FRI, 12/1</Text>
+                        <Text style={styles.small_text}>END</Text>
+                        <Text style={styles.big_text}>MON, 12/4</Text>
+                        </View>
+                   </View>
 
 
 
+
+
+                   </Body>
+                 </CardItem>
+              </Card>
               </Content>
             </Container>
 
@@ -104,7 +147,7 @@ const styles = StyleSheet.create({
    },
    title: {
     color: '#fff',
-     paddingTop: 20,
+     paddingTop: 30,
      paddingBottom: 20,
      fontSize: 40,
      textAlign: 'center',
@@ -112,5 +155,71 @@ const styles = StyleSheet.create({
   },
   checkbox: {
      paddingLeft: 10,
- }
+ },
+ notes: {
+  marginTop: 10,
+  padding: 20,
+  borderColor: '#F5F5F5',
+  borderTopWidth: 1,
+  borderBottomWidth: 1,
+  flexDirection: 'row',
+  backgroundColor: '#FAFAFA'
+  },
+
+  notes_notes: {
+  flex: 1
+},
+notes_text: {
+     fontSize: 18
+},
+subtext: {
+   marginTop: 5,
+   fontSize: 15,
+   color: '#727272',
+},
+
+notes_selected_date: {
+  flex: 1,
+  alignItems: 'flex-end',
+  flexDirection: 'column'
+},
+small_text: {
+     fontSize: 15,
+},
+big_text: {
+     fontSize: 30,
+     fontWeight: 'bold',
+     textAlign: 'right',
+},
+big_text_end: {
+     fontSize: 30,
+     fontWeight: 'bold',
+     textAlign: 'right',
+     color: '#f1c40f',
+},
+inline: {
+     flexDirection: 'row'
+},
+smaller_text: {
+
+    fontSize: 15,
+    color: '#c5c5c5',
+    position: 'absolute',
+    bottom: 0,
+    fontWeight: 'bold',
+},
+notes_text_done: {
+    fontSize: 18,
+    color: '#c5c5c5',
+},
+big_text_done: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: '#c5c5c5',
+},
+small_text_done: {
+    fontSize: 15,
+    color: '#c5c5c5',
+},
+
 });
