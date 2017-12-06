@@ -12,13 +12,10 @@ import {
 } from 'react-native';
 
 //import Icon from 'react-native-vector-icons/FontAwesome';
-import { Container, Left, Right, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem, H1} from 'native-base';
-
+import { Drawer, Container, Left, Right, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem, H1} from 'native-base';
+import SideBar from '../SideBar';
 
 import RootNavigation from '../navigation/RootNavigation';
-import { Container, Header, Left, Right, Drawer } from 'native-base';
-import SideBar from '../SideBar'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export default class Login extends Component {
 
@@ -31,6 +28,11 @@ export default class Login extends Component {
   };
   //**
 
+     state = {
+       fontLoaded: false,
+       title: "let's get activated",
+     };
+
      static navigationOptions = {
       title: 'My Map',
        header: null
@@ -39,7 +41,19 @@ export default class Login extends Component {
 
   render() {
     return (
+      //ADDED THIS FOR DRAWER
+         <Drawer
+           ref={(ref) => { this.drawer = ref; }}
+           content={<SideBar navigator={this.navigator} />}
+           onClose={() => this.closeDrawer()} >
+
         <Container>
+
+        <Header>
+          <Button onPress={()=> this.openDrawer()} >
+          <Text>test</Text>
+          </Button>
+        </Header>
 
              <Content>
                <View style={styles.titleContainer}>
@@ -74,6 +88,7 @@ export default class Login extends Component {
                 </TouchableOpacity>
              </Content>
            </Container>
+        </Drawer>
     );
   }
 
