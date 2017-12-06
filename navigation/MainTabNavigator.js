@@ -9,6 +9,7 @@ import CalendarScreen from '../screens/CalendarScreen';
 import MapsScreen from '../screens/MapsScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import AddScreen from '../screens/AddScreen';
+import GoalScreen from '../screens/GoalScreen';
 
 export default TabNavigator(
   {
@@ -21,9 +22,12 @@ export default TabNavigator(
     Notifications: {
       screen: NotificationsScreen,
     },
-   //  Add: {
-   //    screen: AddScreen
-   // },
+    Add: {
+       screen: AddScreen
+    },
+    Goal: {
+     screen: GoalScreen
+    },
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -45,6 +49,9 @@ export default TabNavigator(
               Platform.OS === 'ios' ? `ios-notifications${focused ? '' : '-outline'}` : 'md-notifications';
              break;
           case 'Add':
+            iconName = Platform.OS === 'ios' ? `ios-add${focused ? '' : '-outline'}` : 'md-add';
+            break;
+          case 'Goal':
             iconName = Platform.OS === 'ios' ? `ios-add${focused ? '' : '-outline'}` : 'md-add';
         }
         return (
