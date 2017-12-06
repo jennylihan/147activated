@@ -106,7 +106,7 @@ export default class MapsScreen extends React.Component {
 
    async componentWillMount() {
     this.renderButtons()
-  
+
 
        await Expo.Font.loadAsync({
        Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
