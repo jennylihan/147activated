@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Container, Header, Content, List, ListItem, Thumbnail, Body, Left, Right, Note} from 'native-base';
 import {
    AppRegistry,
    Image,
@@ -7,7 +8,7 @@ import {
    StyleSheet,
    Text,
    TouchableOpacity,
-   View,
+   View
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -37,6 +38,10 @@ export default class CalendarScreen extends React.Component {
 
    render() {
       {
+        var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];
+        var obj = {avatar: '../assets/images/study-icon.png', text:"SAT"}
+
+
          return (
             <ScrollView style={styles.container}>
             <View>
@@ -53,70 +58,31 @@ export default class CalendarScreen extends React.Component {
                           iconContainer={{flex: 0.1}}
                       />
                   </View>
-
-                  <Button
-                  noDefaultStyles={true}
-                  onPress={this.onPress.bind(this)}
-                 >
-                  <View style={styles.notes}>
-                     <View style={styles.notes_notes}>
-                          <Text style={styles.notes_text_done}>Turn in UC applications!!!</Text>
-                          <Text style={styles.smaller_text}>College Applications</Text>
-                     </View>
-                     <View style={styles.notes_selected_date}>
-                      <Text style={styles.small_text_done}>4:00 PM</Text>
-                      <Text style={styles.big_text_done}>29</Text>
-                         <View style={styles.inline}>
-                             <Text style={styles.small_text_done}>WED</Text>
-                         </View>
-                     </View>
-                  </View>
-                  	</Button>
-
-
-                     <Button
-                     noDefaultStyles={true}
-                     onPress={this.onPress.bind(this)}
-                    >
-                  <View style={styles.notes}>
-                     <View style={styles.notes_notes}>
-                          <Text style={styles.notes_text_done}>Work on FAFSA</Text>
-                          <Text style={styles.smaller_text}>Financial Aid</Text>
-                     </View>
-                     <View style={styles.notes_selected_date}>
-                      <Text style={styles.small_text_done}>7:00 PM</Text>
-                      <Text style={styles.big_text_done}>30</Text>
-                         <View style={styles.inline}>
-                             <Text style={styles.small_text_done}>THUR</Text>
-                         </View>
-                     </View>
-                  </View>
-                     </Button>
-
-            <Button
-               noDefaultStyles={true}
-               onPress={this.onPress.bind(this)}
-            >
-            <View style={styles.notes}>
-               <View style={styles.notes_notes}>
-                    <Text style={styles.notes_text}>Ace my presentation in CS class.</Text>
-                    <Text style={styles.smaller_text}>AP CS</Text>
-               </View>
-               <View style={styles.notes_selected_date}>
-                <Text style={styles.small_text}>2:00 PM</Text>
-                <Text style={styles.big_text}>1</Text>
-                   <View style={styles.inline}>
-                       <Text style={styles.small_text}>FRI</Text>
-                   </View>
-               </View>
-            </View>
-            </Button>
+                  <Container>
+                    <Content>
+                      <List dataArray={items}
+                        renderRow={(item) =>
+                          <ListItem>
+                            <Thumbnail square size={80} source={require('../assets/images/test-icon.png')} />
+                            <Body>
+                              <Text>{item}</Text>
+                            </Body>
+                            <Right>
+                              // <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                <Icon name="arrow-back" />
+                              // </Button>
+                            </Right>
+                          </ListItem>
+                        }>
+                      </List>
+                    </Content>
+                  </Container>
 
             </ScrollView>
          );
       }
    }
-   onPress() {
+   onPress(item) {
       console.log('wassup');
    }
 
