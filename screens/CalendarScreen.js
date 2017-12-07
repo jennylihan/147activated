@@ -5,21 +5,20 @@ import {
    Platform,
    ScrollView,
    StyleSheet,
-   Text,
    TouchableOpacity,
    View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { range } from 'lodash';
-import Button from '../components/Button';
 import CalendarStrip from 'react-native-calendar-strip';
 import moment from 'moment';
 
 import { MonoText } from '../components/StyledText';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text} from 'native-base';
+
 
 export default class CalendarScreen extends React.Component {
    static navigationOptions = {
@@ -35,23 +34,27 @@ export default class CalendarScreen extends React.Component {
       this.setState({fontLoaded: true});
    }
 
+   constructor(props) {
+      super(props);
+      this.state = {
+         startdatetime: null,
+         enddatetime: null,
+         selectedGoal: 'Financial Aid',
+         text: '',
+         location: '',
+         notes: '',
+         check1: false,
+         check2: false,
+         check3: false,
+         check4: false,
+      };
+   }
+
 
    render() {
 
          return (
-           // <View style= {
-           //   {
-           //     flex:1,
-           //     justifyContent: 'center',
-           //     alignItems: 'center'
-           //   }
-           // }>
-           //  <Text style={{fontSize: 30, color: 'green'}}>Screen 1</Text>
-           //  <Button
-           //    onPress={() => this.props.navigation.navigate('DrawerOpen')}
-           //    title="Open DrawNavigator"
-           //  />
-           //  </View>
+
 
             <ScrollView style={styles.container}>
             <View>
@@ -73,59 +76,72 @@ export default class CalendarScreen extends React.Component {
                   noDefaultStyles={true}
                   onPress={this.onPress.bind(this)}
                  >
-                  <View style={styles.notes}>
-                     <View style={styles.notes_notes}>
-                          <Text style={styles.notes_text_done}>Turn in UC applications!!!</Text>
-                          <Text style={styles.smaller_text}>College Applications</Text>
-                     </View>
-                     <View style={styles.notes_selected_date}>
-                      <Text style={styles.small_text_done}>4:00 PM</Text>
-                      <Text style={styles.big_text_done}>29</Text>
-                         <View style={styles.inline}>
-                             <Text style={styles.small_text_done}>WED</Text>
-                         </View>
-                     </View>
-                  </View>
                   	</Button>
 
 
-                     <Button
-                     noDefaultStyles={true}
-                     onPress={this.onPress.bind(this)}
-                    >
-                  <View style={styles.notes}>
-                     <View style={styles.notes_notes}>
-                          <Text style={styles.notes_text_done}>Work on FAFSA</Text>
-                          <Text style={styles.smaller_text}>Financial Aid</Text>
-                     </View>
-                     <View style={styles.notes_selected_date}>
-                      <Text style={styles.small_text_done}>7:00 PM</Text>
-                      <Text style={styles.big_text_done}>30</Text>
-                         <View style={styles.inline}>
-                             <Text style={styles.small_text_done}>THUR</Text>
-                         </View>
-                     </View>
-                  </View>
-                     </Button>
+                     <View style={styles.notes}>
+                       <View style={styles.notes_notes}>
+                             <Text style={styles.notes_text_done}>
+                             Request Stanford waiver
+                             </Text>
 
-            <Button
-               noDefaultStyles={true}
-               onPress={this.onPress.bind(this)}
-            >
-            <View style={styles.notes}>
-               <View style={styles.notes_notes}>
-                    <Text style={styles.notes_text}>Ace my presentation in CS class.</Text>
-                    <Text style={styles.smaller_text}>AP CS</Text>
-               </View>
-               <View style={styles.notes_selected_date}>
-                <Text style={styles.small_text}>2:00 PM</Text>
-                <Text style={styles.big_text}>1</Text>
-                   <View style={styles.inline}>
-                       <Text style={styles.small_text}>FRI</Text>
-                   </View>
-               </View>
-            </View>
-            </Button>
+                             <Text style={styles.subtext}>
+                                Mr. Burns has it!
+                             </Text>
+                                <Text style={styles.subtext}>
+                              Office C-303
+                              </Text>
+                             <Text style={styles.smaller_text}>College Applications</Text>
+                       </View>
+                       <View style={styles.notes_selected_date}>
+                          <Text style={styles.small_text_done}>START</Text>
+                          <Text style={styles.big_text_done}>TUE, 12/5</Text>
+                          <Text style={styles.small_text_done}>END</Text>
+                          <Text style={styles.big_text_done}>TUE, 12/5</Text>
+                          </View>
+                    </View>
+
+
+
+                    <View style={styles.notes}>
+                       <View style={styles.notes_notes}>
+                             <Text style={styles.notes_text}>
+                            Fill in FAFSA
+                             </Text>
+
+                             <Text style={styles.subtext}>
+                                Ask parents for tax forms.
+                             </Text>
+                             <Text style={styles.smaller_text}>Financial Aid</Text>
+                       </View>
+                       <View style={styles.notes_selected_date}>
+                           <Text style={styles.small_text}>START</Text>
+                           <Text style={styles.big_text}>FRI, 12/8</Text>
+                           <Text style={styles.small_text}>END</Text>
+                           <Text style={styles.big_text}>SAT, 12/9</Text>
+                           </View>
+                    </View>
+
+                    <View style={styles.notes}>
+                       <View style={styles.notes_notes}>
+                             <Text style={styles.notes_text}>
+                             Finish resume
+                             </Text>
+
+                             <Text style={styles.subtext}>
+                              Look up template from counselor.
+                             </Text>
+                             <Text style={styles.smaller_text}>Professional Work</Text>
+                       </View>
+                       <View style={styles.notes_selected_date}>
+                          <Text style={styles.small_text}>START</Text>
+                          <Text style={styles.big_text}>SUN, 12/10</Text>
+                          <Text style={styles.small_text}>END</Text>
+                          <Text style={styles.big_text}>SUN, 12/10</Text>
+                          </View>
+                    </View>
+
+
 
             </ScrollView>
          );
@@ -177,10 +193,15 @@ const styles = StyleSheet.create({
     },
 
     notes_notes: {
-    flex: 3
+    flex: 1
    },
    notes_text: {
        fontSize: 18
+   },
+   subtext: {
+     marginTop: 5,
+     fontSize: 15,
+     color: '#727272',
    },
 
    notes_selected_date: {
@@ -190,10 +211,19 @@ const styles = StyleSheet.create({
    },
    small_text: {
        fontSize: 15,
+       padding: 2,
+       textAlign: 'right',
    },
    big_text: {
-       fontSize: 50,
-       fontWeight: 'bold'
+       fontSize: 30,
+       fontWeight: 'bold',
+       textAlign: 'right',
+   },
+   big_text_end: {
+       fontSize: 30,
+       fontWeight: 'bold',
+       textAlign: 'right',
+       color: '#f1c40f',
    },
    inline: {
        flexDirection: 'row'
@@ -204,6 +234,7 @@ const styles = StyleSheet.create({
       color: '#c5c5c5',
       position: 'absolute',
       bottom: 0,
+      marginTop: 4,
       fontWeight: 'bold',
    },
    notes_text_done: {
@@ -220,6 +251,19 @@ const styles = StyleSheet.create({
       color: '#c5c5c5',
    },
 
+   notes_text_done: {
+      fontSize: 18,
+      color: '#c5c5c5',
+   },
+   big_text_done: {
+      fontSize: 30,
+      fontWeight: 'bold',
+      color: '#c5c5c5',
+   },
+   small_text_done: {
+      fontSize: 15,
+      color: '#c5c5c5',
+   },
 
 });
 
