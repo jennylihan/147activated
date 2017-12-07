@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 
 import {
   StyleSheet,
-  Text,
   View,
   ScrollView,
   Image,
+  AlertIOS,
   RefreshControl,
 } from 'react-native';
 
 import Button from '../components/Button';
 import NewsItem from '../components/NewsItem';
+import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
 
 
 export default class NotificationsScreen extends React.Component {
@@ -27,7 +28,7 @@ export default class NotificationsScreen extends React.Component {
                     pretext: 'Shared by Kira Pan',
                     title: 'Free Practice SAT Session',
                     summary: 'Goal: SAT\nEvent Date: 12/3/17',
-                    image: require('../assets/images/icons8-exam-50.png')
+                    image: require('../assets/images/icons8-study-50.png')
                 },
                 {
                     pretext: 'Shared by Mr. Doan',
@@ -45,52 +46,96 @@ export default class NotificationsScreen extends React.Component {
             ]
         };
     }
-   //
-   //  let fetchData() {
-   //    setTimeout(180);
-   //
-   // }
+
     _onRefresh() {
         this.setState({refreshing: true});
         this.setState({refreshing: false});
-        // fetchData().then(() => {
-        //    this.setState({refreshing: false});
-        // });
+
      }
 
     render() {
     return (
-        <View style={styles.container}>
+      <Container>
+      <Content>
+        <List>
+          <ListItem avatar>
+            <Left>
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/hex_sat.png')} />
+            </Left>
+            <Body>
+              <Text>Free Practice SAT Session</Text>
+              <Text note>Goal: SAT </Text>
+              <Text note>Event Date: 12/3/17</Text>
+              <Text note>Shared by: Kira Pan</Text>
+            </Body>
+            <Right>
+              <Button onPress={this.onPress.bind(this,"Kira" )}>
+                    <Text style={{color: 'steelblue'}}>{'Add'}</Text>
+              </Button>
+            </Right>
+          </ListItem>
 
+          <ListItem avatar>
+            <Left>
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/hex_professional.png')} />
+            </Left>
+            <Body>
+              <Text>Internship Workshop</Text>
+              <Text note>Goal: Professional Work </Text>
+              <Text note>Event Date: 11/26/17</Text>
+              <Text note>Shared by: Mr. Doan</Text>
+            </Body>
+            <Right>
+            <Button onPress={this.onPress.bind(this, "Mr. Doan")}>
+                  <Text style={{color: 'steelblue'}}>{'Add'}</Text>
+            </Button>
+            </Right>
+          </ListItem>
 
-            <ScrollView style={styles.news_container}
-            refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-          />
-        }>
-            { this.renderNews() }
-            </ScrollView>
-
-        </View>
+          <ListItem avatar>
+            <Left>
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/hex_collegeapps.png')} />
+            </Left>
+            <Body>
+              <Text>College Fair</Text>
+              <Text note>Goal: Research </Text>
+              <Text note>Event Date: 10/16/17</Text>
+              <Text note>Shared by: Silvia Villagomez</Text>
+            </Body>
+            <Right>
+            <Button onPress={this.onPress.bind(this, "Silvia")}>
+                  <Text style={{color: 'steelblue'}}>{'Add'}</Text>
+            </Button>
+            </Right>
+          </ListItem>
+        </List>
+      </Content>
+      </Container>
     );
     }
 
-    renderNews() {
-        return this.state.news_items.map((news, index) => {
-            return <NewsItem key={index} index={index} news={news} />
-        });
-    }
-
-    press () {
-      //on press, lead to the task itself
+    onPress (name) {
+      AlertIOS.alert(
+          'Add '+ name + '\'s task?',
+            'This task shared by ' + name + ' will be added to your own calendar.',
+     [
+       {text: 'Cancel', onPress: () => console.log('Cancelled'), style: 'cancel'},
+       {text: 'Add', onPress: () => AlertIOS.alert('Added Successfully!', 'Better get to work. :)', [{text:'Ok'}])},
+     ],
+    );
     }
 }
 
 
 
 const styles = StyleSheet.create({
+  view: {
+      color: 'steelblue',
+  },
+  // thumbnail: {
+  //   width:10,
+  //   height:10
+  // },
   container: {
         flex: 1
     },
