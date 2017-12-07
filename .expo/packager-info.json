@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19002,
-  "packagerPort": 19004,
-  "packagerPid": 5657,
-  "expoServerNgrokUrl": "https://ah-dwh.jennylihan.cs147activated.exp.direct",
-  "packagerNgrokUrl": "https://packager.ah-dwh.jennylihan.cs147activated.exp.direct",
-  "ngrokPid": 5671
+  "expoServerPort": 19004,
+  "packagerPort": 19005,
+  "packagerPid": 31404,
+  "expoServerNgrokUrl": "https://ah-dwh.angiew.147activated.exp.direct",
+  "packagerNgrokUrl": "https://packager.ah-dwh.angiew.147activated.exp.direct",
+  "ngrokPid": 29866
 }

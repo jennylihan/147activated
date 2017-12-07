@@ -131,27 +131,6 @@ export default class MapsScreen extends React.Component {
       console.log('On click works')
       console.log(a)
 
-       display = "Start Date: "+a.startdatetime+" \n End Date: "+a.startdatetime
-
-      this.state.popupText = display
-
-        this.setState({ popupText: this.state.popupText })
-
-        this.state.popupTitle = a.text
-
-        this.setState({ popupTitle : this.state.popupTitle  })
-
-        this.state.popupCategory= a.category
-
-        this.setState({ popupCategory : this.state.popupCategory  })
-
-        this.state.popupNotes= a.notes
-
-        this.setState({ popupNotes : this.state.popupNotes  })
-
-
-      this.popupDialog.show()
-
    };
 
 
@@ -260,20 +239,12 @@ let Arr = this.state.rows.map((a, i) => {
 
          
 
-
-  <PopupDialog dialogStyle={{backgroundColor: 'rgba(255,255,255,0.85)'}}
-        ref={(popupDialog) => { this.popupDialog = popupDialog; }}
-        width={250}
-        height={350}
-  >
-    <View style= {{backgroundColor: 'transparent', padding: 25}}>
-      <Text style={styles.taskTitle}> {this.state.popupTitle}</Text>
-      <Text style={styles.taskText}> {this.state.popupCategory}</Text>
-      <Text style={styles.taskCategory}> {this.state.popupText}</Text>
-      <Text style={styles.taskNotes}> {this.state.popupNotes}</Text>
-    </View>
-
-  </PopupDialog>
+          <View style={{position:"relative",flex:1}}>
+         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showTask("SAT")}>
+         <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:60,height:60}}>
+         </Image>
+         </TouchableOpacity>
+         </View>
 
         <View style={{flex:1, backgroundColor: 'transparent'}}>
         {/* Rest of the app comes ABOVE the action button component !*/}
