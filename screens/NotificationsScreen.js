@@ -16,6 +16,7 @@ import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnai
 
 export default class NotificationsScreen extends React.Component {
   static navigationOptions = {
+    header: null,
     title: 'Notifications',
   };
 
@@ -55,7 +56,11 @@ export default class NotificationsScreen extends React.Component {
 
     render() {
     return (
+
       <Container>
+      <View style={styles.header}>
+      <Text style={styles.instruction_text}>Notifications</Text>
+      </View>
       <Content>
         <List>
           <ListItem avatar>
@@ -83,7 +88,7 @@ export default class NotificationsScreen extends React.Component {
               <Text>Internship Workshop</Text>
               <Text note>Goal: Professional Work </Text>
               <Text note>Event Date: 11/26/17</Text>
-              <Text note>Shared by: Mr. Doan</Text>
+              <Text note>Shared by: Tom Loreno</Text>
             </Body>
             <Right>
             <Button onPress={this.onPress.bind(this, "Mr. Doan")}>
@@ -94,16 +99,32 @@ export default class NotificationsScreen extends React.Component {
 
           <ListItem avatar>
             <Left>
-              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/hex_collegeapps.png')} />
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/hex_summeropp.png')} />
             </Left>
             <Body>
-              <Text>College Fair</Text>
-              <Text note>Goal: Research </Text>
-              <Text note>Event Date: 10/16/17</Text>
-              <Text note>Shared by: Silvia Villagomez</Text>
+              <Text>Talk to Mrs. Bailey about SIMR Application</Text>
+              <Text note>Goal: Summer Opportunities</Text>
+              <Text note>Event Date: 10/17/17</Text>
+              <Text note>Shared by: Mrs. Bailey</Text>
             </Body>
             <Right>
-            <Button onPress={this.onPress.bind(this, "Silvia")}>
+            <Button onPress={this.onPress.bind(this, "Mrs. Bailey")}>
+                  <Text style={{color: 'steelblue'}}>{'Add'}</Text>
+            </Button>
+            </Right>
+          </ListItem>
+          <ListItem avatar>
+            <Left>
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/hex_sat.png')} />
+            </Left>
+            <Body>
+              <Text>Study sesh for SAT</Text>
+              <Text note>Goal: SAT</Text>
+              <Text note>Event Date: 10/17/17</Text>
+              <Text note>Shared by: Minh Le</Text>
+            </Body>
+            <Right>
+            <Button onPress={this.onPress.bind(this, "Minh")}>
                   <Text style={{color: 'steelblue'}}>{'Add'}</Text>
             </Button>
             </Right>
@@ -137,16 +158,23 @@ const styles = StyleSheet.create({
   //   height:10
   // },
   container: {
-        flex: 1
-    },
-    header: {
-        flexDirection: 'row',
-        backgroundColor: '#f1c40f',
-        padding: 20,
-        justifyContent: 'center',
-        borderBottomColor: '#f1c40f',
-        borderBottomWidth: 1
-    },
+     flex: 1,
+     backgroundColor: '#f1c40f',
+  },
+      instruction_text: {
+       color: '#fff',
+       fontSize: 20,
+       fontFamily: 'Avenir',
+       fontWeight: '700',
+   },
+       header: {
+       opacity: 0.8,
+       flexDirection: 'row',
+       backgroundColor: '#f1c40f',
+       padding: 25,
+       justifyContent: 'center',
+       height: 80,
+   },
     header_button: {
         flex: 1,
     },
