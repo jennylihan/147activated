@@ -43,10 +43,6 @@ export default class CalendarScreen extends React.Component {
          text: '',
          location: '',
          notes: '',
-         check1: false,
-         check2: false,
-         check3: false,
-         check4: false,
       };
    }
 
