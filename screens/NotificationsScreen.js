@@ -5,6 +5,7 @@ import {
   View,
   ScrollView,
   Image,
+  AlertIOS,
   RefreshControl,
 } from 'react-native';
 
@@ -27,7 +28,7 @@ export default class NotificationsScreen extends React.Component {
                     pretext: 'Shared by Kira Pan',
                     title: 'Free Practice SAT Session',
                     summary: 'Goal: SAT\nEvent Date: 12/3/17',
-                    image: require('../assets/images/icons8-exam-50.png')
+                    image: require('../assets/images/icons8-study-50.png')
                 },
                 {
                     pretext: 'Shared by Mr. Doan',
@@ -59,7 +60,7 @@ export default class NotificationsScreen extends React.Component {
         <List>
           <ListItem avatar>
             <Left>
-              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/icons8-exam-50.png')} />
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/hex_sat.png')} />
             </Left>
             <Body>
               <Text>Free Practice SAT Session</Text>
@@ -68,13 +69,15 @@ export default class NotificationsScreen extends React.Component {
               <Text note>Shared by: Kira Pan</Text>
             </Body>
             <Right>
-              <Text style={styles.view}>View</Text>
+              <Button onPress={this.onPress.bind(this)}>
+                    <Text style={{color: 'steelblue'}}>{'Add'}</Text>
+              </Button>
             </Right>
           </ListItem>
 
           <ListItem avatar>
             <Left>
-              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/icons8-briefcase-48.png')} />
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/hex_professional.png')} />
             </Left>
             <Body>
               <Text>Internship Workshop</Text>
@@ -83,13 +86,15 @@ export default class NotificationsScreen extends React.Component {
               <Text note>Shared by: Mr. Doan</Text>
             </Body>
             <Right>
-              <Text style={styles.view}>View</Text>
+            <Button onPress={this.onPress.bind(this)}>
+                  <Text style={{color: 'steelblue'}}>{'Add'}</Text>
+            </Button>
             </Right>
           </ListItem>
 
           <ListItem avatar>
             <Left>
-              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/icons8-study-50.png')} />
+              <Thumbnail style={{marginLeft:10}} source={require('../assets/images/hex_collegeapps.png')} />
             </Left>
             <Body>
               <Text>College Fair</Text>
@@ -98,7 +103,9 @@ export default class NotificationsScreen extends React.Component {
               <Text note>Shared by: Silvia Villagomez</Text>
             </Body>
             <Right>
-              <Text style={styles.view}>View</Text>
+            <Button onPress={this.onPress.bind(this)}>
+                  <Text style={{color: 'steelblue'}}>{'Add'}</Text>
+            </Button>
             </Right>
           </ListItem>
         </List>
@@ -107,7 +114,15 @@ export default class NotificationsScreen extends React.Component {
     );
     }
 
-    press () {
+    onPress () {
+      AlertIOS.alert(
+          'Add Kira\'s task?',
+            'This task shared by Kira will be added to your own calendar.',
+     [
+       {text: 'Cancel', onPress: () => console.log('Cancelled'), style: 'cancel'},
+       {text: 'Add', onPress: () => AlertIOS.alert('Added Successfully!', 'Yay', [{text:'Ok'}])},
+     ],
+    );
     }
 }
 
