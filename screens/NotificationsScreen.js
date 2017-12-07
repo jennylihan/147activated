@@ -69,7 +69,7 @@ export default class NotificationsScreen extends React.Component {
               <Text note>Shared by: Kira Pan</Text>
             </Body>
             <Right>
-              <Button onPress={this.onPress.bind(this)}>
+              <Button onPress={this.onPress.bind(this,"Kira" )}>
                     <Text style={{color: 'steelblue'}}>{'Add'}</Text>
               </Button>
             </Right>
@@ -86,7 +86,7 @@ export default class NotificationsScreen extends React.Component {
               <Text note>Shared by: Mr. Doan</Text>
             </Body>
             <Right>
-            <Button onPress={this.onPress.bind(this)}>
+            <Button onPress={this.onPress.bind(this, "Mr. Doan")}>
                   <Text style={{color: 'steelblue'}}>{'Add'}</Text>
             </Button>
             </Right>
@@ -103,7 +103,7 @@ export default class NotificationsScreen extends React.Component {
               <Text note>Shared by: Silvia Villagomez</Text>
             </Body>
             <Right>
-            <Button onPress={this.onPress.bind(this)}>
+            <Button onPress={this.onPress.bind(this, "Silvia")}>
                   <Text style={{color: 'steelblue'}}>{'Add'}</Text>
             </Button>
             </Right>
@@ -114,13 +114,13 @@ export default class NotificationsScreen extends React.Component {
     );
     }
 
-    onPress () {
+    onPress (name) {
       AlertIOS.alert(
-          'Add Kira\'s task?',
-            'This task shared by Kira will be added to your own calendar.',
+          'Add '+ name + '\'s task?',
+            'This task shared by ' + name + ' will be added to your own calendar.',
      [
        {text: 'Cancel', onPress: () => console.log('Cancelled'), style: 'cancel'},
-       {text: 'Add', onPress: () => AlertIOS.alert('Added Successfully!', 'Yay', [{text:'Ok'}])},
+       {text: 'Add', onPress: () => AlertIOS.alert('Added Successfully!', 'Better get to work. :)', [{text:'Ok'}])},
      ],
     );
     }
