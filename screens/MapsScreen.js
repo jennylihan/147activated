@@ -131,6 +131,9 @@ export default class MapsScreen extends React.Component {
       console.log('On click works')
       console.log(a)
 
+            const { navigate } = this.props.navigation;
+      navigate('GoalChecklistScreen', { user: 'Lucy' });
+
        display = "Start Date: "+a.startdatetime+" \n End Date: "+a.startdatetime
 
       this.state.popupText = display
@@ -255,23 +258,17 @@ let Arr = this.state.rows.map((a, i) => {
 
 
             <View style={styles.header}>
-            <Text style={styles.instruction_text}>My College Roadmap </Text>
+            <Text style={styles.instruction_text}>My Path to College </Text>
             </View>
-
          
+            {Arr}
 
 
   <PopupDialog dialogStyle={{backgroundColor: 'rgba(255,255,255,0.85)'}}
         ref={(popupDialog) => { this.popupDialog = popupDialog; }}
         width={250}
         height={350}
-  >
-    <View style= {{backgroundColor: 'transparent', padding: 25}}>
-      <Text style={styles.taskTitle}> {this.state.popupTitle}</Text>
-      <Text style={styles.taskText}> {this.state.popupCategory}</Text>
-      <Text style={styles.taskCategory}> {this.state.popupText}</Text>
-      <Text style={styles.taskNotes}> {this.state.popupNotes}</Text>
-    </View>
+  > 
 
   </PopupDialog>
 
