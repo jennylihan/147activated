@@ -15,7 +15,6 @@ import {
    ImageBackground,
    PanResponder,
    Animated,
-   Button,
    Alert, AppRegistry,
    TouchableHighlight,
 } from 'react-native';
@@ -30,7 +29,7 @@ import MonoText from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 import RootNavigation from '../navigation/RootNavigation';
 
-import { Container, Header, Left, Right, Icon, Drawer, Grid, Col, Row } from 'native-base';
+import { Container, Header, Left, Right, Icon, Drawer, Grid, Col, Row,Button } from 'native-base';
 import SideBar from '../SideBar'
 
 const SideMenu = require('react-native-side-menu');
@@ -127,7 +126,7 @@ export default class MapsScreen extends React.Component {
    }
 
 
-   showTask = (a) => {
+   showGoal = (a) => {
       console.log('On click works')
       console.log(a)
 
@@ -184,8 +183,8 @@ let Arr = this.state.rows.map((a, i) => {
       switch (a.icon) {
     case 'pen-icon': return(
           <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
-         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
-         <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showGoal(a)}>
+         <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:100,height:100}}>
          </Image>
          </TouchableOpacity>
          </View>
@@ -194,8 +193,8 @@ let Arr = this.state.rows.map((a, i) => {
       )
     case 'study-icon': return(
         <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
-         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
-         <Image source={require('../assets/images/study-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showGoal(a)}>
+         <Image source={require('../assets/images/study-icon.png')} style={{resizeMode:'cover',width:100,height:100}}>
          </Image>
          </TouchableOpacity>
          </View>
@@ -205,8 +204,8 @@ let Arr = this.state.rows.map((a, i) => {
       )
     case 'test-icon': return (
        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
-         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
-         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showGoal(a)}>
+         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:100,height:100}}>
          </Image>
          </TouchableOpacity>
          </View>
@@ -217,8 +216,8 @@ let Arr = this.state.rows.map((a, i) => {
     }
 
        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
-         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
-         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showGoal(a)}>
+         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:100,height:100}}>
          </Image>
          </TouchableOpacity>
          </View>
@@ -234,11 +233,73 @@ let Arr = this.state.rows.map((a, i) => {
 
 
             <View style={styles.header}>
-            <Text style={styles.instruction_text}>My College Roadmap </Text>
+            <Text style={styles.instruction_text}>My Path to College  </Text>
             </View>
 
 
-        <View style={{flex:1, backgroundColor: 'transparent'}}>
+            <Grid>
+    
+
+
+           <Col>
+
+
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Professional")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Professional")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+
+               
+               
+
+          </Col>
+           <Col>
+
+
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("FinAid")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("FinAid")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("CollegeApps")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("CollegeApps")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("SAT")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("SAT")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("SAT")}></Row>
+               
+               
+
+          </Col>
+                     <Col>
+
+
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Summer")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Summer")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Research")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Research")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+               
+
+          </Col>
+
+
+
+
+
+</Grid>
+                 <View style={{flex:1, backgroundColor: 'transparent'}}>
         {/* Rest of the app comes ABOVE the action button component !*/}
          <ActionButton buttonColor="#f1c40f">
          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={this.pressAddTask.bind(this)}>
@@ -249,6 +310,7 @@ let Arr = this.state.rows.map((a, i) => {
          </ActionButton.Item>
          </ActionButton>
         </View>
+
          </ImageBackground>
 
 
