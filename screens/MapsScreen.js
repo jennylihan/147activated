@@ -30,7 +30,7 @@ import MonoText from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 import RootNavigation from '../navigation/RootNavigation';
 
-import { Container, Header, Left, Right, Icon, Drawer } from 'native-base';
+import { Container, Header, Left, Right, Icon, Drawer, Grid, Col, Row } from 'native-base';
 import SideBar from '../SideBar'
 
 const SideMenu = require('react-native-side-menu');
@@ -237,14 +237,6 @@ let Arr = this.state.rows.map((a, i) => {
             <Text style={styles.instruction_text}>My College Roadmap </Text>
             </View>
 
-         
-
-          <View style={{position:"relative",flex:1}}>
-         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showTask("SAT")}>
-         <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:60,height:60}}>
-         </Image>
-         </TouchableOpacity>
-         </View>
 
         <View style={{flex:1, backgroundColor: 'transparent'}}>
         {/* Rest of the app comes ABOVE the action button component !*/}
