@@ -17,6 +17,7 @@ import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnai
 export default class NotificationsScreen extends React.Component {
   static navigationOptions = {
     title: 'Notifications',
+    header: null,
   };
 
     constructor(props) {
@@ -57,6 +58,8 @@ export default class NotificationsScreen extends React.Component {
     return (
       <Container>
       <Content>
+      <Text style={styles.header}>Notifications</Text>
+
         <List>
           <ListItem avatar>
             <Left>
@@ -140,12 +143,19 @@ const styles = StyleSheet.create({
         flex: 1
     },
     header: {
-        flexDirection: 'row',
+        // flexDirection: 'row',
+        // backgroundColor: '#f1c40f',
+        // padding: 20,
+        // justifyContent: 'center',
+        // borderBottomColor: '#f1c40f',
+        // borderBottomWidth: 1
+        color: '#fff',
+        paddingTop: 30,
+        paddingBottom: 15,
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
         backgroundColor: '#f1c40f',
-        padding: 20,
-        justifyContent: 'center',
-        borderBottomColor: '#f1c40f',
-        borderBottomWidth: 1
     },
     header_button: {
         flex: 1,

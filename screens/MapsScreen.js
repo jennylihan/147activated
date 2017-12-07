@@ -15,7 +15,6 @@ import {
    ImageBackground,
    PanResponder,
    Animated,
-   Button,
    Alert, AppRegistry,
    TouchableHighlight,
 } from 'react-native';
@@ -30,7 +29,7 @@ import MonoText from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 import RootNavigation from '../navigation/RootNavigation';
 
-import { Container, Header, Left, Right, Icon, Drawer } from 'native-base';
+import { Container, Header, Left, Right, Icon, Drawer, Grid, Col, Row,Button } from 'native-base';
 import SideBar from '../SideBar'
 
 const SideMenu = require('react-native-side-menu');
@@ -127,30 +126,9 @@ export default class MapsScreen extends React.Component {
    }
 
 
-   showTask = (a) => {
+   showGoal = (a) => {
       console.log('On click works')
       console.log(a)
-
-       display = "Start Date: "+a.startdatetime+" \n End Date: "+a.startdatetime
-
-      this.state.popupText = display
-
-        this.setState({ popupText: this.state.popupText })
-
-        this.state.popupTitle = a.text
-
-        this.setState({ popupTitle : this.state.popupTitle  })
-
-        this.state.popupCategory= a.category
-
-        this.setState({ popupCategory : this.state.popupCategory  })
-
-        this.state.popupNotes= a.notes
-
-        this.setState({ popupNotes : this.state.popupNotes  })
-
-
-      this.popupDialog.show()
 
    };
 
@@ -205,8 +183,8 @@ let Arr = this.state.rows.map((a, i) => {
       switch (a.icon) {
     case 'pen-icon': return(
           <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
-         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
-         <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showGoal(a)}>
+         <Image source={require('../assets/images/pen-icon.png')} style={{resizeMode:'cover',width:100,height:100}}>
          </Image>
          </TouchableOpacity>
          </View>
@@ -215,8 +193,8 @@ let Arr = this.state.rows.map((a, i) => {
       )
     case 'study-icon': return(
         <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
-         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
-         <Image source={require('../assets/images/study-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         <TouchableOpacity style={styles.CircleShapeView} onPress={() => this.showGoal(a)}>
+         <Image source={require('../assets/images/study-icon.png')} style={{resizeMode:'cover',width:100,height:100}}>
          </Image>
          </TouchableOpacity>
          </View>
@@ -226,8 +204,8 @@ let Arr = this.state.rows.map((a, i) => {
       )
     case 'test-icon': return (
        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
-         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
-         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showGoal(a)}>
+         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:100,height:100}}>
          </Image>
          </TouchableOpacity>
          </View>
@@ -238,8 +216,8 @@ let Arr = this.state.rows.map((a, i) => {
     }
 
        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
-         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showTask(a)}>
-         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:40,height:40}}>
+         <TouchableOpacity  style={styles.CircleShapeView} onPress={() => this.showGoal(a)}>
+         <Image source={require('../assets/images/test-icon.png')} style={{resizeMode:'cover',width:100,height:100}}>
          </Image>
          </TouchableOpacity>
          </View>
@@ -255,27 +233,86 @@ let Arr = this.state.rows.map((a, i) => {
 
 
             <View style={styles.header}>
-            <Text style={styles.instruction_text}>My College Roadmap </Text>
+
+
+            <View style={styles.imagebox}>
+            <TouchableOpacity onPress={()=>{console.log('pressed Settings')}}>
+            <Image
+                           style={styles.stretch}
+                         source={require('../assets/images/settings.png')}
+                       />
+                       </TouchableOpacity>
+                       </View>
+            <View>
+            <Text style={styles.instruction_text}>
+             My Path to College  </Text>
+             </View>
             </View>
 
-         
+
+            <Grid>
 
 
-  <PopupDialog dialogStyle={{backgroundColor: 'rgba(255,255,255,0.85)'}}
-        ref={(popupDialog) => { this.popupDialog = popupDialog; }}
-        width={250}
-        height={350}
-  >
-    <View style= {{backgroundColor: 'transparent', padding: 25}}>
-      <Text style={styles.taskTitle}> {this.state.popupTitle}</Text>
-      <Text style={styles.taskText}> {this.state.popupCategory}</Text>
-      <Text style={styles.taskCategory}> {this.state.popupText}</Text>
-      <Text style={styles.taskNotes}> {this.state.popupNotes}</Text>
-    </View>
 
-  </PopupDialog>
+           <Col>
 
-        <View style={{flex:1, backgroundColor: 'transparent'}}>
+
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Professional")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Professional")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+
+
+
+
+          </Col>
+           <Col>
+
+
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("FinAid")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("FinAid")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("CollegeApps")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("CollegeApps")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("SAT")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("SAT")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("SAT")}></Row>
+
+
+
+          </Col>
+                     <Col>
+
+
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Summer")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Summer")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Research")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Research")}></Row>
+                    <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
+
+
+          </Col>
+
+
+
+
+
+</Grid>
+                 <View style={{flex:1, backgroundColor: 'transparent'}}>
         {/* Rest of the app comes ABOVE the action button component !*/}
          <ActionButton buttonColor="#f1c40f">
          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={this.pressAddTask.bind(this)}>
@@ -286,6 +323,7 @@ let Arr = this.state.rows.map((a, i) => {
          </ActionButton.Item>
          </ActionButton>
         </View>
+
          </ImageBackground>
 
 
@@ -313,7 +351,13 @@ const styles = StyleSheet.create({
       height: 22,
       color: 'white',
    },
-
+   stretch: {
+    width: 40,
+    height: 40,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+},
 
 
 
@@ -390,20 +434,41 @@ const styles = StyleSheet.create({
 
    },
 
+   imagebox: {
+      flex: 1
+   },
+
        instruction_text: {
+        // color: '#fff',
+        // fontSize: 20,
+        // fontFamily: 'Avenir',
+        // fontWeight: '700',
+
         color: '#fff',
         fontSize: 20,
-        fontFamily: 'Avenir',
-        fontWeight: '700',
+        fontWeight: 'bold',
+        textAlign: 'left',
     },
 
+    stretch: {
+    width: 30,
+    height: 30,
+    position: 'absolute',
+    top: 0,
+    left: 5,
+},
         header: {
-        opacity: 0.8,
-        flexDirection: 'row',
-        backgroundColor: '#f1c40f',
-        padding: 25,
-        justifyContent: 'center',
-        height: 80,
+         backgroundColor: '#f1c40f',
+         paddingBottom: 15,
+         paddingTop: 25,
+         flexDirection: 'row',
+         justifyContent: 'space-around'
+         //flex: 2
+        // backgroundColor: '#f1c40f',
+        // marginTop: 30,
+        // padding: 15,
+        // justifyContent: 'center',
+
 
 
 
