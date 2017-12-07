@@ -30,7 +30,7 @@ import MonoText from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 import RootNavigation from '../navigation/RootNavigation';
 
-import { Container, Header, Left, Right, Icon, Drawer } from 'native-base';
+import { Container, Header, Left, Right, Icon, Drawer, Grid, Col, Row } from 'native-base';
 import SideBar from '../SideBar'
 
 const SideMenu = require('react-native-side-menu');
@@ -130,27 +130,6 @@ export default class MapsScreen extends React.Component {
    showTask = (a) => {
       console.log('On click works')
       console.log(a)
-
-       display = "Start Date: "+a.startdatetime+" \n End Date: "+a.startdatetime
-
-      this.state.popupText = display
-
-        this.setState({ popupText: this.state.popupText })
-
-        this.state.popupTitle = a.text
-
-        this.setState({ popupTitle : this.state.popupTitle  })
-
-        this.state.popupCategory= a.category
-
-        this.setState({ popupCategory : this.state.popupCategory  })
-
-        this.state.popupNotes= a.notes
-
-        this.setState({ popupNotes : this.state.popupNotes  })
-
-
-      this.popupDialog.show()
 
    };
 
@@ -258,22 +237,6 @@ let Arr = this.state.rows.map((a, i) => {
             <Text style={styles.instruction_text}>My College Roadmap </Text>
             </View>
 
-         
-
-
-  <PopupDialog dialogStyle={{backgroundColor: 'rgba(255,255,255,0.85)'}}
-        ref={(popupDialog) => { this.popupDialog = popupDialog; }}
-        width={250}
-        height={350}
-  >
-    <View style= {{backgroundColor: 'transparent', padding: 25}}>
-      <Text style={styles.taskTitle}> {this.state.popupTitle}</Text>
-      <Text style={styles.taskText}> {this.state.popupCategory}</Text>
-      <Text style={styles.taskCategory}> {this.state.popupText}</Text>
-      <Text style={styles.taskNotes}> {this.state.popupNotes}</Text>
-    </View>
-
-  </PopupDialog>
 
         <View style={{flex:1, backgroundColor: 'transparent'}}>
         {/* Rest of the app comes ABOVE the action button component !*/}
