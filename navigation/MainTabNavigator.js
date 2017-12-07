@@ -23,11 +23,11 @@ export default TabNavigator(
       screen: NotificationsScreen,
     },
     Add: {
-       screen: AddScreen
+       screen: AddScreen,
     },
     Goal: {
-     screen: GoalScreen
-    },
+      screen: GoalScreen,
+    }
   },
   {
     navigationOptions: ({ navigation }) => ({

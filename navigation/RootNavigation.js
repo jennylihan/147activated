@@ -6,6 +6,8 @@ import MainTabNavigator from './MainTabNavigator';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 import Login from '../screens/Login'
 import AddScreen from '../screens/AddScreen'
+import GoalScreen from '../screens/GoalScreen'
+import TaskScreen from '../screens/TaskScreen'
 
 const RootStackNavigator = StackNavigator(
   {
@@ -17,6 +19,12 @@ const RootStackNavigator = StackNavigator(
     },
     Add: {
       screen: AddScreen,
+    },
+    GoalScreen: {
+      screen: GoalScreen,
+    },
+    TaskScreen: {
+      screen: TaskScreen
     }
   },
   {

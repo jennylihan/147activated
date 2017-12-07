@@ -47,7 +47,7 @@ export default class MapsScreen extends React.Component {
 
 
    static navigationOptions = {
-      title: 'My Map',
+      title: 'My Path',
        header: null,
    };
 
@@ -63,44 +63,77 @@ export default class MapsScreen extends React.Component {
       this.state.popupCategory= "category"
       this.state.start = true
 
-
-       tasks = [{text:'Register for SAT',
-         category: 'SAT',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-         icon: 'study-icon',
-         notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-       },
-
-       {text:'Take SAT',
-         category: 'SAT',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-         icon: 'test-icon',
-         notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
-       },
-
-       {text:'Sign Up for basketball tryouts',
-         category: 'SAT',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-          icon: 'pen-icon',
-          notes: ' Notes: \n - Meet with coach \n  - make sure schedule aligns with classes'
-
-       },
-
-       {text:'Fill Out FAFSA',
-         category: 'Finacial Aid',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-         icon: 'study-icon',
-         notes: ' Notes: \n - Get parents income information \n  - get college id codes'
-       },
-
+      this.state.goals = [
+        {
+        name: 'Professional',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Apply for FAFSA',
+           category: 'Financial Aid',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+        {
+        name: 'Financial Aid',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Apply for FAFSA',
+           category: 'Financial Aid',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+        {
+        name: 'College Apps',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Apply for FAFSA',
+           category: 'Financial Aid',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+        {
+        name: 'Summer Opportunities',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Apply for FAFSA',
+           category: 'Financial Aid',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+        {
+        name: 'SAT',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Apply for FAFSA',
+           category: 'Financial Aid',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+        {
+        name: 'College Apps',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Apply for FAFSA',
+           category: 'Financial Aid',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
        ];
 
          try {
-    AsyncStorage.setItem('@activated:tasks', JSON.stringify(tasks));
+    AsyncStorage.setItem('@activated:goals', JSON.stringify(tasks));
 } catch (error) {
   // Error saving data
     console.log("Failed to set data from storage")
@@ -129,7 +162,8 @@ export default class MapsScreen extends React.Component {
    showGoal = (a) => {
       console.log('On click works')
       console.log(a)
-
+      const { navigate } = this.props.navigation;
+      navigate('GoalScreen', {goalName: ''});
    };
 
 
@@ -238,7 +272,7 @@ let Arr = this.state.rows.map((a, i) => {
 
 
             <Grid>
-    
+
 
 
            <Col>
@@ -255,8 +289,8 @@ let Arr = this.state.rows.map((a, i) => {
                     <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
                     <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
 
-               
-               
+
+
 
           </Col>
            <Col>
@@ -273,8 +307,8 @@ let Arr = this.state.rows.map((a, i) => {
                     <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("SAT")}></Row>
                     <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("SAT")}></Row>
                     <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("SAT")}></Row>
-               
-               
+
+
 
           </Col>
                      <Col>
@@ -290,7 +324,7 @@ let Arr = this.state.rows.map((a, i) => {
                     <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Research")}></Row>
                     <Row style={{ height: 50, backgroundColor: 'rgba(366,88,34,0)' }} onPress={() => this.showGoal("Research")}></Row>
                     <Row style={{ height: 50, backgroundColor: 'rgba(366,255,34,0)' }}></Row>
-               
+
 
           </Col>
 
@@ -299,17 +333,6 @@ let Arr = this.state.rows.map((a, i) => {
 
 
 </Grid>
-                 <View style={{flex:1, backgroundColor: 'transparent'}}>
-        {/* Rest of the app comes ABOVE the action button component !*/}
-         <ActionButton buttonColor="#f1c40f">
-         <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={this.pressAddTask.bind(this)}>
-         <Icon name="ios-create" style={styles.actionButtonIcon} />
-         </ActionButton.Item>
-         <ActionButton.Item buttonColor='#3498db' title="New Goal" onPress={() => {}}>
-         <Icon name="ios-navigate" style={styles.actionButtonIcon} />
-         </ActionButton.Item>
-         </ActionButton>
-        </View>
 
          </ImageBackground>
 
