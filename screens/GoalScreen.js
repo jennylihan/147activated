@@ -50,21 +50,7 @@ export default class GoalScreen extends React.Component {
    render() {
      const { params } = this.props.navigation.state;
 
-     var items = [{text:'Register for SAT',
-       category: 'SAT',
-       startdatetime: '2017-10-5',
-       enddatetime: '2017-10-5',
-       icon: 'study-icon',
-       notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-     },
-
-     {text:'Take SAT',
-       category: 'SAT',
-       startdatetime: '2017-10-5',
-       enddatetime: '2017-10-5',
-       icon: 'test-icon',
-       notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
-     }];
+     var items = params.goalobj.tasks;
       return (
          <ScrollView behavior="padding" style={styles.container}>
             <Container>

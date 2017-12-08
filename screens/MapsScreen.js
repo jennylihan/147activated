@@ -68,8 +68,8 @@ export default class MapsScreen extends React.Component {
         name: 'Professional',
         priority: 2,
         icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Apply for FAFSA',
-           category: 'Financial Aid',
+        tasks: [{text:'Apply for a Job',
+           category: 'Professional',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
@@ -90,8 +90,8 @@ export default class MapsScreen extends React.Component {
         name: 'College Apps',
         priority: 2,
         icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Apply for FAFSA',
-           category: 'Financial Aid',
+        tasks: [{text:'Talk to Mr. C for a letter of rec',
+           category: 'College Apps',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
@@ -101,30 +101,36 @@ export default class MapsScreen extends React.Component {
         name: 'Summer Opportunities',
         priority: 2,
         icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Apply for FAFSA',
+        tasks: [{text:'Get yoself a job',
            category: 'Financial Aid',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-           }]
+         },
+         {text:'Ask Cindy about SIMR',
+            category: 'Financial Aid',
+            startdatetime: '2017-10-5',
+            enddatetime: '2017-10-5',
+            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+            }]
         },
         SAT: {
         name: 'SAT',
         priority: 2,
         icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Apply for FAFSA',
+        tasks: [{text:'Register for SAT',
            category: 'Financial Aid',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
            }]
         },
-        CollegeApps: {
-        name: 'College Apps',
+        Research: {
+        name: 'Research',
         priority: 2,
         icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Apply for FAFSA',
-           category: 'Financial Aid',
+        tasks: [{text:'Find my mentor',
+           category: 'Research',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
