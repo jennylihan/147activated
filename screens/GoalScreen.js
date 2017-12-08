@@ -26,7 +26,7 @@ import CheckBox from 'react-native-modest-checkbox';
 
 export default class GoalScreen extends React.Component {
    static navigationOptions = ({ navigation }) => ({
-    title: `Goal Details`,
+    title: '',
   });
 
    constructor(props) {
@@ -66,10 +66,20 @@ export default class GoalScreen extends React.Component {
                             label={item.text}
                             onChange={(checked) => console.log('Checked!')}
                           />
+
+                          <Text style={styles.subtext}>
+                           Ask parents for more info.
+                        </Text>
+                           <Text style={styles.subtext}>
+
+                          </Text>
+                        <Text style={styles.smaller_text}>12/7/2017</Text>
+
                           </Body>
                           <Right>
                           <Button
                               onPress={this.onPress.bind(this, item)}
+                              style={{backgroundColor: '#34495e'}}
                           >
                           <Text style={{color: 'white'}}>{'>'}</Text>
                           </Button>
@@ -97,8 +107,8 @@ const styles = StyleSheet.create({
    },
    title: {
       color: '#fff',
-     paddingTop: 30,
-     paddingBottom: 15,
+     paddingTop: 10,
+     paddingBottom: 10,
      fontSize: 20,
      fontWeight: 'bold',
      textAlign: 'center',

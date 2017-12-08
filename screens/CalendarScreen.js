@@ -104,7 +104,7 @@ export default class CalendarScreen extends React.Component {
                              </Text>
 
                              <Text style={styles.subtext}>
-                                Ask parents for tax forms.
+                                Ask parents for more info.
                              </Text>
                              <Text style={styles.smaller_text}>Financial Aid</Text>
                        </View>
