@@ -71,86 +71,229 @@ export default class MapsScreen extends React.Component {
       //this.onValueChange = this.onValueChange.bind(this);
 
       var goals = {
-        Professional: {
-        name: 'Professional',
-        priority: 2,
-        icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Apply for a Job',
-           category: 'Professional',
-           startdatetime: '2017-10-5',
-           enddatetime: '2017-10-5',
-           location: 'Home',
-           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-           }]
-        },
-        FinAid: {
-        name: 'Financial Aid',
-        priority: 2,
-        icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Apply for FAFSA',
-           category: 'Financial Aid',
-           startdatetime: '2017-10-5',
-           enddatetime: '2017-10-5',
-           location: 'Home',
-           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-           }]
-        },
-        CollegeApps: {
-        name: 'College Apps',
-        priority: 2,
-        icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Talk to Mr. C for a letter of rec',
-           category: 'College Apps',
-           startdatetime: '2017-10-5',
-           enddatetime: '2017-10-5',
-           location: 'Home',
-           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-           }]
-        },
-        Summer: {
-        name: 'Summer Opportunities',
-        priority: 2,
-        icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Get yoself a job',
-           category: 'Summer',
-           startdatetime: '2017-10-5',
-           enddatetime: '2017-10-5',
-           location: 'Home',
-           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-         },
-         {text:'Ask Cindy about SIMR',
-            category: 'Financial Aid',
-            startdatetime: '2017-10-5',
-            enddatetime: '2017-10-5',
-            location: 'Home',
-            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-            }]
-        },
-        SAT: {
-        name: 'SAT',
-        priority: 2,
-        icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Register for SAT',
-           category: 'Financial Aid',
-           startdatetime: '2017-10-5',
-           enddatetime: '2017-10-5',
-           location: 'Home',
-           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-           }]
-        },
-        Research: {
-        name: 'Research',
-        priority: 2,
-        icon: '../assets/images/hex_financialaid.png',
-        tasks: [{text:'Find my mentor',
-           category: 'Research',
-           startdatetime: '2017-10-5',
-           enddatetime: '2017-10-5',
-           location: 'Home',
-           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-           }]
-        },
-      };
+       Professional: {
+              name: 'Professional',
+              priority: 2,
+              icon: '../assets/images/hex_financialaid.png',
+              tasks: [{text:'Apply for job at library',
+                 category: 'Professional',
+                 startdatetime: '2017-12-5',
+                 enddatetime: '2017-12-5',
+                 location: '1776 Educational Park Dr.',
+                 checked: false,
+                 notes: ' \n - Talk to Chelsea for job application \n  - Scan driver’s license"'
+                 },
+      {text:'Fill out resume template',
+                 category: 'Professional',
+                 startdatetime: '2017-12-9',
+                 enddatetime: '2017-12-12',
+                 location: 'Home',
+                 checked: false,
+                 notes: ' \n - Need to get unofficial transcript”'
+            },
+      {text:'Practice interview skills',
+                 category: 'Professional',
+                 startdatetime: '2017-12-20',
+                 enddatetime: '2017-12-20',
+                 location: 'Home',
+                 checked: false,
+                 notes: ' \n - Get list of questions from Mr. Doan'
+            },
+
+      {text:'Turn in application for tutoring job',
+                 category: 'Professional',
+                 startdatetime: '2017-12-2',
+                 enddatetime: '2017-12-2',
+                 location: 'Home',
+                 checked: true,
+                 notes: ' \n - Don’t forget to attach photo'
+            },
+      ]
+              },
+              FinAid: {
+              name: 'Financial Aid',
+              priority: 2,
+              icon: '../assets/images/hex_financialaid.png',
+              tasks: [
+      {text:'Apply for FAFSA',
+                 category: 'Financial Aid',
+                 startdatetime: '2017-12-24',
+                 enddatetime: '2017-12-24’',
+                 location: 'Home',
+      	checked: false,
+                 notes: '\n - Talk to Mom about tax forms \n  - Get SSN"'
+                 },
+      	{text:'Fill out CSS/Profile',
+                 category: 'Financial Aid',
+                 startdatetime: '2018-1-5',
+                 enddatetime: '2018-1-5',
+                 location: 'Home',
+                 checked: false,
+                 notes: '\n - Need to fill out the tax form"'
+                 },
+      	{text:'Turn counselor form for waiver',
+                 category: 'Financial Aid',
+                 startdatetime: '2018-1-8',
+                 enddatetime: '2018-1-8',
+                 location: 'C-303',
+                 checked: false,
+                 notes: '\n - Turn it into Mr. Burns’'
+                 },
+      	{text:'Fill out the tax form',
+                 category: 'Financial Aid',
+                 startdatetime: '2017-10-9',
+                 enddatetime: '2017-10-9',
+                 location: 'Home',
+                 checked: true,
+                 notes: '\n - Double check numbers with Dad’'
+                 },
+
+
+      ]
+              },
+              CollegeApps: {
+              name: 'College Apps',
+              priority: 2,
+              icon: '../assets/images/hex_financialaid.png',
+              tasks: [
+      {text:'Talk to Mr. C for a letter of rec',
+                 category: 'College Apps',
+                 startdatetime: '2017-10-5',
+                 enddatetime: '2017-10-5',
+                 location: 'D-402',
+                 checked: false,
+                 notes: ' \n - Bring papers to office \n  - Check deadline date'
+                 },
+      {text:'Send score reports',
+                 category: 'College Apps',
+                 startdatetime: '2017-11-5',
+                 enddatetime: '2017-11-5',
+                 location: 'Home',
+                 checked: false,
+                 notes: ' \n - Check CollegeBoard'
+                 },
+
+      {text:'Turn in UC Apps',
+                 category: 'College Apps',
+                 startdatetime: '2017-11-27',
+                 enddatetime: '2017-11-27',
+                 location: 'Home',
+                 checked: true,
+                 notes: ' \n - Check over essay \n  - Make revisions to activities'
+                 },
+
+      ]
+              },
+              Summer: {
+              name: 'Summer Opportunities',
+              priority: 2,
+              icon: '../assets/images/hex_financialaid.png',
+              tasks: [{text:'Apply to SIMR',
+                 category: 'Summer',
+                 startdatetime: '2017-12-5',
+                 enddatetime: '2017-12-5',
+                 location: 'Home',
+                 checked: false,
+                 notes: '\n - Talk to Cindy about it \n  - Register on SlideRoom"'
+               },
+             {text:'Apply to COSMOS',
+                 category: 'Summer',
+                 startdatetime: '2017-12-25',
+                 enddatetime: '2017-12-25',
+                 location: 'Home',
+                 checked: false,
+                 notes: '\n - Write the essays for physics track"'
+               },
+             {text:'Apply to RISE',
+                 category: 'Summer',
+                 startdatetime: '2017-12-30',
+                 enddatetime: '2017-12-30',
+                 location: 'Home',
+                 checked: false,
+                 notes: '\n - Ask Mr. Elwell for letter of rec"'
+               },
+             {text:'Apply to Improv Camp',
+                 category: 'Summer',
+                 startdatetime: '2017-11-30',
+                 enddatetime: '2017-11-30',
+                 location: 'Home',
+                 checked: true,
+                 notes: '\n - Get info at the counselor’s office'
+               },
+      ]
+      },
+              SAT: {
+              name: 'SAT',
+              priority: 2,
+              icon: '../assets/images/hex_financialaid.png',
+              tasks: [{text:'Register for SAT',
+                 category: 'SAT',
+                 startdatetime: '2017-10-15',
+                 enddatetime: '2017-10-15',
+                 location: 'Home',
+      	checked: false,
+                 notes: ' \n - Check dates on college board"'
+                 },
+             {text:'E-mail SAT tutor about schedule',
+                 category: 'SAT',
+                 startdatetime: '2017-11-30',
+                 enddatetime: '2017-11-30',
+                 location: 'Home',
+                 Checked: false,
+                 notes: '\n - Email: aanguyen@gmail.com'
+               },
+             {text:'Do practice test',
+                 category: 'SAT',
+                 startdatetime: '2017-11-30',
+                 enddatetime: '2017-11-30',
+                 location: 'Home',
+                 Checked: true,
+                 notes: '\n - Practice test #1'
+               },
+             {text:'Buy blue book',
+                 category: 'SAT',
+                 startdatetime: '2017-12-3',
+                 enddatetime: '2017-12-3',
+                 location: 'Home',
+                 Checked: true,
+                 notes: '\n - Get money from Mom'
+               },
+      ]
+              },
+              Research: {
+              name: 'Research',
+              priority: 2,
+              icon: '../assets/images/hex_financialaid.png',
+              tasks: [{text:'Look into SCU scholarship packages',
+                 category: 'Research',
+                 startdatetime: '2017-10-5',
+                 enddatetime: '2017-10-5',
+                 location: 'Home',
+                 checked: false,
+                 notes: ' \n - Talk to Maria about forms \n  - Find pamphlets from college day"'
+                 },
+      {text:'Look into Blue and Gold scholarship at UCs',
+                 category: 'Research',
+                 startdatetime: '2017-11-15',
+                 enddatetime: '2017-11-15',
+                 location: 'Home',
+                 checked: false,
+                 notes: ' \n - Check Berkeley website \n  - Fill in initial form"'
+                 },
+
+      {text:'Find a mentor through STARS at school',
+                 category: 'Research',
+                 startdatetime: '2017-8-5',
+                 enddatetime: '2017-8-5',
+                 location: 'Homeroom C-412',
+                 checked: true,
+                 notes: ' \n - Mr. Barn has people to refer to"'
+                 },
+
+      ]
+              },
+            };
+
 
          try {
             AsyncStorage.setItem('@activated:goals', JSON.stringify(goals));
