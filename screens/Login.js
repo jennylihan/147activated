@@ -76,7 +76,7 @@ export default class Login extends Component {
                         <Text style={styles.buttonText}> Login </Text>
                </TouchableOpacity>
 
-               <TouchableOpacity onPress={()=>{console.log('register clicked')}} style={styles.buttonContainer}>
+               <TouchableOpacity onPress={this.pressRegister.bind(this)} style={styles.buttonContainer}>
                          <Text style={styles.buttonText}> Register </Text>
                 </TouchableOpacity>
              </Content>
@@ -86,7 +86,9 @@ export default class Login extends Component {
   }
 
   pressRegister () {
-
+    console.log("in tutorial??")
+    const { navigate } = this.props.navigation;
+    navigate('Tutorial1');
   }
 
   pressLogin () {

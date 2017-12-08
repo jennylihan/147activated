@@ -1,6 +1,7 @@
 import React from 'react';
 import {
    AppRegistry,
+   AlertIOS,
    Image,
    Platform,
    StyleSheet,
@@ -77,6 +78,47 @@ export default class AddScreen extends React.Component {
      onNewGoal() {
         console.log('WANTS TO MAKE A NEW GOAL.');
      }
+
+     async saveForm(){
+       console.log("pressed save");
+       var newtask = {
+         startdatetime: this.state.startdatetime,
+         enddatetime: this.state.enddatetime,
+         category: this.state.selectedGoal,
+         text: this.state.text,
+         location: this.state.location,
+         notes: this.state.notes,
+         checked: false,
+       };
+     console.log(newtask);
+       AlertIOS.alert(
+           'New Task Saved!',
+             'Name: ' + this.state.text,
+          [
+            {text: 'View', onPress: () => this.props.navigation.navigate('TaskScreen', {taskName: this.state.text, itemobj: newtask})},
+            {text: 'Okay', onPress: () => this.props.navigation.navigate('MyMap')},
+          ],
+       );
+       try {
+         AsyncStorage.getItem('@activated:goals').then(function(t) {
+                 return  JSON.parse(t);
+                 console.log(JSON.parse(t));
+                 var result = JSON.parse(t);
+                 console.log("got goals")
+                 result['FinAid'].tasks = push(newtask);
+                 AsyncStorage.setItem('@activated:goals', JSON.stringify(result), () => {
+                   console.log("updated stuff in add screen")
+                 });
+        });
+       } catch (e) {
+         // Error retrieving data
+         console.log("Failed to get data from storage")
+
+             console.log("Error", e.stack);
+           console.log("Error", e.name);
+           console.log("Error", e.message);
+       }
+    }
 
    render() {
       const { startdatetime } = this.state;
@@ -181,25 +223,27 @@ export default class AddScreen extends React.Component {
                        </Right>
                      </Header>}
                 >
-                   <Item label="SAT" value="key0" />
-                   <Item label="ACT" value="key1" />
-                   <Item label="College Application" value="key2" />
-                   <Item label="Financial Aid" value="key3" />
-                   <Item label="Personal Health" value="key4" />
+                   <Item label="SAT" value="SAT" />
+                   <Item label="Research" value="Research" />
+                   <Item label="Summer" value="Summer" />
+                   <Item label="College Apps" value="CollegeApps" />
+                   <Item label="Financial Aid" value="FinAid" />
+                   <Item label="Professional" value="Professional" />
                 </Picker>
                </Item>
 
 
 
-                  <Item floatingLabel>
+                  <Item>
                      <Label>Task Name</Label>
-                    <Input />
+                    <Input
+                      onChangeText={ (text) => this.setState({ text: text }) } />
                   </Item>
 
                   <Item floatingLabel>
                       {this.state.fontLoaded ? (<Icon active name='pin' />): null }
                      <Label>Location</Label>
-                    <Input />
+                    <Input onChangeText={ (text) => this.setState({ location: text }) }/>
                   </Item>
 
                   <Button full light onPress={() => {
@@ -244,26 +288,27 @@ export default class AddScreen extends React.Component {
                         />
 
                         <Button full warning
-                        onPress={() => {this.popupDialogEnd.dismiss();}} >
+                        onPress={() => {
+                          this.popupDialogEnd.dismiss();
+                        }} >
                          <Text>Save</Text>
                         </Button>
 
                      </View>
                    </PopupDialog>
 
-                  <Item floatingLabel>
+                  <Item>
                      <Label>Notes</Label>
-                    <Input />
+                    <Input onChangeText={ (text) => this.setState({ notes: text }) }/>
                   </Item>
 
-                  <TouchableOpacity onPress={()=>{console.log('pressed SAVE')}} style={styles.buttonContainer}>
+                  <TouchableOpacity onPress={()=>{this.saveForm()}} style={styles.buttonContainer}>
                            <Text style={styles.buttonText}> Save </Text>
                   </TouchableOpacity>
 
                 </Form>
               </Content>
             </Container>
-
          </ScrollView>
       );
    }

@@ -6,6 +6,7 @@ import {
    StyleSheet,
    TouchableOpacity,
    View,
+   AlertIOS,
    TextInput,
    KeyboardAvoidingView,
    ScrollView,
@@ -64,16 +65,16 @@ export default class GoalScreen extends React.Component {
                           <Body>
                           <CheckBox
                             label={item.text}
-                            onChange={(checked) => console.log('Checked!')}
+                            checked={item.checked}
+                            onChange={(checked) => this.onChecked.bind(this, item)}
                           />
 
-                          <Text style={styles.subtext}>
-                           Ask parents for more info.
+                          <Text style={styles.subtext}>{item.notes}
                         </Text>
                            <Text style={styles.subtext}>
 
                           </Text>
-                        <Text style={styles.smaller_text}>12/7/2017</Text>
+                        <Text style={styles.smaller_text}>{item.startdatetime}</Text>
 
                           </Body>
                           <Right>
@@ -95,6 +96,16 @@ export default class GoalScreen extends React.Component {
    onPress(item) {
      const { navigate } = this.props.navigation;
      navigate('TaskScreen', {taskName: item.text, itemobj: item});
+   }
+   onChange(item) {
+     AlertIOS.alert(
+         'New Task Saved!',
+           'Name: ' + this.state.text,
+        [
+          {text: 'View', onPress: () => this.props.navigation.navigate('TaskScreen', {taskName: this.state.text, itemobj: newtask})},
+          {text: 'Okay', onPress: () => this.props.navigation.navigate('MyMap')},
+        ],
+     );
    }
 }
 
