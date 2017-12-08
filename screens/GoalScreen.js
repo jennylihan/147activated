@@ -68,13 +68,14 @@ export default class GoalScreen extends React.Component {
                           />
 
                           <Text style={styles.subtext}>
-                           Ask parents for more info.
+                           {item.notes}
                         </Text>
                            <Text style={styles.subtext}>
 
                           </Text>
-                        <Text style={styles.smaller_text}>12/7/2017</Text>
 
+                        <Text style={styles.smaller_text}>Start: {item.startdatetime}</Text>
+                        <Text style={styles.smaller_text}>End: {item.enddatetime}</Text>
                           </Body>
                           <Right>
                           <Button
@@ -137,6 +138,7 @@ subtext: {
    marginTop: 5,
    fontSize: 15,
    color: '#727272',
+   padding:10,
 },
 
 notes_selected_date: {

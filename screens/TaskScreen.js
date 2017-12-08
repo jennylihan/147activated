@@ -26,7 +26,7 @@ import CheckBox from 'react-native-modest-checkbox';
 
 export default class TaskScreen extends React.Component {
    static navigationOptions = {
-      title: 'Task Details',
+      title: '',
    };
    constructor(props) {
       super(props);
@@ -54,45 +54,38 @@ Object {
     const { params } = this.props.navigation.state;
     return (
       <ScrollView behavior="padding" style={styles.container}>
-         <Container>
+
            <Content>
            <Text style={styles.title}>{params.taskName}</Text>
            </Content>
-        <Content>
-          <Card style={{flex: 0}}>
-            <CardItem>
-              <Left>
-                <Thumbnail source={require('../assets/images/icons8-study-50.png')} />
-                <Body>
-                  <Text>Hello</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>
-                Goal Category: {params.itemobj.category}
-                </Text>
-                <Text>
-                Location: {params.itemobj.location}
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent textStyle={{color: '#87838B'}} onPress={this.onPress.bind(this)} >
-                  <Icon name='paper-plane' />
-                  <Text>Share</Text>
-                </Button>
-                <Button transparent textStyle={{color: '#87838B'}}>
-                  <Icon name='ios-color-wand' />
-                  <Text>Edit</Text>
-                </Button>
-              </Left>
-            </CardItem>
-          </Card>
-        </Content>
-      </Container>
+
+        <View style={styles.notes}>
+          <View style={styles.view1}>
+
+         </View>
+
+            <View style={styles.view2}>
+            <Text>
+           {params.itemobj.category}
+           </Text>
+           <Text style={styles.subtext}>
+           {params.itemobj.location}
+           </Text>
+           </View>
+
+           <View style={styles.view3}>
+           <Button transparent textStyle={{color: '#87838B'}} onPress={this.onPress.bind(this)} >
+            <Icon name='paper-plane' />
+            <Text>Share</Text>
+           </Button>
+           <Button transparent textStyle={{color: '#87838B'}}>
+            <Icon name='ios-color-wand' />
+            <Text>Edit</Text>
+           </Button>
+           </View>
+
+            </View>
+
    </ScrollView>
     );
   }
@@ -116,10 +109,11 @@ const styles = StyleSheet.create({
       flex: 1,
    },
    title: {
-    color: '#fff',
-     paddingTop: 30,
-     paddingBottom: 20,
-     fontSize: 40,
+      color: '#fff',
+     paddingTop: 10,
+     paddingBottom: 10,
+     fontSize: 20,
+     fontWeight: 'bold',
      textAlign: 'center',
      backgroundColor: '#f1c40f',
   },
@@ -127,7 +121,7 @@ const styles = StyleSheet.create({
      paddingLeft: 10,
  },
  notes: {
-  marginTop: 10,
+  marginTop: 0,
   padding: 20,
   borderColor: '#F5F5F5',
   borderTopWidth: 1,
