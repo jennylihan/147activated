@@ -44,32 +44,12 @@ export default class GoalScreen extends React.Component {
    }
 
    async componentWillMount() {
-    this.getTasks();
     console.log("i'm in will mount")
    }
 
-   async getTasks(){
-     console.log("THE DATA:")
-     try {
-         const value =  await AsyncStorage.getItem('@activated:tasks').then(function(t) {
-               return  JSON.parse(t);
-               console.log("this is value:")
-               console.log(value);
-               console.log(t);
-               this.setState({ data: value})
-               console.log(this.state.data)
-           });
-     } catch (e) {
-       // Error retrieving data
-       console.log("Failed to get data from storage")
-
-           console.log("Error", e.stack);
-         console.log("Error", e.name);
-         console.log("Error", e.message);
-     }
-   }
-
    render() {
+     const { params } = this.props.navigation.state;
+
      var items = [{text:'Register for SAT',
        category: 'SAT',
        startdatetime: '2017-10-5',
@@ -89,7 +69,7 @@ export default class GoalScreen extends React.Component {
          <ScrollView behavior="padding" style={styles.container}>
             <Container>
               <Content>
-              <Text style={styles.title}>Goal</Text>
+              <Text style={styles.title}>{params.goalobj.name}</Text>
                     <List dataArray={items}
                       renderRow={(item) =>
                         <ListItem>
