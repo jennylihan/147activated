@@ -170,12 +170,12 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
         // borderBottomColor: '#f1c40f',
         // borderBottomWidth: 1
-        color: '#fff',
+        // color: '#fff',
         paddingTop: 30,
         paddingBottom: 15,
-        fontSize: 20,
-        fontWeight: 'bold',
-        textAlign: 'center',
+        // fontSize: 20,
+        // fontWeight: 'bold',
+        // textAlign: 'center',
         backgroundColor: '#f1c40f',
     },
     header_button: {
