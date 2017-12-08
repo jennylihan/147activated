@@ -112,7 +112,7 @@ export default class MapsScreen extends React.Component {
         priority: 2,
         icon: '../assets/images/hex_financialaid.png',
         tasks: [{text:'Get yoself a job',
-           category: 'Financial Aid',
+           category: 'Summer',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
            location: 'Home',
