@@ -28,6 +28,9 @@ export default class AddScreen extends React.Component {
     header: null,
    };
 
+   state = {
+      fontLoaded: false,
+   };
 
    constructor(props) {
       super(props);
@@ -44,6 +47,13 @@ export default class AddScreen extends React.Component {
       this.onDateChangeEnd = this.onDateChangeEnd.bind(this);
    }
 
+   async componentDidMount() {
+    await Expo.Font.loadAsync({
+       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
+     });
+     this.setState({fontLoaded:true});
+
+   }
 
      onDateChangeStart(date) {
        this.setState({
@@ -123,7 +133,7 @@ export default class AddScreen extends React.Component {
                   </Item>
 
                   <Item floatingLabel>
-                      <Icon active name='pin' />
+                      {this.state.fontLoaded ? (<Icon active name='pin' />): null }
                      <Label>Location</Label>
                     <Input />
                   </Item>
@@ -131,7 +141,7 @@ export default class AddScreen extends React.Component {
                   <Button full light onPress={() => {
                      this.popupDialogStart.show();
                   }}>
-                     <Icon active name='calendar' />
+                     {this.state.fontLoaded ? (<Icon active name='calendar' />) : null }
                     <Text>{startDate}</Text>
                   </Button>
 
@@ -156,7 +166,7 @@ export default class AddScreen extends React.Component {
                      this.popupDialogEnd.show();
                   }}
                      >
-                     <Icon active name='calendar' />
+                     {this.state.fontLoaded ? (<Icon active name='calendar' />) : null}
                     <Text>{ endDate }</Text>
                   </Button>
 
@@ -182,9 +192,9 @@ export default class AddScreen extends React.Component {
                     <Input />
                   </Item>
 
-                  <Button full style={styles.savebox}>
-                   <Text>Save</Text>
-                  </Button>
+                  <TouchableOpacity onPress={()=>{console.log('pressed SAVE')}} style={styles.buttonContainer}>
+                           <Text style={styles.buttonText}> Login </Text>
+                  </TouchableOpacity>
 
                 </Form>
               </Content>
@@ -201,16 +211,28 @@ const styles = StyleSheet.create({
       //backgroundColor: '#f1c40f',
    },
    title: {
-    color: '#fff',
+      color: '#fff',
      paddingTop: 30,
-     paddingBottom: 20,
-     fontSize: 40,
+     paddingBottom: 15,
+     fontSize: 20,
+     fontWeight: 'bold',
      textAlign: 'center',
      backgroundColor: '#f1c40f',
   },
   stylebox: {
      backgroundColor: '#34495e',
- }
+ },
+ buttonContainer: {
+    backgroundColor: '#34495e',
+    paddingVertical: 15,
+    marginTop: 15,
+},
+buttonText: {
+    textAlign: 'center',
+    color: '#FFF',
+    fontWeight: '700',
+    fontSize: 25,
+},
 
 
 });

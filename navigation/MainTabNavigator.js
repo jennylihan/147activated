@@ -9,7 +9,6 @@ import CalendarScreen from '../screens/CalendarScreen';
 import MapsScreen from '../screens/MapsScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import AddScreen from '../screens/AddScreen';
-import GoalScreen from '../screens/GoalScreen';
 
 export default TabNavigator(
   {
@@ -23,10 +22,7 @@ export default TabNavigator(
       screen: NotificationsScreen,
     },
     Add: {
-       screen: AddScreen
-    },
-    Goal: {
-     screen: GoalScreen
+       screen: AddScreen,
     },
   },
   {
