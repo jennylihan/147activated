@@ -72,6 +72,7 @@ export default class MapsScreen extends React.Component {
            category: 'Professional',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
+           location: 'Home',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
            }]
         },
@@ -83,6 +84,7 @@ export default class MapsScreen extends React.Component {
            category: 'Financial Aid',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
+           location: 'Home',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
            }]
         },
@@ -94,6 +96,7 @@ export default class MapsScreen extends React.Component {
            category: 'College Apps',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
+           location: 'Home',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
            }]
         },
@@ -105,12 +108,14 @@ export default class MapsScreen extends React.Component {
            category: 'Financial Aid',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
+           location: 'Home',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
          },
          {text:'Ask Cindy about SIMR',
             category: 'Financial Aid',
             startdatetime: '2017-10-5',
             enddatetime: '2017-10-5',
+            location: 'Home',
             notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
             }]
         },
@@ -122,6 +127,7 @@ export default class MapsScreen extends React.Component {
            category: 'Financial Aid',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
+           location: 'Home',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
            }]
         },
@@ -133,6 +139,7 @@ export default class MapsScreen extends React.Component {
            category: 'Research',
            startdatetime: '2017-10-5',
            enddatetime: '2017-10-5',
+           location: 'Home',
            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
            }]
         },

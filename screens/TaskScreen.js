@@ -1,6 +1,7 @@
 import React from 'react';
 import {
    AppRegistry,
+   AlertIOS,
    Image,
    Platform,
    StyleSheet,
@@ -30,6 +31,12 @@ export default class TaskScreen extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
+         taskName: '',
+         startdatetime: null,
+         enddatetime: null,
+         text: '',
+         location: '',
+         notes: '',
       };
    }
 /*
@@ -45,39 +52,59 @@ Object {
 */
   render() {
     const { params } = this.props.navigation.state;
-    console.log(params.task);
     return (
-      <Container>
+      <ScrollView behavior="padding" style={styles.container}>
+         <Container>
+           <Content>
+           <Text style={styles.title}>{params.taskName}</Text>
+           </Content>
         <Content>
           <Card style={{flex: 0}}>
             <CardItem>
               <Left>
                 <Thumbnail source={require('../assets/images/icons8-study-50.png')} />
                 <Body>
-                  <Text>{params.task.text}</Text>
+                  <Text>Hello</Text>
                 </Body>
               </Left>
             </CardItem>
             <CardItem>
               <Body>
-                <Image source={{uri: 'Image URL'}} style={{height: 200, width: 200, flex: 1}}/>
                 <Text>
-                  DUE: 
+                Goal Category: {params.itemobj.category}
+                </Text>
+                <Text>
+                Location: {params.itemobj.location}
                 </Text>
               </Body>
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent textStyle={{color: '#87838B'}}>
+                <Button transparent textStyle={{color: '#87838B'}} onPress={this.onPress.bind(this)} >
                   <Icon name='paper-plane' />
                   <Text>Share</Text>
+                </Button>
+                <Button transparent textStyle={{color: '#87838B'}}>
+                  <Icon name='ios-color-wand' />
+                  <Text>Edit</Text>
                 </Button>
               </Left>
             </CardItem>
           </Card>
         </Content>
       </Container>
+   </ScrollView>
     );
+  }
+  onPress () {
+    AlertIOS.alert(
+        'Share your task?',
+          'Choose someone below:',
+   [
+     {text: 'Cancel', onPress: () => console.log('Cancelled'), style: 'cancel'},
+     {text: 'Share', onPress: () => AlertIOS.alert('Shared Successfully!', 'Better get to work. :)', [{text:'Ok'}])},
+   ],
+  );
   }
 }
 

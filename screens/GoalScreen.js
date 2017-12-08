@@ -69,7 +69,7 @@ export default class GoalScreen extends React.Component {
                           </Body>
                           <Right>
                           <Button
-                              onPress={this.onPress.bind(this)}
+                              onPress={this.onPress.bind(this, item)}
                           >
                           <Text style={{color: 'white'}}>{'>'}</Text>
                           </Button>
@@ -84,7 +84,7 @@ export default class GoalScreen extends React.Component {
    }
    onPress(item) {
      const { navigate } = this.props.navigation;
-     navigate('TaskScreen', {taskName: "hey", task: item});
+     navigate('TaskScreen', {taskName: item.text, itemobj: item});
    }
 }
 
