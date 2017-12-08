@@ -19,20 +19,20 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
-import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text, Thumbnail, Left, Right, Note} from 'native-base';
+import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text} from 'native-base';
 
 import CheckBox from 'react-native-modest-checkbox';
 
-export default class GoalScreen extends React.Component {
-   static navigationOptions = ({ navigation }) => ({
-    title: `Goal Details`,
-  });
-
+export default class TaskScreen extends React.Component {
+   static navigationOptions = {
+      title: 'Task Details',
+   };
    constructor(props) {
       super(props);
       this.state = {
          startdatetime: null,
          enddatetime: null,
+         selectedGoal: 'hey',
          text: '',
          location: '',
          notes: '',
@@ -43,47 +43,26 @@ export default class GoalScreen extends React.Component {
       };
    }
 
-   async componentWillMount() {
-    console.log("i'm in will mount")
-   }
-
    render() {
      const { params } = this.props.navigation.state;
-
-     var items = params.goalobj.tasks;
       return (
          <ScrollView behavior="padding" style={styles.container}>
             <Container>
               <Content>
-              <Text style={styles.title}>{params.goalobj.name}</Text>
-                    <List dataArray={items}
-                      renderRow={(item) =>
-                        <ListItem>
-                          <Thumbnail square size={80} source={{uri: item.icon}} />
-                          <Body>
-                          <CheckBox
-                            label={item.text}
-                            onChange={(checked) => console.log('Checked!')}
-                          />
-                          </Body>
-                          <Right>
-                          <Button
-                              onPress={this.onPress.bind(this)}
-                          >
-                          <Text style={{color: 'white'}}>{'>'}</Text>
-                          </Button>
-                          </Right>
-                        </ListItem>
-                      }>
-                    </List>
-                    </Content>
-                  </Container>
+              <Text style={styles.title}>{this.state.selectedGoal}</Text>
+
+              <Card>
+                 <CardItem>
+                   <Body>
+                   <Text>Blah blah task details</Text>
+                   </Body>
+                 </CardItem>
+              </Card>
+              </Content>
+            </Container>
+
          </ScrollView>
       );
-   }
-   onPress(item) {
-     const { navigate } = this.props.navigation;
-     navigate('TaskScreen', {taskName: item.text, task: item});
    }
 }
 
@@ -91,15 +70,11 @@ const styles = StyleSheet.create({
    container: {
       flex: 1,
    },
-   button:{
-     backgroundColor: 'transparent',
-   },
    title: {
-      color: '#fff',
+    color: '#fff',
      paddingTop: 30,
-     paddingBottom: 15,
-     fontSize: 20,
-     fontWeight: 'bold',
+     paddingBottom: 20,
+     fontSize: 40,
      textAlign: 'center',
      backgroundColor: '#f1c40f',
   },
