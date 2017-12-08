@@ -19,22 +19,20 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
-import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text} from 'native-base';
+import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text, Thumbnail, Left, Right, Note} from 'native-base';
 
 import CheckBox from 'react-native-modest-checkbox';
 
 export default class GoalScreen extends React.Component {
-   static navigationOptions = {
-      header: null,
-   };
-
+   static navigationOptions = ({ navigation }) => ({
+    title: `Goal Details`,
+  });
 
    constructor(props) {
       super(props);
       this.state = {
          startdatetime: null,
          enddatetime: null,
-         selectedGoal: 'Financial Aid',
          text: '',
          location: '',
          notes: '',
@@ -45,91 +43,56 @@ export default class GoalScreen extends React.Component {
       };
    }
 
+   async componentWillMount() {
+    console.log("i'm in will mount")
+   }
+
    render() {
+     const { params } = this.props.navigation.state;
+
+     var items = params.goalobj.tasks;
       return (
          <ScrollView behavior="padding" style={styles.container}>
             <Container>
               <Content>
-              <Text style={styles.title}>{this.state.selectedGoal}</Text>
-
-              <Card>
-                 <CardItem>
-                   <Body>
-                   <View style={styles.notes}>
-                      <View style={styles.notes_notes}>
-                           <Text style={styles.notes_text}>
-                           Request Stanford waiver
-                           </Text>
-
-                           <Text style={styles.subtext}>
-                              Mr. Burns has it!
-                           </Text>
-                           <Text style={styles.smaller_text}>Office C303</Text>
-                      </View>
-                      <View style={styles.notes_selected_date}>
-                        <Text style={styles.small_text}>START</Text>
-                        <Text style={styles.big_text}>TUE, 10/9</Text>
-                        <Text style={styles.small_text}>END</Text>
-                        <Text style={styles.big_text}>TUE, 10/9</Text>
-                        </View>
-                   </View>
-
-
-
-                   <View style={styles.notes}>
-                      <View style={styles.notes_notes}>
-                           <Text style={styles.notes_text}>
-                           Fill out FAFSA
-                           </Text>
-
-                           <Text style={styles.subtext}>
-                              Ask parents for tax forms.
-                           </Text>
-                           <Text style={styles.smaller_text}>Home</Text>
-                      </View>
-                      <View style={styles.notes_selected_date}>
-                         <Text style={styles.small_text}>START</Text>
-                         <Text style={styles.big_text}>FRI, 12/1</Text>
-                         <Text style={styles.small_text}>END</Text>
-                         <Text style={styles.big_text}>MON, 12/4</Text>
-                         </View>
-                   </View>
-
-                   <View style={styles.notes}>
-                      <View style={styles.notes_notes}>
-                           <Text style={styles.notes_text}>
-                           Fill out CSS/Profile
-                           </Text>
-
-                           <Text style={styles.subtext}>
-                              Ask parents for tax forms.
-                           </Text>
-                           <Text style={styles.smaller_text}>Home</Text>
-                      </View>
-                      <View style={styles.notes_selected_date}>
-                        <Text style={styles.small_text}>START</Text>
-                        <Text style={styles.big_text}>SAT, 1/4</Text>
-                        <Text style={styles.small_text}>END</Text>
-                        <Text style={styles.big_text}>TUES, 1/7</Text>
-                        </View>
-                   </View>
-
-
-
-                   </Body>
-                 </CardItem>
-              </Card>
-              </Content>
-            </Container>
-
+              <Text style={styles.title}>{params.goalobj.name}</Text>
+                    <List dataArray={items}
+                      renderRow={(item) =>
+                        <ListItem>
+                          <Thumbnail square size={80} source={{uri: item.icon}} />
+                          <Body>
+                          <CheckBox
+                            label={item.text}
+                            onChange={(checked) => console.log('Checked!')}
+                          />
+                          </Body>
+                          <Right>
+                          <Button
+                              onPress={this.onPress.bind(this)}
+                          >
+                          <Text style={{color: 'white'}}>{'>'}</Text>
+                          </Button>
+                          </Right>
+                        </ListItem>
+                      }>
+                    </List>
+                    </Content>
+                  </Container>
          </ScrollView>
       );
+   }
+   onPress(item) {
+     const { navigate } = this.props.navigation;
+     navigate('TaskScreen', {taskName: item.text, task: item});
    }
 }
 
 const styles = StyleSheet.create({
    container: {
       flex: 1,
+   },
+   button:{
+     backgroundColor: 'transparent',
    },
    title: {
       color: '#fff',

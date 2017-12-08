@@ -47,7 +47,7 @@ export default class MapsScreen extends React.Component {
 
 
    static navigationOptions = {
-      title: 'My Map',
+      title: 'My Path',
        header: null,
    };
 
@@ -63,49 +63,89 @@ export default class MapsScreen extends React.Component {
       this.state.popupCategory= "category"
       this.state.start = true
 
-
-       tasks = [{text:'Register for SAT',
-         category: 'SAT',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-         icon: 'study-icon',
-         notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
-       },
-
-       {text:'Take SAT',
-         category: 'SAT',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-         icon: 'test-icon',
-         notes: ' Notes: \n - Get lots or rest! \n  - eat breakfast!'
-       },
-
-       {text:'Sign Up for basketball tryouts',
-         category: 'SAT',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-          icon: 'pen-icon',
-          notes: ' Notes: \n - Meet with coach \n  - make sure schedule aligns with classes'
-
-       },
-
-       {text:'Fill Out FAFSA',
-         category: 'Finacial Aid',
-         startdatetime: '2017-10-5',
-         enddatetime: '2017-10-5',
-         icon: 'study-icon',
-         notes: ' Notes: \n - Get parents income information \n  - get college id codes'
-       },
-
-       ];
+      var goals = {
+        Professional: {
+        name: 'Professional',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Apply for a Job',
+           category: 'Professional',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+        FinAid: {
+        name: 'Financial Aid',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Apply for FAFSA',
+           category: 'Financial Aid',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+        CollegeApps: {
+        name: 'College Apps',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Talk to Mr. C for a letter of rec',
+           category: 'College Apps',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+        Summer: {
+        name: 'Summer Opportunities',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Get yoself a job',
+           category: 'Financial Aid',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+         },
+         {text:'Ask Cindy about SIMR',
+            category: 'Financial Aid',
+            startdatetime: '2017-10-5',
+            enddatetime: '2017-10-5',
+            notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+            }]
+        },
+        SAT: {
+        name: 'SAT',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Register for SAT',
+           category: 'Financial Aid',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+        Research: {
+        name: 'Research',
+        priority: 2,
+        icon: '../assets/images/hex_financialaid.png',
+        tasks: [{text:'Find my mentor',
+           category: 'Research',
+           startdatetime: '2017-10-5',
+           enddatetime: '2017-10-5',
+           notes: ' Notes: \n - check schedule \n  - find out college "score sent by dates"'
+           }]
+        },
+      };
 
          try {
-    AsyncStorage.setItem('@activated:tasks', JSON.stringify(tasks));
-} catch (error) {
-  // Error saving data
-    console.log("Failed to set data from storage")
-
-}
+            AsyncStorage.setItem('@activated:goals', JSON.stringify(goals));
+            console.log("set goals into storage");
+            console.log(goals);
+        } catch (error) {
+          // Error saving data
+            console.log("Failed to set data from storage");
+        }
 }
    componentWillReceiveProps(){
     this.renderButtons()
@@ -126,37 +166,42 @@ export default class MapsScreen extends React.Component {
    }
 
 
-   showGoal = (a) => {
+  async showGoal(a){
       console.log('On click works')
-      console.log(a)
+      console.log(a);
+      var goalObject = this.getGoalObj(a);
+  }
 
-   };
+async getGoalObj(a){
+   try {
+     const value =  await AsyncStorage.getItem('@activated:goals').then(function(t) {
+           return  JSON.parse(t);
+           var result = JSON.parse(t);
+       });
+    console.log("value");
+     console.log(value);
+     const { navigate } = this.props.navigation;
+     navigate('GoalScreen', {goalobj: value[a]});
+     return value;
+   } catch (e) {
+     // Error retrieving data
+     console.log("Failed to get data from storage")
 
-
-async renderButtons(){
+         console.log("Error", e.stack);
+       console.log("Error", e.name);
+       console.log("Error", e.message);
+   }
+}
+async renderButtons (){
 try {
-  const value =  await AsyncStorage.getItem('@activated:tasks').then(function(t) {
+  const value =  await AsyncStorage.getItem('@activated:goals').then(function(t) {
         return  JSON.parse(t);
     });
   if (value !== null){
     // We have data!!
     console.log(String(value));
     console.log(String(value.length))
-
-  for( let i = this.state.rows.length; i < value.length; i++) {
-     this.state.rows.push(value[i])
   }
-
-
-  this.setState({ rows: this.state.rows })
-
-  console.log(this.state.rows)
-
-
-
-
-  }
-
   else{ console.log(value);}
 
 } catch (e) {
@@ -312,17 +357,6 @@ let Arr = this.state.rows.map((a, i) => {
 
 
 </Grid>
-                 <View style={{flex:1, backgroundColor: 'transparent'}}>
-        {/* Rest of the app comes ABOVE the action button component !*/}
-         <ActionButton buttonColor="#f1c40f">
-         <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={this.pressAddTask.bind(this)}>
-         <Icon name="ios-create" style={styles.actionButtonIcon} />
-         </ActionButton.Item>
-         <ActionButton.Item buttonColor='#3498db' title="New Goal" onPress={() => {}}>
-         <Icon name="ios-navigate" style={styles.actionButtonIcon} />
-         </ActionButton.Item>
-         </ActionButton>
-        </View>
 
          </ImageBackground>
 
