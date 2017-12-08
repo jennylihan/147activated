@@ -18,7 +18,8 @@ import PropTypes from 'prop-types';
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import MainTabNavigator from '../navigation/MainTabNavigator';
+import RootNavigation from '../navigation/RootNavigation';
+
 import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text, Thumbnail, Left, Right, Note} from 'native-base';
 
 import CheckBox from 'react-native-modest-checkbox';
@@ -83,7 +84,7 @@ export default class GoalScreen extends React.Component {
    }
    onPress(item) {
      const { navigate } = this.props.navigation;
-     navigate('TaskScreen', {taskName: item.text, task: item});
+     navigate('TaskScreen', {taskName: "hey", task: item});
    }
 }
 
