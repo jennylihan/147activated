@@ -24,7 +24,6 @@ import RootNavigation from '../navigation/RootNavigation';
 import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text, Thumbnail, Left, Right, Note} from 'native-base';
 
 import CheckBox from 'react-native-modest-checkbox';
-
 export default class GoalScreen extends React.Component {
    static navigationOptions = ({ navigation }) => ({
     title: '',
@@ -68,16 +67,6 @@ export default class GoalScreen extends React.Component {
                             checked={item.checked}
                             onChange={(checked) => this.onChecked.bind(this, item)}
                           />
-
-                          <Text style={styles.subtext}>
-                           {item.notes}
-                        </Text>
-                           <Text style={styles.subtext}>
-
-                          </Text>
-
-                        <Text style={styles.smaller_text}>Start: {item.startdatetime}</Text>
-                        <Text style={styles.smaller_text}>End: {item.enddatetime}</Text>
                           </Body>
                           <Right>
                           <Button

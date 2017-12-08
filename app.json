@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "my-new-project",
-    "description": "No description",
-    "slug": "my-new-project",
+    "name": "Activated",
+    "description": "Level up High School",
+    "slug": "activated",
     "privacy": "public",
     "sdkVersion": "23.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/images/icon.png",
-    "splash": {
+    "splash": { 
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"

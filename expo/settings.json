@@ -2,6 +2,8 @@
   "hostType": "tunnel",
   "lanType": "ip",
   "dev": true,
+  "strict": false,
   "minify": false,
-  "urlRandomness": "dw-bfm"
+  "urlType": "exp",
+  "urlRandomness": "eq-9kw"
 }
