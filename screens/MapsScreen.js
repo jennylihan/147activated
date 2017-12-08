@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PopupDialog from 'react-native-popup-dialog';
 import {
    Image,
    Platform,
@@ -28,9 +27,11 @@ import { slide as Menu } from 'react-burger-menu'
 import MonoText from '../components/StyledText';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 import RootNavigation from '../navigation/RootNavigation';
+import SettingsList from 'react-native-settings-list';
 
 import { Container, Header, Left, Right, Icon, Drawer, Grid, Col, Row,Button } from 'native-base';
-import SideBar from '../SideBar'
+import SideBar from '../SideBar';
+import PopupDialog from 'react-native-popup-dialog';
 
 const SideMenu = require('react-native-side-menu');
 
@@ -56,12 +57,18 @@ export default class MapsScreen extends React.Component {
 
       super();
 
-      this.state = { rows: [] };
+      this.state = {
+         rows: [],
+         switchValue: false,
+
+      };
 
       this.state.popupText = "hi"
       this.state.popupTitle = "hi"
       this.state.popupCategory= "category"
       this.state.start = true
+
+      //this.onValueChange = this.onValueChange.bind(this);
 
       var goals = {
         Professional: {
@@ -224,10 +231,6 @@ try {
 }
 
 
-
-
-
-
    render() {
 
 let Arr = this.state.rows.map((a, i) => {
@@ -250,9 +253,6 @@ let Arr = this.state.rows.map((a, i) => {
          </Image>
          </TouchableOpacity>
          </View>
-
-
-
       )
     case 'test-icon': return (
        <View key={i} style={{position:"relative",flex:1,left:(i % 2 + 2)*100 -90,top:20,right:20,bottom:20}}>
@@ -261,9 +261,6 @@ let Arr = this.state.rows.map((a, i) => {
          </Image>
          </TouchableOpacity>
          </View>
-
-
-
       )
     }
 
@@ -283,18 +280,67 @@ let Arr = this.state.rows.map((a, i) => {
          style={styles.backgroundImage}
          source={require('../assets/images/new_background.png')}>
 
-
             <View style={styles.header}>
-
-
             <View style={styles.imagebox}>
-            <TouchableOpacity onPress={()=>{console.log('pressed Settings')}}>
-            <Image
-                           style={styles.stretch}
-                         source={require('../assets/images/settings.png')}
-                       />
-                       </TouchableOpacity>
-                       </View>
+            <TouchableOpacity onPress={()=>{this.popupDialogSettings.show()}}>
+            <Image style={styles.stretch}
+                  source={require('../assets/images/settings.png')} />
+            </TouchableOpacity>
+            </View>
+           <PopupDialog
+              ref={(popupDialogSettings) => { this.popupDialogSettings = popupDialogSettings; }}
+              height={500} >
+              <View>
+
+       <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
+
+         <SettingsList.Header headerStyle={{marginTop:15}}/>
+         <SettingsList.Item
+           title='Change Password'
+           onPress={() => Alert.alert('Route To Notifications Page')}
+         />
+         <SettingsList.Item
+
+           title='Public Profile'
+           titleInfo='Off'
+           titleInfoStyle={styles.titleInfoStyle}
+           onPress={() => Alert.alert('Route to Blutooth Page')}
+         />
+         <SettingsList.Item
+           title='Notifications'
+           onPress={() => Alert.alert('Route To Control Center Page')}
+         />
+         <SettingsList.Header headerStyle={{marginTop:15}}/>
+         <SettingsList.Item
+           title='General'
+           onPress={() => Alert.alert('Route To General Page')}
+         />
+         <SettingsList.Item
+           title='Tutorial'
+           onPress={() => Alert.alert('Route To General Page')}
+         />
+         <SettingsList.Item
+           title='Help'
+           onPress={() => Alert.alert('Route To General Page')}
+         />
+         <SettingsList.Item
+           title='Privacy Policy'
+           onPress={() => Alert.alert('Route To General Page')}
+         />
+       </SettingsList>
+
+
+                 <Button full warning
+                 onPress={() => {this.popupDialogSettings.dismiss();}} >
+                  <Text>Save</Text>
+                 </Button>
+
+              </View>
+           </PopupDialog>
+
+
+
+
             <View>
             <Text style={styles.instruction_text}>
              My Path to College  </Text>
@@ -480,11 +526,6 @@ const styles = StyleSheet.create({
    },
 
        instruction_text: {
-        // color: '#fff',
-        // fontSize: 20,
-        // fontFamily: 'Avenir',
-        // fontWeight: '700',
-
         color: '#fff',
         fontSize: 20,
         fontWeight: 'bold',
@@ -496,23 +537,13 @@ const styles = StyleSheet.create({
     height: 30,
     position: 'absolute',
     top: 0,
-    left: 5,
+    left: 10,
 },
         header: {
          backgroundColor: '#f1c40f',
          paddingBottom: 15,
          paddingTop: 25,
          flexDirection: 'row',
-         justifyContent: 'space-around'
-         //flex: 2
-        // backgroundColor: '#f1c40f',
-        // marginTop: 30,
-        // padding: 15,
-        // justifyContent: 'center',
-
-
-
-
     },
 
   CircleShapeView: {

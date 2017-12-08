@@ -10,9 +10,7 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-import { range } from 'lodash';
 import CalendarStrip from 'react-native-calendar-strip';
-import moment from 'moment';
 
 import { MonoText } from '../components/StyledText';
 
