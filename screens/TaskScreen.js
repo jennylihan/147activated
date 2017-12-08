@@ -18,8 +18,8 @@ import PropTypes from 'prop-types';
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import MainTabNavigator from '../navigation/MainTabNavigator';
-import { Container, Header, Body, Content, Card, CardItem, Button, Icon, List, ListItem, Text} from 'native-base';
+import RootNavigation from '../navigation/RootNavigation';
+import { Container, Header, Body, Content, Card, CardItem, Thumbnail, Button, Left, Icon, List, ListItem, Text} from 'native-base';
 
 import CheckBox from 'react-native-modest-checkbox';
 
@@ -30,41 +30,59 @@ export default class TaskScreen extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         startdatetime: null,
-         enddatetime: null,
-         selectedGoal: 'hey',
-         text: '',
-         location: '',
-         notes: '',
-         check1: false,
-         check2: false,
-         check3: false,
-         check4: false,
       };
    }
-
-   render() {
-     const { params } = this.props.navigation.state;
-      return (
-         <ScrollView behavior="padding" style={styles.container}>
-            <Container>
-              <Content>
-              <Text style={styles.title}>{this.state.selectedGoal}</Text>
-
-              <Card>
-                 <CardItem>
-                   <Body>
-                   <Text>Blah blah task details</Text>
-                   </Body>
-                 </CardItem>
-              </Card>
-              </Content>
-            </Container>
-
-         </ScrollView>
-      );
-   }
+/*
+Object {
+     "category": "Financial Aid",
+     "enddatetime": "2017-10-5",
+     "notes": " Notes:
+- check schedule
+- find out college \"score sent by dates\"",
+     "startdatetime": "2017-10-5",
+     "text": "Get yoself a job",
+   },
+*/
+  render() {
+    const { params } = this.props.navigation.state;
+    console.log(params.task);
+    return (
+      <Container>
+        <Content>
+          <Card style={{flex: 0}}>
+            <CardItem>
+              <Left>
+                <Thumbnail source={require('../assets/images/icons8-study-50.png')} />
+                <Body>
+                  <Text>{params.task.text}</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem>
+              <Body>
+                <Image source={{uri: 'Image URL'}} style={{height: 200, width: 200, flex: 1}}/>
+                <Text>
+                  DUE:
+                </Text>
+              </Body>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent textStyle={{color: '#87838B'}}>
+                  <Icon name='paper-plane' />
+                  <Text>Share</Text>
+                </Button>
+              </Left>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
+    );
+  }
 }
+
+
+
 
 const styles = StyleSheet.create({
    container: {

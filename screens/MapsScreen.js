@@ -278,7 +278,20 @@ let Arr = this.state.rows.map((a, i) => {
 
 
             <View style={styles.header}>
-            <Text style={styles.instruction_text}>My Path to College  </Text>
+
+
+            <View style={styles.imagebox}>
+            <TouchableOpacity onPress={()=>{console.log('pressed Settings')}}>
+            <Image
+                           style={styles.stretch}
+                         source={require('../assets/images/settings.png')}
+                       />
+                       </TouchableOpacity>
+                       </View>
+            <View>
+            <Text style={styles.instruction_text}>
+             My Path to College  </Text>
+             </View>
             </View>
 
 
@@ -372,7 +385,13 @@ const styles = StyleSheet.create({
       height: 22,
       color: 'white',
    },
-
+   stretch: {
+    width: 40,
+    height: 40,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+},
 
 
 
@@ -449,20 +468,41 @@ const styles = StyleSheet.create({
 
    },
 
+   imagebox: {
+      flex: 1
+   },
+
        instruction_text: {
+        // color: '#fff',
+        // fontSize: 20,
+        // fontFamily: 'Avenir',
+        // fontWeight: '700',
+
         color: '#fff',
         fontSize: 20,
-        fontFamily: 'Avenir',
-        fontWeight: '700',
+        fontWeight: 'bold',
+        textAlign: 'left',
     },
 
+    stretch: {
+    width: 30,
+    height: 30,
+    position: 'absolute',
+    top: 0,
+    left: 5,
+},
         header: {
-        opacity: 0.8,
-        flexDirection: 'row',
-        backgroundColor: '#f1c40f',
-        padding: 25,
-        justifyContent: 'center',
-        height: 80,
+         backgroundColor: '#f1c40f',
+         paddingBottom: 15,
+         paddingTop: 25,
+         flexDirection: 'row',
+         justifyContent: 'space-around'
+         //flex: 2
+        // backgroundColor: '#f1c40f',
+        // marginTop: 30,
+        // padding: 15,
+        // justifyContent: 'center',
+
 
 
 
