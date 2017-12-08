@@ -120,7 +120,7 @@ export default class MapsScreen extends React.Component {
                  startdatetime: '2017-12-24',
                  enddatetime: '2017-12-24’',
                  location: 'Home',
-      	checked: false,
+      	         checked: false,
                  notes: '\n - Talk to Mom about tax forms \n  - Get SSN"'
                  },
       	{text:'Fill out CSS/Profile',

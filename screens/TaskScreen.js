@@ -39,6 +39,22 @@ export default class TaskScreen extends React.Component {
          notes: '',
       };
    }
+   onPress () {
+     AlertIOS.prompt(
+       'Share your task?',
+       'Choose someone below:',
+       [
+         {
+           text: 'Cancel',
+           onPress: () => console.log('Cancel Pressed'),
+           style: 'cancel',
+         },
+         {
+           text: 'Share',
+           onPress: () => AlertIOS.alert('Shared Successfully!', 'Better get to work. :)', [{text:'Ok'}]),
+         },
+       ]);
+  }
 
   render() {
     const { params } = this.props.navigation.state;
@@ -53,7 +69,7 @@ export default class TaskScreen extends React.Component {
               <Left>
                 <Thumbnail source={require('../assets/images/icons8-study-50.png')} />
                 <Body>
-                  <Text>Hello</Text>
+                  <Text>YOU GOT THIS</Text>
                 </Body>
               </Left>
             </CardItem>
@@ -87,30 +103,17 @@ export default class TaskScreen extends React.Component {
    </ScrollView>
     );
   }
-  onPress () {
-    AlertIOS.alert(
-        'Share your task?',
-          'Choose someone below:',
-   [
-     {text: 'Cancel', onPress: () => console.log('Cancelled'), style: 'cancel'},
-     {text: 'Share', onPress: () => AlertIOS.alert('Shared Successfully!', 'Better get to work. :)', [{text:'Ok'}])},
-   ],
-  );
-  }
 }
-
-
-
-
 const styles = StyleSheet.create({
    container: {
       flex: 1,
    },
    title: {
-    color: '#fff',
-     paddingTop: 30,
-     paddingBottom: 20,
+      color: '#fff',
+     paddingTop: 10,
+     paddingBottom: 10,
      fontSize: 40,
+     fontWeight: 'bold',
      textAlign: 'center',
      backgroundColor: '#f1c40f',
   },
