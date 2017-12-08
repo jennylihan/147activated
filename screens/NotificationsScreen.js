@@ -18,6 +18,7 @@ export default class NotificationsScreen extends React.Component {
   static navigationOptions = {
     header: null,
     title: 'Notifications',
+    header: null,
   };
 
     constructor(props) {
@@ -62,6 +63,8 @@ export default class NotificationsScreen extends React.Component {
       <Text style={styles.instruction_text}>Notifications</Text>
       </View>
       <Content>
+      <Text style={styles.header}>Notifications</Text>
+
         <List>
           <ListItem avatar>
             <Left>
@@ -158,23 +161,23 @@ const styles = StyleSheet.create({
   //   height:10
   // },
   container: {
-     flex: 1,
-     backgroundColor: '#f1c40f',
-  },
-      instruction_text: {
-       color: '#fff',
-       fontSize: 20,
-       fontFamily: 'Avenir',
-       fontWeight: '700',
-   },
-       header: {
-       opacity: 0.8,
-       flexDirection: 'row',
-       backgroundColor: '#f1c40f',
-       padding: 25,
-       justifyContent: 'center',
-       height: 80,
-   },
+        flex: 1
+    },
+    header: {
+        // flexDirection: 'row',
+        // backgroundColor: '#f1c40f',
+        // padding: 20,
+        // justifyContent: 'center',
+        // borderBottomColor: '#f1c40f',
+        // borderBottomWidth: 1
+        color: '#fff',
+        paddingTop: 30,
+        paddingBottom: 15,
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        backgroundColor: '#f1c40f',
+    },
     header_button: {
         flex: 1,
     },
