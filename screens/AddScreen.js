@@ -22,6 +22,7 @@ import MainTabNavigator from '../navigation/MainTabNavigator';
 import { Container, Left, Right, Header, Title, Body, Content, Form, Item, Input, Label, Icon, Button, Picker, Item as FormItem} from 'native-base';
 import CalendarPicker from 'react-native-calendar-picker';
 import PopupDialog from 'react-native-popup-dialog';
+import SettingsList from 'react-native-settings-list';
 
 export default class AddScreen extends React.Component {
    static navigationOptions = {
@@ -89,7 +90,70 @@ export default class AddScreen extends React.Component {
             <Container>
 
               <Content>
-              <Text style={styles.title}>Add a Task</Text>
+              <View style={styles.header}>
+              <View style={styles.imagebox}>
+              <TouchableOpacity onPress={()=>{this.popupDialogSettings.show()}}>
+              <Image style={styles.stretch}
+                    source={require('../assets/images/settings.png')} />
+              </TouchableOpacity>
+              </View>
+             <PopupDialog
+                ref={(popupDialogSettings) => { this.popupDialogSettings = popupDialogSettings; }}
+                height={500} >
+                <View>
+
+        <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
+
+           <SettingsList.Header headerStyle={{marginTop:15}}/>
+           <SettingsList.Item
+             title='Change Password'
+             onPress={() => Alert.alert('Route To Notifications Page')}
+           />
+           <SettingsList.Item
+
+             title='Public Profile'
+             titleInfo='Off'
+             titleInfoStyle={styles.titleInfoStyle}
+             onPress={() => Alert.alert('Route to Blutooth Page')}
+           />
+           <SettingsList.Item
+             title='Notifications'
+             onPress={() => Alert.alert('Route To Control Center Page')}
+           />
+           <SettingsList.Header headerStyle={{marginTop:15}}/>
+           <SettingsList.Item
+             title='General'
+             onPress={() => Alert.alert('Route To General Page')}
+           />
+           <SettingsList.Item
+             title='Tutorial'
+             onPress={() => Alert.alert('Route To General Page')}
+           />
+           <SettingsList.Item
+             title='Help'
+             onPress={() => Alert.alert('Route To General Page')}
+           />
+           <SettingsList.Item
+             title='Privacy Policy'
+             onPress={() => Alert.alert('Route To General Page')}
+           />
+        </SettingsList>
+
+
+                   <Button full warning
+                   onPress={() => {this.popupDialogSettings.dismiss();}} >
+                    <Text>Save</Text>
+                   </Button>
+
+                </View>
+             </PopupDialog>
+
+
+              <View>
+              <Text style={styles.instruction_text}>
+              Add a Task  </Text>
+              </View>
+              </View>
                 <Form>
                 <Item fixedLabel>
                  <Label>Goal Category</Label>
@@ -193,7 +257,7 @@ export default class AddScreen extends React.Component {
                   </Item>
 
                   <TouchableOpacity onPress={()=>{console.log('pressed SAVE')}} style={styles.buttonContainer}>
-                           <Text style={styles.buttonText}> Login </Text>
+                           <Text style={styles.buttonText}> Save </Text>
                   </TouchableOpacity>
 
                 </Form>
@@ -232,6 +296,30 @@ buttonText: {
     color: '#FFF',
     fontWeight: '700',
     fontSize: 25,
+},
+imagebox: {
+  flex: 1
+},
+
+   instruction_text: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'left',
+},
+
+stretch: {
+width: 30,
+height: 30,
+position: 'absolute',
+top: 0,
+left: 10,
+},
+    header: {
+     backgroundColor: '#f1c40f',
+     paddingBottom: 15,
+     paddingTop: 25,
+     flexDirection: 'row',
 },
 
 

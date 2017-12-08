@@ -48,13 +48,6 @@ export default class Login extends Component {
            onClose={() => this.closeDrawer()} >
 
         <Container>
-
-        <Header>
-          <Button onPress={()=> this.openDrawer()} >
-          <Text>test</Text>
-          </Button>
-        </Header>
-
              <Content>
                <View style={styles.titleContainer}>
                <Text style={styles.formTitle}>{this.state.title}</Text>
