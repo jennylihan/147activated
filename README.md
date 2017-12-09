@@ -1,6 +1,6 @@
 # 147activated
 
-Activated is application designed by us over the course of taking Stanford's Introduction to Human Computer Interaction class (CS 147, Fall 2017). High school students, especially those in low-income communities, may have very little access to personal counseling and feel lost or misguided in their path to get to college. It is designed to be a personal counselor, agenda, and motivator all in one to provide assistance in the face of a deficit of personalize academic guidance.
+Activated is an application designed over the course of Stanford's Introduction to Human Computer Interaction class (CS 147, Fall 2017). High school students, especially those in low-income communities, may have very little access to personal counseling and feel lost or misguided in their path to get to college. It is designed to be a personal counselor, agenda, and motivator all in one to provide assistance in the face of a deficit of personalize academic guidance.
 
 ## Development
 This application was written using React Native and relies on a number of open-source packages for some of the features in the mobile application. With React Native, this application can be deployed on both iOS and Android devices.
@@ -39,14 +39,14 @@ Open the project within the Expo XDE application, and click the 'Device' button 
 * Users will be able to add their own task on the Add screen, personalizing it with their own details and add it to their list of tasks (completed add functionality has not be implemented).
 
 ## Limitations
-As this is a working prototype, there a number of features there were not implemented yet:
+As this is a working prototype, these features are yet to be implemented:
 * Search and filter in sharing tasks with friends and searching for tasks within a goal.
 * In the calendar, changing the weeks does not change the tasks on the week, and in the final iteration, these two features should be linked.
 * Users would be able to add icons to associate with their tasks upon creation.
 * Registering was not implemented. This would include creating a profile with a picture and some personalization of privacy and sharing preferences.
 * User should be able to add their own goals. The ones displayed in the application were displayed as if the user created those six goals initially themselves.
 * Adding tasks dynamically was not implemented.
-* Push notifications from getting a shared task or as a reminder to complete a task would be implemented in the future. 
+* Push notifications from getting a shared task or as a reminder to complete a task would be implemented in the future.
 
 ## Built With
 * [React Native](https://facebook.github.io/react-native/) - Libraries that allowed us to build a mobile application using only Javascript
@@ -62,4 +62,4 @@ As this is a working prototype, there a number of features there were not implem
 ## Acknowledgments
 * CS 147 Instructors
 * Section peers for their feedback
-* Students at Fremont High and Independence High
+* Students at Fremont High School and Independence High School
