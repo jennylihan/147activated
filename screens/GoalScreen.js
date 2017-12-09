@@ -48,7 +48,7 @@ export default class GoalScreen extends React.Component {
     console.log("i'm in will mount")
    }
 
-   onChecked(item){
+   onChecked(){
       AlertIOS.alert('YOU DID IT!',
         'Congrats, you completed the task.',
         [{text:'Ok'}]
@@ -72,9 +72,7 @@ export default class GoalScreen extends React.Component {
                           <CheckBox
                             label={item.text}
                             checked={item.checked}
-                            onChange={(checked) =>
-                              this.onChecked.bind(this, item)
-                            }
+                            onChange={(checked) =>{this.onChecked.bind(this, item)}}
                           />
                           </Body>
                           <Right>

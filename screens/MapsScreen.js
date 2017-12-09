@@ -115,7 +115,7 @@ export default class MapsScreen extends React.Component {
               priority: 2,
               icon: '../assets/images/hex_financialaid.png',
               tasks: [
-      {text:'Apply for FAFSA',
+                {text:'Apply for FAFSA',
                  category: 'Financial Aid',
                  startdatetime: '2017-12-24',
                  enddatetime: '2017-12-24’',
@@ -156,7 +156,7 @@ export default class MapsScreen extends React.Component {
               priority: 2,
               icon: '../assets/images/hex_financialaid.png',
               tasks: [
-      {text:'Talk to Mr. C for a letter of rec',
+                {text:'Talk to Mr. C for a letter of rec',
                  category: 'College Apps',
                  startdatetime: '2017-10-5',
                  enddatetime: '2017-10-5',
@@ -173,7 +173,7 @@ export default class MapsScreen extends React.Component {
                  notes: ' \n - Check CollegeBoard'
                  },
 
-      {text:'Turn in UC Apps',
+                 {text:'Turn in UC Apps',
                  category: 'College Apps',
                  startdatetime: '2017-11-27',
                  enddatetime: '2017-11-27',
@@ -194,7 +194,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-12-5',
                  location: 'Home',
                  checked: false,
-                 notes: '\n - Talk to Cindy about it \n  - Register on SlideRoom"'
+                 notes: '- Talk to Cindy about it \n  - Register on SlideRoom'
                },
              {text:'Apply to COSMOS',
                  category: 'Summer',
@@ -202,7 +202,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-12-25',
                  location: 'Home',
                  checked: false,
-                 notes: '\n - Write the essays for physics track"'
+                 notes: '- Write the essays for physics track'
                },
              {text:'Apply to RISE',
                  category: 'Summer',
@@ -210,7 +210,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-12-30',
                  location: 'Home',
                  checked: false,
-                 notes: '\n - Ask Mr. Elwell for letter of rec"'
+                 notes: '- Ask Mr. Elwell for letter of rec'
                },
              {text:'Apply to Improv Camp',
                  category: 'Summer',
@@ -218,7 +218,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-11-30',
                  location: 'Home',
                  checked: true,
-                 notes: '\n - Get info at the counselor’s office'
+                 notes: '- Get info at the counselor’s office'
                },
       ]
       },
@@ -232,7 +232,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-10-15',
                  location: 'Home',
       	checked: false,
-                 notes: ' \n - Check dates on college board"'
+                 notes: '- Check dates on college board'
                  },
              {text:'E-mail SAT tutor about schedule',
                  category: 'SAT',
@@ -240,7 +240,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-11-30',
                  location: 'Home',
                  Checked: false,
-                 notes: '\n - Email: aanguyen@gmail.com'
+                 notes: '- Email: aanguyen@gmail.com'
                },
              {text:'Do practice test',
                  category: 'SAT',
@@ -248,7 +248,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-11-30',
                  location: 'Home',
                  Checked: true,
-                 notes: '\n - Practice test #1'
+                 notes: '- Practice test #1'
                },
              {text:'Buy blue book',
                  category: 'SAT',
@@ -256,7 +256,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-12-3',
                  location: 'Home',
                  Checked: true,
-                 notes: '\n - Get money from Mom'
+                 notes: '- Get money from Mom'
                },
       ]
               },
@@ -270,7 +270,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-10-5',
                  location: 'Home',
                  checked: false,
-                 notes: ' \n - Talk to Maria about forms \n  - Find pamphlets from college day"'
+                 notes: '- Talk to Maria about forms \n  - Find pamphlets from college day'
                  },
       {text:'Look into Blue and Gold scholarship at UCs',
                  category: 'Research',
@@ -278,7 +278,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-11-15',
                  location: 'Home',
                  checked: false,
-                 notes: ' \n - Check Berkeley website \n  - Fill in initial form"'
+                 notes: '- Check Berkeley website \n  - Fill in initial form'
                  },
 
       {text:'Find a mentor through STARS at school',
@@ -287,7 +287,7 @@ export default class MapsScreen extends React.Component {
                  enddatetime: '2017-8-5',
                  location: 'Homeroom C-412',
                  checked: true,
-                 notes: ' \n - Mr. Barn has people to refer to"'
+                 notes: '- Mr. Barn has people to refer to"'
                  },
 
       ]

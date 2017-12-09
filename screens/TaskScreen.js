@@ -20,7 +20,7 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import RootNavigation from '../navigation/RootNavigation';
-import { Container, Header, Body, Content, Card, CardItem, Thumbnail, Button, Left, Icon, List, ListItem, Text} from 'native-base';
+import { Container, Header, Body, Content, Card, CardItem, Thumbnail, Button, Left, Right, Icon, List, ListItem, Text} from 'native-base';
 
 import CheckBox from 'react-native-modest-checkbox';
 
@@ -66,24 +66,19 @@ export default class TaskScreen extends React.Component {
         <Content>
           <Card style={{flex: 0}}>
             <CardItem>
-              <Left>
-                <Thumbnail source={require('../assets/images/icons8-study-50.png')} />
-                <Body>
-                  <Text>YOU GOT THIS</Text>
-                </Body>
-              </Left>
             </CardItem>
             <CardItem>
               <Body>
-                <Text>
-                Goal Category: {params.itemobj.category}
-                </Text>
-                <Text>
-                Location: {params.itemobj.location}
-                </Text>
-                <Text>
-                Notes: {params.itemobj.notes}
-                </Text>
+                <Text style={styles.big_text_done}>GOAL:</Text>
+                <Text>{params.itemobj.category}</Text>
+                <Text style={styles.big_text_done}>LOCATION:</Text>
+                <Text>{params.itemobj.location}</Text>
+                <Text style={styles.big_text_done}>START DATE:</Text>
+                <Text>{params.itemobj.startdatetime}</Text>
+                <Text style={styles.big_text_done}>END DATE:</Text>
+                <Text>{params.itemobj.enddatetime}</Text>
+                <Text style={styles.big_text_done}>NOTES:</Text>
+                <Text>{params.itemobj.notes}</Text>
               </Body>
             </CardItem>
             <CardItem>
@@ -180,7 +175,7 @@ notes_text_done: {
     color: '#c5c5c5',
 },
 big_text_done: {
-    fontSize: 50,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#c5c5c5',
 },
